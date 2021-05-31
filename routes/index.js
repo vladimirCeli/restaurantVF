@@ -3,11 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Bienvenido a Bitaurant' });
+  res.render('index', { title: 'Bienvenido a La Place' });
 });
 
-router.get('/tst', function(req, res, next) {
-  res.render('tst', { title: 'Express' });
+router.get('/menu', function(req, res, next) {
+  res.render('menu', { title: 'Menú' });
 });
 
 module.exports = router;

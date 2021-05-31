@@ -3,10 +3,215 @@
   <%- include('fragmentos/head'); %> 
   <body class="bg-dark">
     <%- include('fragmentos/navbar'); %> 
-   <br>
-    <div class="card mx-auto col-md-9" style="margin-top: 30px;">
-      <h1><%= title %></h1>
-      <p>Hola bros xD :P<%= title %></p>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/fondo.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1"><%= title %></h1>
+  <p class="text-white">El sitio donde encontrarás una diversidad de platillos los cuales los puedes pagar online a través de tu tarjeta de crédito o débito.</p>
+<br>
+          <a href="/menu"   class="btn btn-danger btn-raised btn-lg">
+            <i class="fa fa-eye"></i> Ver Menú
+          </a>
+        </div>
+      </div>
     </div>
-  </body>
+  </div>  
+  <div class="main main-raised">
+    <div class="container">
+      <div class="section text-center">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1">Acerca de Nosotros</h2>
+            <h5 class="description">Somos un restaurant ubicado en la ciudad de Loja en la dirección Av. Pio Jaramillo entre la Av. Gobernación  de Mainas y la calle Jhon F. Kennedy, contamos con la mejor calidad y atención, puedes hacer tus pedidos via online a través de esta página web y cancelar con tu tarjeta de credito o débito de preferencia. Para una mejor experiencia <a class="text-success h5" href="#">Registrate!</a>  </h5>
+          </div>
+        </div>
+        <div class="features">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-info">
+                  <i class="fa fa-fighter-jet "></i>
+                </div>
+                <h4 class="info-title">Free Delivery</h4>
+                <p>Nuestros platillos son empacados al momento de realizar tu compra y enviados a tu domicilio de manera gratuita.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-success">
+                  <i class="fa fa-credit-card-alt"> </i>
+                </div>
+                <h4 class="info-title">Pagos Online</h4>
+                <p>Puedes pedir cualquier platillo y cancelarlo con tu tarjeta de crédito o débito de tu preferencia con la mayor seguridad. </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info">
+                <div class="icon icon-danger">
+                  <i class="fa fa-cart-plus"></i>
+                </div>
+                <h4 class="info-title">Carrito de compras</h4>
+                <p>Tengas una cuenta o no, estará disponible la función del carrito de compras, donde podrás añadir varios pedidos a la vez, si cuentas con una cuenta podrás guardar tus elecciónes en tu carrito para comprarlas luego</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section text-center">
+        <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1">Nuestro Esquipo</h2>
+        <div class="team">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Juan Pablo Torres
+                    <br>
+                    <small class="card-description text-muted">Diseñador</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">descripcion.</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Wiliam Cueva
+                    <br>
+                    <small class="card-description text-muted">Programador</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">descripcion.</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Rubier Padilla
+                    <br>
+                    <small class="card-description text-muted">Desarrollador</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">descripcion.</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mx-auto">
+              <div class="team-player">
+                <div class="card card-plain">
+                  <div class="col-md-6 ml-auto mr-auto">
+                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  </div>
+                  <h4 class="card-title">Patricio Paredes
+                    <br>
+                    <small class="card-description text-muted">Desarrollador</small>
+                  </h4>
+                  <div class="card-body">
+                    <p class="card-description">descripcion.</p>
+                  </div>
+                  <div class="card-footer justify-content-center">
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                    <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section-contacts">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1 text-center">Trabaja con nosotros</h2>
+            <h4 class="text-center description">Envíanos un correo con tu CV si tienes experiencia en, cocina, atención al cliente, delivery. De aprobar nosotros te enviarémos un correo de vuelta. Normalmente respondemos de vuelta en pocas horas</h4>
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group bmd-form-group">
+                    <label class="bmd-label-floating">Tus Nombres</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group bmd-form-group">
+                    <label class="bmd-label-floating">Tu Correo</label>
+                    <input type="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group bmd-form-group">
+                <label for="exampleMessage" class="bmd-label-floating">Tu Mensaje</label>
+                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-4 ml-auto mr-auto text-center">
+                  <button class="btn btn-primary btn-raised">
+                    Enviar Mensaje
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer footer-default">
+    <div class="container">
+      <nav class="float-left">
+        <ul> 
+          <li>
+            <a href="/menu">
+              Ir al Menú
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Registrarse
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Licencia
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        ©
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+      </div>
+    </div>
+  </footer>
+ </body>
 </html>
