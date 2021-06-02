@@ -1,18 +1,20 @@
 <!-- Navbar -->
-  <nav class="nav navbar navbar-expand-sm fixed-top " style="background-color:black; opacity: 0.93" color-on-scroll="300">
+
+  <nav class=" navbar navbar-inverse bg-dark navbar-expand-sm fixed-top" color-on-scroll="300" style="  opacity: 0.96"  >
     <div class="container ">
-      <div class="navbar-translate">
+      <div class="navbar-translate" >
         <a class="navbar-brand" href="/" rel="tooltip" title="Index" data-placement="bottom" target="">
-          <img style="width: 18%" src="./assets/img/logo.png">
+          <img style="width: 18%" src="./assets/img/logo.png" class="img-fluid">
           <span class="copyright"><i class="fa fa-heart heart" style="opacity: 0.6"></i></span> </a>
 
-        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
+        <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-      <div class=" collapse navbar-collapse navbar-dark justify-content-end " id="navigation">
+      <div class=" collapse navbar-collapse  justify-content-end " id="navigation">
 
         <ul class="navbar-nav nav-sm">
        
@@ -21,31 +23,24 @@
               <i class="fa fa-photo"></i>
               <p class="d-lg-none">Menu</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Ver las bebidas" data-placement="bottom" href="/cocteles" target="">
-              <i class="fa fa-glass"></i>
-              <p class="d-lg-none">Bebidas</p>
-            </a>
           </li> 
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Síguenos en Facebook" data-placement="bottom" href="https://www.facebook.com" target="_blank">
-              <i class="fa fa-facebook-square"></i>
-              <p class="d-lg-none">Facebook</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="" target="_blank">
-              <i class="fa fa-instagram"></i>
-              <p class="d-lg-none">Instagram</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Escríbenos a Whatsapp" data-placement="bottom" href="https://api.whatsapp.com/send?phone=593980559786&text=Hola,%20" target="_blank">
-              <i class="fa fa-whatsapp"></i>
-              <p class="d-lg-none">Whatsapp</p>
-            </a>
-          </li>
+          <li class=" dropdown nav-item ">
+            <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Redes Sociales<div class="ripple-container"></div></a>
+            <div class="dropdown-menu collapse"> 
+              <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="" target="_blank">
+                <i class="fa fa-instagram"></i>
+                <p class="d-lg-none">Instagram</p>
+              </a>
+              <a class="nav-link" rel="tooltip" title="Escríbenos a Whatsapp" data-placement="bottom" href="/editarperfil"  >
+                <i class="fa fa-whatsapp"></i>
+                <p class="d-lg-none">Whatsapp</p>
+              </a>
+              <a class="nav-link" rel="tooltip" title="Síguenos en Facebook" data-placement="bottom" href="https://www.facebook.com" target="_blank">
+                <i class="fa fa-facebook-square"></i>
+                <p class="d-lg-none">Facebook</p>
+              </a>
+            </div> </li> 
+            
           <a class="btn  btn-success btn-raised  " href="#" >Acceder</a>
           <a class="btn  btn-danger btn-raised  " href="#" >Registrarse</a>
         </ul>
