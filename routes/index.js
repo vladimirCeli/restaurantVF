@@ -14,4 +14,8 @@ router.get('/editarperfil', function(req, res, next) {
   res.render('editarp', { title: 'Menú' });
 });
 
+router.get('/administrar', function(req,res,next){
+  res.render('administrarplatillo',{title: 'Administrar'});
+})
+
 module.exports = router;
