@@ -10,8 +10,8 @@ router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'Menú' });
 });
 
-router.get('/editarperfil', function(req, res, next) {
-  res.render('editarp', { title: 'Menú' });
+router.get('/carrito', function(req, res, next) {
+  res.render('carrito', { title: 'Carrito' });
 });
 
 module.exports = router;
