@@ -14,4 +14,8 @@ router.get('/carrito', function(req, res, next) {
   res.render('carrito', { title: 'Carrito' });
 });
 
+router.get('/administrar', function(req,res,next){
+  res.render('administrarplatillo',{title: 'Administrar'});
+})
+
 module.exports = router;
