@@ -16,6 +16,10 @@ router.get('/editarperfil', function(req, res, next) {
 
 router.get('/administrar', function(req,res,next){
   res.render('administrarplatillo',{title: 'Administrar'});
+});
+
+router.get('/platillos', function(req,res,next){
+  res.render('tablaplatillos',{title: 'Platillos'});
 })
 
 module.exports = router;
