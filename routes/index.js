@@ -14,4 +14,12 @@ router.get('/editarperfil', function(req, res, next) {
   res.render('editarp', { title: 'Menú' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('iniciosesion', { title: 'Inicio Sesión'});
+});
+
+router.get('/registrarse', function(req, res, next) {
+  res.render('registrarse', { title: 'Registrar'});
+});
+
 module.exports = router;
