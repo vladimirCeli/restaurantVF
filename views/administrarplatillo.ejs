@@ -132,12 +132,20 @@
                         <div class="mx-auto">Guardar</div>
                       </button>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
+                    <div
+                      class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"
+                    >
                       <button
                         type="button"
                         class="py-3 px-2 w-100 btn btn-outline-secondary"
                       >
-                        <div class="mx-auto">Modificar</div>
+                        <div class="mx-auto">Activo</div>
+                      </button>
+                      <button
+                        type="button"
+                        class="py-3 px-2 w-100 btn btn-outline-secondary"
+                      >
+                        <div class="mx-auto">Desac.</div>
                       </button>
                     </div>
                     <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
@@ -154,59 +162,39 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-6">
-          <div class="card">
+        <div class="col-12 col-lg-6 d-flex">
+          <div class="card tablaif">
             <div class="card-body">
-              <div class="row">
-                <div class="col-12 px-0 input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                    >Buscar:</span
-                  >
-                  <div class="w-50">
-                    <input
-                      type="text"
-                      class="form-control"
-                      aria-label="Nombre"
-                      aria-describedby="basic-addon1"
-                    />
+              <div class="row h-100">
+                <div class="col-12 col-sm-9 p-1">
+                  <div class="input-group input-group-sm m-0">
+                    <div class="row mx-0">
+                      <span
+                        class="col-3 input-group-text"
+                        id="inputGroup-sizing-sm"
+                        >Buscar:</span
+                      >
+                      <div class="col-9 px-auto">
+                        <input
+                          type="text"
+                          class="form-control"
+                          aria-label="Nombre"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+                <div class="col-12 col-sm-3 d-flex">
+                  <div class="combobox">
+                    <select>
+                      <option>Nombre</option>
+                      <option>Precio</option>
+                    </select>
+                  </div>
+                </div>
                 <div class="col-12">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <iframe class="card w-100 h-100 m-0" src="/platillos"></iframe>
                 </div>
               </div>
             </div>
