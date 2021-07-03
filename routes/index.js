@@ -1,36 +1,49 @@
-var {Router} = require('express');
+var { Router } = require("express");
 var router = Router();
 
+// const {
+//   renderSignupForm,
+//   renderSigninForm,
+//   signup,
+//   signin,
+//   logout,
+// } = require("../controllers/users.controller");
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Bienvenido a La Place' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Bienvenido a La Place" });
 });
 
-router.get('/menu', function(req, res, next) {
-  res.render('menu', { title: 'Menú' });
+router.get("/menu", function (req, res, next) {
+  res.render("menu", { title: "Menú" });
 });
 
-router.get('/carrito', function(req, res, next) {
-  res.render('carrito', { title: 'Carrito' });
+router.get("/carrito", function (req, res, next) {
+  res.render("carrito", { title: "Carrito" });
 });
 
-router.get('/editar', function(req, res, next) {
-  res.render('editarp', { title: 'Editar Perfil' });
+router.get("/editar", function (req, res, next) {
+  res.render("editarp", { title: "Editar Perfil" });
 });
 
-router.get('/administrar', function(req,res,next){
-  res.render('administrarplatillo',{title: 'Administrar'});
+router.get("/administrar", function (req, res, next) {
+  res.render("administrarplatillo", { title: "Administrar" });
 });
 
-router.get('/platillos', function(req,res,next){
-  res.render('tablaplatillos',{title: 'Platillos'});
-})
-router.get('/login', function(req, res, next) {
-  res.render('iniciosesion', { title: 'Inicio Sesión'});
+router.get("/platillos", function (req, res, next) {
+  res.render("tablaplatillos", { title: "Platillos" });
 });
 
-router.get('/registrarse', function(req, res, next) {
-  res.render('registrarse', { title: 'Registrar'});
+router.get("/registrarse", (req, res) => res.render("registrarse"));
+router.post("/registrarse", (req, res) => {
+  res.send("signup");
+  console.log(req.body);
+  res.send("recived");
 });
+
+router.get("/login", (req, res) => res.render("iniciosesion"));
+router.post("/login", (req, res) => res.send("login"));
+
+router.get("/logout", (req, res) => res.send("logout"));
 
 module.exports = router;
