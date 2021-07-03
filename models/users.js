@@ -9,7 +9,12 @@ const userSchema = new Schema({
   email: String,
   password: String,
   name:String,
-  lastname: String
+  lastname: String,
+  rol: int,
+  cell: String,
+  address: String,
+  idc: String
+
 });
 
 userSchema.methods.encryptPassword = (password) => {
