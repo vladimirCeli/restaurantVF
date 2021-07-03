@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const platilloSchema = new Schema({
   
-  email: String,
-  password: String,
-  name:String,
-  lastname: String,
-  rol: int,
+  nombre: String,
+  descripcion: String,
+  calificacion:double,
+  imagen: String,
+  precio: double,
 
 });
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('platillo', platilloSchema);
