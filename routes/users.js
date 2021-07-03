@@ -1,14 +1,14 @@
 var express = require('express');
-var router = express.Router();
+var routerx = express.Router();
 
 const {renderSignupForm,renderSigninForm,signup,signin,logout} = require('../controllers/users.controller');
 /* GET users listing. */
-router.get('/registrarse', renderSignupForm);
-router.post('/registrarse', signup);
+routerx.get('/registrarse', renderSignupForm);
+routerx.post('/registrarse', signup);
 
-router.get('/login', renderSigninForm);
-router.post('/login', signin);
+routerx.get('/login', renderSigninForm);
+routerx.post('/login', signin);
 
-router.get('/',logout);
+routerx.get('/',logout);
 
-module.exports = router;
+module.exports = routerx;
