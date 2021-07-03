@@ -34,14 +34,15 @@ router.get("/platillos", function (req, res, next) {
   res.render("tablaplatillos", { title: "Platillos" });
 });
 
-router.get("/registrarse", (req, res) => res.render("registrarse"));
+router.get("/registrarse", function(req, res, next) { res.render("registrarse", { title: "Registrarce" })}
+);
 router.post("/registrarse", (req, res) => {
-  res.send("signup");
   console.log(req.body);
   res.send("recived");
 });
 
-router.get("/login", (req, res) => res.render("iniciosesion"));
+router.get("/login", function(req, res, next) { res.render("iniciosesion", { title: "Inicio de Sesion" })}
+);
 router.post("/login", (req, res) => res.send("login"));
 
 router.get("/logout", (req, res) => res.send("logout"));
