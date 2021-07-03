@@ -1,3 +1,4 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,12 +7,13 @@ var logger = require('morgan');
 var session= require('express-session');
 var app = express();
 var mongoose= require('mongoose');
+require('dotenv').config();
 var flash= require('connect-flash');
 
 
 // database//
-const  database  = {URI: process.env.URI}
-mongoose.connect(database.URI, {useUnifiedTopology: true,useNewUrlParser: true    
+const {URI}=process.env;
+mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true    
 })
 .then(db => console.log('base de datos conectada'))
 .catch(err => console.log(err));
