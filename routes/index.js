@@ -25,5 +25,12 @@ router.get('/administrar', function(req,res,next){
 router.get('/platillos', function(req,res,next){
   res.render('tablaplatillos',{title: 'Platillos'});
 })
+router.get('/login', function(req, res, next) {
+  res.render('iniciosesion', { title: 'Inicio Sesión'});
+});
+
+router.get('/registrarse', function(req, res, next) {
+  res.render('registrarse', { title: 'Registrar'});
+});
 
 module.exports = router;

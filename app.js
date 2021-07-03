@@ -10,7 +10,7 @@ var flash= require('connect-flash');
 
 
 // database//
-const  database  = {URI: 'mongodb+srv://Pablo:<password>@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'}
+const  database  = {URI: process.env.URI}
 mongoose.connect(database.URI, {useUnifiedTopology: true,useNewUrlParser: true    
 })
 .then(db => console.log('base de datos conectada'))
