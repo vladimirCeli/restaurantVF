@@ -12,7 +12,7 @@ var flash= require('connect-flash');
 
 
 // database//
-const {URI}=process.env;
+const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true    
 })
 .then(db => console.log('base de datos conectada'))
