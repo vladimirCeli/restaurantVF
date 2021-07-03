@@ -12,7 +12,7 @@ var flash= require('connect-flash');
 
 
 // database//
-const {URI}=process.env;
+const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true    
 })
 .then(db => console.log('base de datos conectada'))
@@ -38,11 +38,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-app.use('/', indexRouter);
-app.use(require(usersRouter));
-
+var indexRouter = require('./routes/index'); 
+app.use('/', indexRouter); 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
