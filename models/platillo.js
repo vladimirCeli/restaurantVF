@@ -5,23 +5,23 @@ const { Schema } = mongoose;
 const platilloSchema = new Schema({
   
   nombre:{
-    type: String
+    type: String,
     requered: true
   },
   descripcion:{
-    type: String
+    type: String,
     requered: true
   } ,
   calificacion:{
-    type: double
+    type: double,
     requered: true
   } ,
   imagen:{
-    type: String
+    type: String,
     requered: true
   } ,
   precio: {
-    type: double
+    type: double,
     requered: true
   },
 
