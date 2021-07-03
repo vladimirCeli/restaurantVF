@@ -166,9 +166,9 @@
           <div class="card tablaif">
             <div class="card-body">
               <div class="row h-100">
-                <div class="col-12 col-sm-9 p-1">
+                <div class="col-12 col-sm-9 col-md-9 p-1" style="height: 35px">
                   <div class="input-group input-group-sm m-0">
-                    <div class="row mx-0">
+                    <div class="row mx-0 w-100">
                       <span
                         class="col-3 input-group-text"
                         id="inputGroup-sizing-sm"
@@ -185,16 +185,24 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-sm-3 d-flex">
-                  <div class="combobox">
+                <div class="col-12 col-sm-3 col-md-3 d-flex" style="height: 35px">
+                  <span class="custom-dropdown">
                     <select>
                       <option>Nombre</option>
                       <option>Precio</option>
                     </select>
-                  </div>
+                  </span>
                 </div>
                 <div class="col-12">
-                  <iframe class="card w-100 h-100 m-0" src="/platillos"></iframe>
+                  <span class="input-group-text"
+                    >Tabla Platillos</span
+                  >
+                </div>
+                <div class="col-12 pb-4" style="height: 380px">
+                  <iframe
+                    class="card w-100 h-100 m-0"
+                    src="/platillos"
+                  ></iframe>
                 </div>
               </div>
             </div>

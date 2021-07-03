@@ -14,8 +14,58 @@
  */
 /*     brand Colors              */
 
+/* CodePen demo */
+.big {
+  font-size: 1.2em;
+}
 
+.small {
+  font-size: .7em;
+}
 
+.square {
+  width: .7em;
+  height: .7em;
+  margin: .5em;
+  display: inline-block;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.custom-dropdown select {
+  background-color: #1abc9c;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  /* padding-right: 2.5em;  */
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.wcontainer {
+  max-width: 90%;
+  height: 7rem;
+  /* background-color: white; */
+  z-index: 2;
+  text-decoration-color: black;
+  /* padding-top: 60px; */
+  /* margin-top: 100px; */
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .carousel.carousel-full-navigation .left {
   cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"), default !important;
