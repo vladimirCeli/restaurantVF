@@ -13,7 +13,7 @@ const platilloSchema = new Schema({
     requered: true
   } ,
   calificacion:{
-    type: double,
+    type: String,
     requered: true
   } ,
   imagen:{
@@ -21,7 +21,7 @@ const platilloSchema = new Schema({
     requered: true
   } ,
   precio: {
-    type: double,
+    type: String,
     requered: true
   },
 

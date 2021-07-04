@@ -19,145 +19,159 @@
       <div class="row border rounded">
         <div class="col-12 col-lg-6">
           <div class="card">
+            <div></div>
             <div class="card-body">
               <div class="row">
-                <div class="col-12 px-0 input-group input-group-sm mb-3">
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                    >Nombre:</span
-                  >
-                  <div class="w-50">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Bistec"
-                      aria-label="Nombre"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="
-                    col-12 col-md-6 col-sm-6
-                    px-0
-                    input-group input-group-sm
-                    mb-3
-                  "
-                >
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                    >Precio:</span
-                  >
-                  <div class="w-25">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="0.00"
-                      aria-label="Precio"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="
-                    col-12 col-md-6 col-sm-6
-                    px-0
-                    input-group input-group-sm
-                    mb-3
-                  "
-                >
-                  <span class="input-group-text" id="inputGroup-sizing-sm"
-                    >Calificación:</span
-                  >
-                  <div class="w-25">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="-"
-                      aria-label="Calificacion"
-                      aria-describedby="basic-addon1"
-                    />
-                  </div>
-                </div>
-                <div class="col-12 px-0 input-group input-group-sm mb-3">
-                  <span class="input-group-text w-100" id="inputGroup-sizing-sm"
-                    ><div class="p-0" style="margin-right: 1rem">
-                      Descripción:
-                    </div>
-                    <textarea
-                      class="form-control border rounded w-100"
-                      placeholder="Ingredientes"
-                      aria-label="With textarea"
-                    ></textarea>
-                  </span>
-                </div>
-                <div class="col-12">
-                  <div class="row">
-                    <div class="col-12 col-sm-6 col-md-6">
-                      <img
-                        src="../assets/img/face.jpg"
-                        class="img-thumbnail"
-                        alt="imagen"
+                <form class="form" action="/administrar" method="post">
+                  <div class="col-12 px-0 input-group input-group-sm mb-3" >
+                    <span class="input-group-text" id="inputGroup-sizing-sm" 
+                      >Nombre:</span
+                    >
+                    <div class="w-50">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Bistec"
+                        aria-label="Nombre"
+                        aria-describedby="basic-addon1"
+                        name="nombre"
                       />
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6">
-                      <button
-                        type="button"
-                        class="w-100 btn btn-outline-success"
-                      >
-                        Subir Imagen
-                      </button>
-                      <button
-                        type="button"
-                        class="w-100 btn btn-outline-success"
-                      >
-                        Eliminar Imagen
-                      </button>
-                    </div>
                   </div>
-                </div>
-                <div class="col-12 mt-2">
-                  <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
-                      <button
-                        type="button"
-                        class="py-3 px-2 w-100 btn btn-outline-secondary"
-                      >
-                        <div class="mx-auto">Nuevo</div>
-                      </button>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
-                      <button
-                        type="button"
-                        class="py-3 px-2 w-100 btn btn-outline-secondary"
-                      >
-                        <div class="mx-auto">Guardar</div>
-                      </button>
-                    </div>
-                    <div
-                      class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"
+                  <div
+                    class="
+                      col-12 col-md-6 col-sm-6
+                      px-0
+                      input-group input-group-sm
+                      mb-3
+                    "
+                  >
+                    <span class="input-group-text" id="inputGroup-sizing-sm"
+                      >Precio:</span
                     >
-                      <button
-                        type="button"
-                        class="py-3 px-2 w-100 btn btn-outline-secondary"
-                      >
-                        <div class="mx-auto">Activo</div>
-                      </button>
-                      <button
-                        type="button"
-                        class="py-3 px-2 w-100 btn btn-outline-secondary"
-                      >
-                        <div class="mx-auto">Desac.</div>
-                      </button>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
-                      <button
-                        type="button"
-                        class="py-3 px-2 w-100 btn btn-outline-danger"
-                      >
-                        <div class="mx-auto">Eliminar</div>
-                      </button>
+                    <div class="w-25">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="0.00"
+                        aria-label="Precio"
+                        aria-describedby="basic-addon1"
+                        name="precio"                      
+                      />
                     </div>
                   </div>
-                </div>
+                  <div
+                    class="
+                      col-12 col-md-6 col-sm-6
+                      px-0
+                      input-group input-group-sm
+                      mb-3
+                    "
+                  >
+                    <span class="input-group-text" id="inputGroup-sizing-sm"
+                      >Calificación:</span
+                    >
+                    <div class="w-25">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="-"
+                        aria-label="Calificacion"
+                        aria-describedby="basic-addon1"
+                        name="calificacion"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 px-0 input-group input-group-sm mb-3">
+                    <span class="input-group-text w-100" id="inputGroup-sizing-sm" 
+                      ><div class="p-0" style="margin-right: 1rem">
+                        Descripción:
+                      </div>
+                      <textarea
+                        class="form-control border rounded w-100"
+                        placeholder="Ingredientes"
+                        aria-label="With textarea"
+                        
+                      ></textarea>
+                    </span>
+                  </div>
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-6">
+                        <img
+                          src="../assets/img/face.jpg"
+                          class="img-thumbnail"
+                          alt="imagen"
+                        />
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6">
+                        <button
+                          type="button"
+                          class="w-100 btn btn-outline-success"
+                        >
+                          Subir Imagen
+                        </button>
+                        <button
+                          type="button"
+                          class="w-100 btn btn-outline-success"
+                        >
+                          Eliminar Imagen
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-2">
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
+                        <button
+                          type="button"
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+                        >
+                          <div class="mx-auto">Nuevo</div>
+                        </button>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
+                        <button
+                          type="button"
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+  
+                          method="post"
+                        >
+                          <div class="mx-auto">Guardar</div>
+                        </button>
+                      </div>
+                      <div
+                        class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"
+                      >
+                        <button
+                          type="button"
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+                        >
+                          <div class="mx-auto">Activo</div>
+                        </button>
+                        <button
+                          type="button"
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+                        >
+                          <div class="mx-auto">Desac.</div>
+                        </button>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
+                        <button
+                          type="button"
+                          class="py-3 px-2 w-100 btn btn-outline-danger"
+                        >
+                          <div class="mx-auto">Eliminar</div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+                
+
+
+
               </div>
             </div>
           </div>
@@ -180,6 +194,7 @@
                           class="form-control"
                           aria-label="Nombre"
                           aria-describedby="basic-addon1"
+                          name="buscar"
                         />
                       </div>
                     </div>

@@ -1,5 +1,7 @@
 var { Router } = require("express");
+const platillo = require("../models/platillo");
 var router = Router();
+const notesCtrl = {};
 
 // const {
 //   renderSignupForm,
@@ -46,5 +48,18 @@ router.get("/login", function(req, res, next) { res.render("iniciosesion", { tit
 router.post("/login", (req, res) => res.send("login"));
 
 router.get("/logout", (req, res) => res.send("logout"));
+
+//Ingreso de platillos por administrador
+
+router.post("/administrar", async(req, res) => {
+  const {nombre,descripcion,calificacion,precio} = req.body;
+  const newplatillo = new platillo({nombre:nombre,descripcion:descripcion,calificacion:calificacion,precio:precio});
+  console.log(req.body)
+  //guardar en base de datos
+  await newplatillo.save();
+  //res.send('new platillo')
+});
+
+
 
 module.exports = router;
