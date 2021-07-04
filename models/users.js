@@ -8,12 +8,12 @@ const userSchema = new Schema({
   
   email: String,
   password: String,
-  name:String,
-  lastname: String,
-  rol: int,
-  cell: String,
-  address: String,
-  idc: String
+  names:String,
+  surname: String,
+  rol: Number,
+  phone: String,
+  dir: String,
+  cedula: String
 
 });
 
@@ -25,4 +25,4 @@ userSchema.methods.comparePassword= function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('users', userSchema);
