@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const flash= require('connect-flash');
 const User = require('../models/users.js'); 
 module.exports = function(passport) {
 passport.serializeUser((user, done) => {
@@ -27,9 +27,7 @@ passport.use('local-signup', new LocalStrategy({
   
   if(user) {//SI hay un usuario con ese correo show that
     return done(null, false, req.flash('signupMessage', 'El correo ya está resgistrado.'));
-  }  if (password.length < 4) {
-    errors.push({ text: "La contraseña debe ser mayor a 4 caracteres" });
-  }  if (password != req.body.password2) {
+  } if (req.body.password != req.body.password2) {
     return done(null, false, req.flash('signupMessage', 'Las contraseñas no coinciden'));
   }else  {
     const newUser = new User();

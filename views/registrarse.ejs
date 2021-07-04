@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <%- include('fragmentos/head'); %>
-
   <body style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));">
     <%- include('fragmentos/navbar'); %> 
-      <div class="container card-login" style="margin-top: 200px;">
-        <pre>  </pre>
-        <div class="row">
-          <div class="col-lg-7 col-md-11 ml-auto mr-auto">
-            <div class="card card-login">
+    <br><hr><hr><hr>
+      <div class="page-header"> 
+        <div class="row ">
+          <div class="col-lg-6 col-md-9 ml-auto mr-auto card card-login">
+            <div class="">
               <form class="form" action="/registrarse" method="POST">
-                <div class="card-header card-header-warning text-center">
+                <div class="card-header col-md-6 mx-auto card-header-warning text-center">
                   <h4 class="card-title">Registrarse</h4>
                 </div>
                 <div class="card-body px-0" style="margin-top: 30px;">
@@ -98,10 +97,10 @@
                     </div>
                   </div> 
                 </div><div class="m-4" >
-                  <button class="button btn-success btn-sm btn-wd btn-lg ">Registrarse</button>
+                  
                 </div> 
             </div>
-            
+            <button class="btn btn-success  btn-wd btn-lg col-md-4 mx-auto ">Registrarse</button><br>
           </div>
           </form>
         </div>

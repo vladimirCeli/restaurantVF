@@ -1,19 +1,6 @@
 var { Router } = require("express");
 const platillo = require("../models/platillo");
 var router = Router();
-const notesCtrl = {};
-
-// const {
-//   renderSignupForm,
-//   renderSigninForm,
-//   signup,
-//   signin,
-//   logout,
-// } = require("../controllers/users.controller");
-
-/* GET home page. */
-
-
 
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Bienvenido a La Place" });
@@ -81,8 +68,10 @@ router.get('/logout', (req, res, next) => {
   req.logout();
   res.redirect('/');
 });
-//Ingreso de platillos por administrador
 
+
+
+//Ingreso de platillos por administrador
 router.post("/administrar", function(req, res){
   const platillo_ = new platillo(req.body);
   platillo_.save(function(err) {

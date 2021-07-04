@@ -32,7 +32,7 @@ app.use(passport.session()); // persistent login sessions
 //Variables globales
 app.use((req, res, next) => {
   app.locals.signinMessage = req.flash('signinMessage');
-  app.locals.signupMessage = req.flash('signupMessage');
+  app.locals.signupMessage = req.flash('signupMessage'); 
   app.locals.user = req.user || null;
   console.log(app.locals)
   next();
