@@ -2,13 +2,31 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const platilloSchema = new Schema({
   
-  email: String,
-  password: String,
-  name:String,
-  lastname: String,
-  rol: int,
+  nombre:{
+    type: String,
+    requered: true
+  },
+  descripcion:{
+    type: String,
+    requered: true
+  } ,
+  calificacion:{
+    type: String,
+    requered: true
+  } ,
+  imagen:{
+    type: String,
+    requered: true
+  } ,
+  precio: {
+    type: String,
+    requered: true
+  },
+
+},{
+  timestamps: true
 
 });
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('platillo', platilloSchema);
