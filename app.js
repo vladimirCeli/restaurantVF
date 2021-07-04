@@ -8,7 +8,7 @@ var app = express();
 var mongoose= require('mongoose'); 
 var flash= require('connect-flash');
 var passport = require('passport');
-
+app.user
 require('./passport/local-auth')(passport);
 
 // database//
@@ -24,15 +24,16 @@ app.use(session({
     secret: 'restorantesession',
     resave: false,
     saveUnitialized: false
-}));  
+}));  app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash());
 
+
+//Variables globales
 app.use((req, res, next) => {
   app.locals.signinMessage = req.flash('signinMessage');
   app.locals.signupMessage = req.flash('signupMessage');
-  app.locals.user = req.user;
+  app.locals.user = req.user || null;
   console.log(app.locals)
   next();
 });
