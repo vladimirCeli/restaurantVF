@@ -12,6 +12,9 @@ const notesCtrl = {};
 // } = require("../controllers/users.controller");
 
 /* GET home page. */
+
+
+
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Bienvenido a La Place" });
 });
@@ -36,11 +39,29 @@ router.get("/platillos", function (req, res, next) {
   res.render("tablaplatillos", { title: "Platillos" });
 });
 
+
+
+// User 
+const User = require("../models/users");
 router.get("/registrarse", function(req, res, next) { res.render("registrarse", { title: "Registrarce" })}
 );
 router.post("/registrarse", (req, res) => {
-  console.log(req.body);
-  res.send("recived");
+  
+const user = new User(req.body);
+if(user.name  == ""){
+  alert("Ingresa tu nombre");
+} else if(user.surname  == ""){ alert("Ingresa tu Apellido")}
+else if(user.cedula  == ""){alert("Ingresa tu número de cédula")} else {
+user.save(function (err) {
+
+  if (!err){ 
+          console.log("Usuario agregado con éxito");
+          console.log(User);
+          res.send('Usuario agregado')
+  }else {
+      console.log("Ha ocurrido un error",err);
+      res.send("error")                               }
+});}
 });
 
 router.get("/login", function(req, res, next) { res.render("iniciosesion", { title: "Inicio de Sesion" })}
