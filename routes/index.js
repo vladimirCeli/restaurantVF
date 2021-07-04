@@ -67,17 +67,27 @@ user.save(function (err) {
 router.get("/login", function(req, res, next) { res.render("iniciosesion", { title: "Inicio de Sesion" })}
 );
 router.post("/login", (req, res) => res.send("login"));
-
 router.get("/logout", (req, res) => res.send("logout"));
 
 //Ingreso de platillos por administrador
 
-router.post("/administrar", async(req, res) => {
-  const {nombre,descripcion,calificacion,precio} = req.body;
-  const newplatillo = new platillo({nombre:nombre,descripcion:descripcion,calificacion:calificacion,precio:precio});
-  console.log(req.body)
+router.post("/administrar", function(req, res){
+  const platillo_ = new platillo(req.body);
+  platillo_.save(function(err) {
+    if (!err){ 
+      console.log("Platillo agregado con éxito");
+      console.log(platillo);
+      res.send('Platillo agregado')
+    }else {
+    console.log("Ha ocurrido un error",err);
+      res.send("error")                               
+    }
+  });
+  //const {nombre,descripcion,calificacion,precio} = req.body;
+  //const newplatillo = new platillo({nombre:nombre,descripcion:descripcion,calificacion:calificacion,precio:precio});
+  //es.send('new platillo')
   //guardar en base de datos
-  await newplatillo.save();
+  //await newplatillo.save();
   //res.send('new platillo')
 });
 
