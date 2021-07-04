@@ -39,32 +39,42 @@ router.get("/platillos", function (req, res, next) {
 
 
 
-// User 
-const User = require("../models/users");
-router.get("/registrarse", function(req, res, next) { res.render("registrarse", { title: "Registrarce" })}
-);
-router.post("/registrarse", (req, res) => {
-  
-const user = new User(req.body);
-if(user.name  == ""){
-  alert("Ingresa tu nombre");
-} else if(user.surname  == ""){ alert("Ingresa tu Apellido")}
-else if(user.cedula  == ""){alert("Ingresa tu número de cédula")} else {
-user.save(function (err) {
 
-  if (!err){ 
-          console.log("Usuario agregado con éxito");
-          console.log(User);
-          res.send('Usuario agregado')
-  }else {
-      console.log("Ha ocurrido un error",err);
-      res.send("error")                               }
-});}
+
+
+// User 
+const passport= require('passport');
+const User = require("../models/users");
+require('../passport/local-auth')(passport);
+
+
+router.get("/registrarse", function(req, res, next) { 
+  if(req.isAuthenticated()) {
+    res.render('index',{title:'Bienvenidos a La-Place'});
+   }else{
+    res.render('registrarse', {title:'Registrate'});
+  }
+});
+router.post("/registrarse", passport.authenticate('local-signup', {
+  successRedirect: '/',
+  failureRedirect: '/registrarse',
+  failureFlash: true
+}));  
+
+router.get('/login', (req, res, next) => {
+  if(req.isAuthenticated()) {
+   res.render('index',{title:'Login'});
+  }else{
+ res.render('iniciosesion',{title:'Accede '});
+  }
 });
 
-router.get("/login", function(req, res, next) { res.render("iniciosesion", { title: "Inicio de Sesion" })}
-);
-router.post("/login", (req, res) => res.send("login"));
+router.post("/login",passport.authenticate('local-signin', {
+  successRedirect: '/',
+  failureRedirect: '/iniciosesion',
+  failureFlash: true
+}));
+
 
 router.get("/logout", (req, res) => res.send("logout"));
 
