@@ -1,7 +1,5 @@
 const usersCtrl = {};
-const User = require("../models/users");
 const passport = require("passport");
-const users = require("../models/users");
 require("../passport/local-auth")(passport);
 
 usersCtrl.renderRegistrarse = (req, res, next) => {
