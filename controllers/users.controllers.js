@@ -17,7 +17,7 @@ usersCtrl.registrarse = () => passport.authenticate("local-signup", {
 });
 
 usersCtrl.renderIngresar = (req, res,next) => {
-  if (req.isregistrarsed()) {
+  if (req.isAuthenticated()) {
     res.render("index", { title: "Login" });
   } else {
     res.render("iniciosesion", { title: "Accede" });
