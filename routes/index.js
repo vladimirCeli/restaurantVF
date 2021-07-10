@@ -32,42 +32,6 @@ router.get("/platillos", function (req, res, next) {
 
 
 // User 
-const passport= require('passport');
-const User = require("../models/users");
-require('../passport/local-auth')(passport);
-
-
-router.get("/registrarse", function(req, res, next) { 
-  if(req.isAuthenticated()) {
-    res.render('index',{title:'Bienvenidos a La-Place'});
-   }else{
-    res.render('registrarse', {title:'Registrate'});
-  }
-});
-router.post("/registrarse", passport.authenticate('local-signup', {
-  successRedirect: '/',
-  failureRedirect: '/registrarse',
-  failureFlash: true
-}));  
-
-router.get('/login', (req, res, next) => {
-  if(req.isAuthenticated()) {
-   res.render('index',{title:'Login'});
-  }else{
- res.render('iniciosesion',{title:'Accede '});
-  }
-});
-
-router.post("/login",passport.authenticate('local-signin', {
-  successRedirect: '/',
-  failureRedirect: '/iniciosesion',
-  failureFlash: true
-}));
-
-router.get('/logout', (req, res, next) => {
-  req.logout();
-  res.redirect('/');
-});
 
 
 
