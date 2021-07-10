@@ -6,7 +6,7 @@ const {renderPlatillos,renderAdministrar,administrar} =require('../controllers/p
 
 router.get("/platillos", renderPlatillos);
 
-router.get("/administrar", renderPlatillos);
+router.get("/administrar", renderAdministrar);
 
 //Ingreso de platillos por administrador
 router.post("/administrar", administrar);

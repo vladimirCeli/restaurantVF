@@ -47,8 +47,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
-// var usersRouter = require('./routes/users');
 app.use(require('./routes/index'));
+app.use(require('./routes/menu.routes'));
+app.use(require('./routes/platillo.routes'));
+app.use(require('./routes/users.routes'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 // app.use(require(usersRouter));
 

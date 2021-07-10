@@ -10,21 +10,22 @@ usersCtrl.renderRegistrarse = (req, res, next) => {
   }
 };
 
-usersCtrl.registrarse = passport.authenticate("local-signup", {
+usersCtrl.registrarse = () => passport.authenticate("local-signup", {
   successRedirect: "/",
   failureRedirect: "/registrarse",
   failureFlash: true,
 });
 
-usersCtrl.renderIngresar = (req, res, next) => {
+usersCtrl.renderIngresar = (req, res,next) => {
   if (req.isregistrarsed()) {
     res.render("index", { title: "Login" });
   } else {
-    res.render("iniciosesion", { title: "Accede " });
+    res.render("iniciosesion", { title: "Accede" });
+    // next();
   }
 };
 
-usersCtrl.ingresar = passport.registrarse("local-signin", {
+usersCtrl.ingresar = () => passport.authenticate("local-signin", {
   successRedirect: "/",
   failureRedirect: "/iniciosesion",
   failureFlash: true,
@@ -33,6 +34,10 @@ usersCtrl.ingresar = passport.registrarse("local-signin", {
 usersCtrl.logout = (req, res, next) => {
   req.logout();
   res.redirect("/");
+};
+
+usersCtrl.renderEditar = (req, res) => {
+  res.render("editarp", { title: "Editar Perfil" });
 };
 
 module.exports = usersCtrl;
