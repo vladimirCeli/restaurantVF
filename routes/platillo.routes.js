@@ -10,5 +10,5 @@ router.get("/administrar", renderAdministrar);
 
 //Ingreso de platillos por administrador
 router.post("/administrar", administrar);
-
+ 
 module.exports = router;

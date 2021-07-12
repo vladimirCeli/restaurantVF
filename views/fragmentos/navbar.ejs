@@ -17,6 +17,7 @@
       <div class=" collapse navbar-collapse  justify-content-end " id="navigation"> 
 
         <% if (!user) { %>
+          
         <ul class="navbar-nav ml-auto"> 
           <li class=" dropdown nav-item ">
             <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Redes Sociales<div class="ripple-container"></div></a>
@@ -34,37 +35,36 @@
                 <p class="d-lg-none">Facebook</p>
               </a>
             </div> </li> 
-            
           <a class="btn  btn-success btn-raised" href="/login" >Acceder</a>
           <a class="btn  btn-danger btn-raised" href="/registrarse" >Registrarse</a>
         </ul>
   <% } else { %>
-    <ul class="navbar-nav ml-auto"> 
+    <% if (user.rol == 1) { %>
+      <ul class="navbar-nav ml-auto"> 
+        <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
+          </a>
       <li class=" dropdown nav-item ">
-        <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Redes Sociales<div class="ripple-container"></div></a>
+        <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Configuración<div class="ripple-container"></div></a>
         <div class="dropdown-menu"> 
-          <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="" target="_blank">
-            <i class="fa fa-instagram"></i>
-            <p class="d-lg-none">Insta</p>
-          </a>
-          <a class="nav-link" rel="tooltip" title="Escríbenos a Whatsapp" data-placement="bottom" href="/editarperfil"  >
-            <i class="fa fa-whatsapp"></i>
-            <p class="d-lg-none">Whatsapp</p>
-          </a>
-          <a class="nav-link" rel="tooltip" title="Síguenos en Facebook" data-placement="bottom" href="https://www.facebook.com" target="_blank">
-            <i class="fa fa-facebook-square"></i>
-            <p class="d-lg-none">Facebook</p>
-          </a>
+          <a href="/menu" class=" nav-link  " title="Administrar Menú" >Menú</a>
+          <a href="/carrito" class=" nav-link  " title="Administrar Menú" >Perfil</a>
+          <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
         </div> </li> 
-        <li class="nav-item">
-          <a href="/carrito" class=""><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
-            </a>
-<a href="logout" class=" btn btn-sm btn-danger">Salir</a>
-          
-        </li>
     </ul>
-    <% } %>
-
+    <% } if (user.rol == 2) { %>
+      <ul class="navbar-nav ml-auto"> 
+          <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
+            </a>
+        <li class=" dropdown nav-item ">
+          <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+          <div class="dropdown-menu"> 
+            <a href="/menu" class=" nav-link  " title="Administrar Menú" >Listar Usuarios</a>
+            <a href="/menu" class=" nav-link  " title="Administrar Menú" >Administrar Menú</a>
+            <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
+          </div> </li> 
+      </ul>
+      <% } %>
+      <% } %>
       </div>
     </div>
   </div>

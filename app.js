@@ -8,6 +8,7 @@ var app = express();
 var mongoose= require('mongoose'); 
 var flash= require('connect-flash');
 var passport = require('passport');
+var multer = require('multer');
 app.user
 require('./passport/local-auth')(passport);
 
@@ -49,6 +50,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('./routes/index'));
 app.use(require('./routes/menu.routes'));
+app.use(require('./routes/imagen.routes'));
 app.use(require('./routes/platillo.routes'));
 app.use(require('./routes/users.routes'));
 app.use(express.static(path.join(__dirname, 'public'))); 

@@ -13,7 +13,7 @@ const platilloSchema = new Schema({
     requered: true
   } ,
   calificacion:{
-    type: String,
+    type: Number,
     requered: true
   } ,
   imagen:{
@@ -21,6 +21,10 @@ const platilloSchema = new Schema({
     requered: true
   } ,
   precio: {
+    type: String,
+    requered: true
+  },
+  url: {
     type: String,
     requered: true
   },
