@@ -1,4 +1,5 @@
-const usersCtrl = {};
+const { Router } = require("express");
+const usersCtrl = Router(); 
 const passport = require("passport");
 require("../passport/local-auth")(passport);
 

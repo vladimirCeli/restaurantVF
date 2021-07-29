@@ -5,17 +5,13 @@ const multer = require('multer');
 
 ////////////////////////////////
 
-const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../public/uploads'),
-    filename:  (req, file, cb) => {
-        cb(null, file.originalname);
-    }
-})
+ 
 const uploadImage = multer({
     storage,
     limits: {fileSize: 1000000}
 }).single('image');
 
+ 
 router.post('/upload', (req, res) => {
     uploadImage(req, res, (err) => {
         if (err) {
@@ -26,8 +22,5 @@ router.post('/upload', (req, res) => {
         res.send('Subida exitosa');
     });
 });
-
-router.get('/images', (req, res) => {});
-
-
+ 
 module.exports = router;

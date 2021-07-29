@@ -22,45 +22,48 @@
             <div></div>
             <div class="card-body">
               <div class="row">
-                <form class="form" action="/administrar" method="post">
-                   
-                  <div class="col-12">
-                    <div class="row">
-                      <div class="col-12 col-sm-6 col-md-6">
-                        <img
-                          src="../assets/img/face.jpg"
-                          class="img-thumbnail"
-                          alt="imagen"
-                        />
-                      </div>
-                      <div class="col-12 col-sm-6 col-md-6">
-                        <h5>Nuevo Platillo</h4>
-                        <form action="/upload" method="post" enctype="multipart/form-data">
-                          <div class="input-group mb-3">
-                              <div class="custom-file">
-                                  <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
-                                  <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Elegir Imagen</label>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control">
-                         </div>
-                         <div class="form-group">
-                          <input type="text" name="precio" placeholder="Precio" class="form-control">
-                         </div>
-                          <div class="form-group">
-                              <textarea name="descripcion" placeholder="Descripción" class="form-control"></textarea>
-                          </div>
-                          <div class="form-group">
-                              <button class="btn btn-success btn-block">
-                                  Subir
-                              </button>
-                          </div>
-                      </form>
-                        
-                      </div>
+                <div class="col-12">
+                  <div class="row">
+                    
+                    <div class="col-12 col-sm-6 col-md-6">
+                      <h5>Nuevo Platillo</h4>
+                      
                     </div>
                   </div>
+                </div>
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                  <div class="input-group ">
+                      <div class="custom-file">
+                          <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                          <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Elegir Imagen</label>
+                      </div>
+                  </div>
+                 
+                  <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
+                      <button type="submit" class="btn btn-success btn-block">
+                          Subir Imagen
+                      </button>
+                  </div>
+              </form>
+              <div class="col-12 col-sm-6 col-md-6 mx-auto">
+                <img
+                  src="../assets/img/face.jpg"
+                  class="img-thumbnail"
+                  alt="imagen"
+                />
+              </div>
+                <form class="form" action="/administrar" method="post">
+                  
+                  <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control">
+                 </div>
+                 <div class="form-group">
+                  <input type="text" name="precio" placeholder="Precio" class="form-control">
+                 </div>
+                  <div class="form-group">
+                      <textarea name="descripcion" placeholder="Descripción" class="form-control"></textarea>
+                  </div>
+                  
                   <div class="col-12 mt-2">
                     <div class="row">
                       <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">

@@ -18,17 +18,31 @@ mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true
 })
 .then(db => console.log('base de datos conectada'))
 .catch(err => console.log(err));
-
+ 
 
 // Middelwares
+app.use(multer({
+  dest: path.join(__dirname, 'public/uploads'),
+  storage: storage =multer.diskStorage({
+    destination: path.join(__dirname, 'public/uploads'),
+    filename: (req, file, cb)=>{
+  
+        cb(null, file.originalname);
+    }
+  
+  }),
+  
+}).single('image'));
 app.use(session({
     secret: 'restorantesession',
     resave: false,
     saveUnitialized: false
-}));  app.use(flash());
+}));
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-
+                          
 
 //Variables globales
 app.use((req, res, next) => {

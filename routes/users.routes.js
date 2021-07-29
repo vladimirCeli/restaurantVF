@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const router = Router();
  const passport = require("passport");
- const multer = require('multer');
  require("../passport/local-auth")(passport);
 
 const {renderRegistrarse,registrarse,renderIngresar,ingresar,logout,renderEditar} = require('../controllers/users.controllers');
