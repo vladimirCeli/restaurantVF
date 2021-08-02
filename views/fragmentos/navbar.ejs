@@ -63,7 +63,19 @@
             <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
           </div> </li> 
       </ul>
-      <% } %>
+      <% }  if (user.rol == 3) { %>
+        <ul class="navbar-nav ml-auto"> 
+            <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
+              </a>
+          <li class=" dropdown nav-item ">
+            <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+            <div class="dropdown-menu"> 
+              <a href="/roles" class=" nav-link  " title="Administrar Menú" >Listar Usuarios</a>
+              <a href="/menu" class=" nav-link  " title="Administrar Menú" >Administrar Menú</a>
+              <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
+            </div> </li> 
+        </ul>
+        <% } %>
       <% } %>
       </div>
     </div>

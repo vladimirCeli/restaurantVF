@@ -400,14 +400,36 @@
     </div>
   </footer> 
   <% } else if (user.rol == 2) { %> 
-     
-      <div class="card text-white  mx-auto col-md-6 col-lg-6 " style="background-color: black;"> 
+   
+    <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
         
-      <h3 class="mr-auto"> <%= user.name %> <%= user.surname %></h4>
-        <button class="btn btn-lg  ">Administrar Menú</button>
-        <button class="btn btn-lg btn-success">Añadir un platillo</button>
-        <button class="btn btn-lg btn-warning">Editar Platillos</button>
-        <button class="btn btn-lg btn-rose">Eliminar Platillo</button>
+      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
+        <div class="row">
+          <a href="" ><button class="btn btn-lg  ">Administrar Menú</button></a>
+        <a href="" ><button class="btn btn-lg btn-success">Añadir un platillo</button></a>
+        <a href="" ><button class="btn btn-lg btn-warning">Editar Platillos</button></a>
+        <a href="" ><button class="btn btn-lg btn-rose">Eliminar Platillo</button></a> 
+        </div>
+      
+        <div class="copyright float-right text-white">
+          ©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+        </div>
+      </div> 
+    <%  } else if (user.rol == 3) { %> 
+     
+      <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
+        
+      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
+        <div class="row">
+          <a href="" ><button class="btn btn-lg  ">Administrar Menú</button></a>
+        <a href="" ><button class="btn btn-lg btn-success">Añadir un platillo</button></a>
+        <a href="" ><button class="btn btn-lg btn-warning">Editar Platillos</button></a>
+        <a href="" ><button class="btn btn-lg btn-rose">Eliminar Platillo</button></a>
+        <a href="/roles" ><button class="btn btn-lg btn-danger" >Asignar Roles</button></a>
+        </div>
       
         <div class="copyright float-right text-white">
           ©

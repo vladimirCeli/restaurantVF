@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const usersCtrl = Router(); 
 const passport = require("passport");
+const users = require("../models/users");
 require("../passport/local-auth")(passport);
 
 usersCtrl.renderRegistrarse = (req, res, next) => {
@@ -40,5 +41,14 @@ usersCtrl.logout = (req, res, next) => {
 usersCtrl.renderEditar = (req, res) => {
   res.render("editarp", { title: "Editar Perfil" });
 };
+usersCtrl.renderRoles = (req, res) => {
+  users.find({}, (error, users) => { 
+    res.render('asigroles', { users, title: 'Asignacion de roles', 
+    sesion: false,
+    msg: {error: req.flash('error'), info: req.flash('info')},
+    });
+  }).sort({ timestamp: -1 });
+};
 
+ 
 module.exports = usersCtrl;

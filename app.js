@@ -11,7 +11,7 @@ var passport = require('passport');
 var multer = require('multer');
 app.user
 require('./passport/local-auth')(passport);
-
+const https = require('https');
 // database//
 const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true    
