@@ -3,10 +3,11 @@ const router = Router();
  const passport = require("passport");
  require("../passport/local-auth")(passport);
 
-const {renderRegistrarse,registrarse,renderIngresar,ingresar,logout,renderEditar,renderRoles} = require('../controllers/users.controllers');
+const {renderRegistrarse,registrarse,renderIngresar,ingresar,logout,renderEditar,renderRoles,editRoles} = require('../controllers/users.controllers');
 
 router.get("/editar", renderEditar);
 router.get("/roles", renderRoles);
+router.get("/guardarol/:id", editRoles);
 
 router.get("/registrarse", renderRegistrarse); 
 //router.post("/registrarse", registrarse);

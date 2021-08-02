@@ -49,6 +49,17 @@ usersCtrl.renderRoles = (req, res) => {
     });
   }).sort({ timestamp: -1 });
 };
-
+usersCtrl.editRoles = async (req, res, next) => {
+   
+  let { id } = req.params;
+  const user = await users.findById(id);
+  if(user.rol==1){
+    user.rol=2;
+  }else if(user.rol==2){
+    user.rol=1;
+  }
+  await user.save(); 
+  res.redirect('/roles');
+};
  
 module.exports = usersCtrl;

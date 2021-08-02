@@ -58,14 +58,18 @@
                         <% for(var i=0;i<users.length;i++) { %> 
                        <div  class="card container  bg-white text-dark col-md-7 mx-auto" style="background-color:000;opacity: 0.98; margin-top: -3%;">
                          <div class="" style=" "> 
-                          <b class="text-primary"><%= users[i].name %> <%= users[i].surname %></b> <br> 
+                          <b class="text-primary"><%= i+1 %>  <%= users[i].name %> <%= users[i].surname %></b> <br> 
                           <b>Email: <%= users[i].email %></b> <br> 
                           <b>CI:  <%= users[i].cedula %></b><br> 
-                          <b>Nivel de acceso actual: <b class="text-success"><%= users[i].rol %></b></b> 
+                          <b>Dirección:  <%= users[i].dir %></b><br> 
+                           <b>Nivel de acceso:   <b class="text-success"><%= users[i].rol %></b> </b>   
+                            <% if (users[i].rol == 1) { %> 
+                                 <a class="btn btn-danger btn-sm" href="/guardarol/<%= users[i].id %>">  Cambiar rol a administrador </a>
+                            
+                                <% } else if (users[i].rol == 2) { %> <a class="btn btn-danger btn-sm" href="/guardarol/<%= users[i].id %>"> Cambiar rol a Cliente</a>
+                                    <% } %>  
                        </div>
-                       </div><br>
-                     
-                     
+                       </div><br> 
                      <% } %>  
             </div>
         </div><br>
