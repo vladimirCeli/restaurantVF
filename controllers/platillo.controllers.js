@@ -3,21 +3,37 @@ const { Router } = require("express");
 const { path } = require("../app");
 const platilloCtrl = Router();
 
-platilloCtrl.cargarDatosPlatillo = async (req,res) =>{
+platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
-  const {id,nombre,precio,descripcion} = req.body;
+  const { id, nombre, precio, descripcion } = req.body;
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
     nombre: nombre,
     precio: precio,
     descripcion: descripcion,
+    buscar: "",
   });
 };
 
-platilloCtrl.buscarPlatillo = async (req,res)=>{
-  
-}
+platilloCtrl.buscarPlatillo = async (req, res) => {
+  const { buscar } = req.body;
+  // String cadena = ;
+  let cadena = buscar.substring(1, buscar.length);
+
+  const platillos = await Platillo.find({nombre: cadena}).lean();
+  // console.log(buscar);
+  // console.log("Guata");
+  // res.send("GUATA\n"+buscar+platillos);
+  res.render("administrarplatillo", {
+    title: "Administrar",
+    platillos,
+    nombre: "",
+    precio: "",
+    descripcion: "",
+    buscar,
+  });
+};
 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
@@ -25,8 +41,9 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     title: "Administrar",
     platillos,
     nombre: "",
-    precio:"",
+    precio: "",
     descripcion: "",
+    buscar: "",
   });
 };
 

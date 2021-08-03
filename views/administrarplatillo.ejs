@@ -128,14 +128,18 @@
                         >Buscar:</span
                       >
                       <div class="col-9 px-auto">
-                        <input
+                        <form action="/administrar?_method=DELETE" method="POST">
+                          <input
                           type="text"
                           class="form-control"
                           aria-label="Nombre"
                           aria-describedby="basic-addon1"
                           name="buscar"
+                          onchange="form.submit();"
+                          value="<%=buscar%> "
                         /> 
-                        <!-- <input type="button" class="form-control" value="Pinchame y verás" onchange="alert('Gracias por pinchar');" /> -->
+                        </form>
+                        <!-- <input type="button" class="form-control" value="Pinchame y verás"  /> -->
                       </div>
                     </div>
                   </div>
