@@ -15,17 +15,32 @@
       <div class="card-body">
         <div class="row">
           <div class="col-12">
-            <table class="table table-striped">
+            <table class="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Nro</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Calificacion</th>
+                  <th scope="col">Editar</th>
                 </tr>
               </thead>
+
               <tbody>
+                <% platillos.forEach(function(platillo) { %>
                 <tr>
+                  <th scope="row">1</th>
+                  <td><%= platillo.nombre %></td>
+                  <td><%= platillo.precio %></td>
+                  <td><%= platillo.calificacion %></td>
+                  <td>
+                    <form action="/platillos" method="POST">
+                      <input id="edit" type="submit" name="editar" value="Edit" />
+                    </form>
+                  </td>
+                </tr>
+                <% }); %>
+                <!-- <tr>
                   <th scope="row">1</th>
                   <td>Mark</td>
                   <td>Otto</td>
@@ -82,7 +97,7 @@
                   <td>Jacob</td>
                   <td>Thornton</td>
                   <td>@fat</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
