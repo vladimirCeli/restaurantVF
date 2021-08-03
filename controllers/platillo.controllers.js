@@ -15,6 +15,10 @@ platilloCtrl.cargarDatosPlatillo = async (req,res) =>{
   });
 };
 
+platilloCtrl.buscarPlatillo = async (req,res)=>{
+  
+}
+
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
   res.render("administrarplatillo", {
