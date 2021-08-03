@@ -9,6 +9,8 @@ var mongoose= require('mongoose');
 var flash= require('connect-flash');
 var passport = require('passport');
 var multer = require('multer');
+var methodOverride = require('method-override');
+
 app.user
 require('./passport/local-auth')(passport);
 const https = require('https');
@@ -39,7 +41,7 @@ app.use(session({
     saveUnitialized: false
 }));
 app.use(flash());
-
+app.use(methodOverride('_method'));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
                           

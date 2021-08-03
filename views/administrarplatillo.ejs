@@ -53,15 +53,16 @@
                 />
               </div>
                 <form class="form" action="/administrar" method="post">
-                  
-                  <div class="form-group">
-                    <input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control">
-                 </div>
+                  <div class="form-group"><input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
                  <div class="form-group">
-                  <input type="text" name="precio" placeholder="Precio" class="form-control">
+                  <input type="text" name="precio" placeholder="Precio" class="form-control" value="<%= precio %>">
                  </div>
                   <div class="form-group">
-                      <textarea name="descripcion" placeholder="Descripción" class="form-control"></textarea>
+                        <% if(descripcion!="") {%>
+                          <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
+                          <% } else{%>
+                            <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
+                            <% } %> 
                   </div>
                   
                   <div class="col-12 mt-2">
@@ -110,12 +111,6 @@
                       </div>
                     </div>
                   </div>
-
-                
-                
-
-
-
               </div>
             </div>
           </div>
@@ -158,10 +153,48 @@
                   >
                 </div>
                 <div class="col-12 pb-4" style="height: 380px">
-                  <iframe
-                    class="card w-100 h-100 m-0"
-                    src="/platillos"
-                  ></iframe>
+                  <div class="card m-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Nro</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Calificacion</th>
+                                <th scope="col">Editar</th>
+                              </tr>
+                            </thead>
+              
+                            <tbody>
+                              <% platillos.forEach(function(platillo) { %>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td><%= platillo.nombre %></td>
+                                <td><%= platillo.precio %></td>
+                                <td><%= platillo.calificacion %></td>
+                                <td>
+                                  <form action="/administrar?_method=PUT" method="POST">
+                                    <input id="id" type="hidden" name="id" value="<%= platillo.id %>">
+                                    <input id="name" type="hidden" name="nombre" value="<%= platillo.nombre %>" />
+                                    <input id="value" type="hidden" name="precio" value="<%= platillo.precio %>" />
+                                    <input id="rang" type="hidden" name="calificacion" value="<%= platillo.calificacion %>" />
+                                    <input id="descripcion" type="hidden" name="descripcion" value="<%= platillo.descripcion %>" />
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input id="edit" type="submit" name="editar" value="Edit" />
+                                  </form>
+                                </td>
+                              </tr>
+                              <% }); %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              
                 </div>
               </div>
             </div>

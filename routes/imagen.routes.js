@@ -19,7 +19,7 @@ router.post('/upload', (req, res) => {
             return res.send(err);
         }
         console.log(req.file);
-        res.send('Subida exitosa');
+        // res.send('Subida exitosa');
     });
 });
  

@@ -2,19 +2,32 @@ const Platillo = require("../models/platillo");
 const { Router } = require("express");
 const { path } = require("../app");
 const platilloCtrl = Router();
-platilloCtrl.renderPlatillos = async (req, res) => {
+
+platilloCtrl.cargarDatosPlatillo = async (req,res) =>{
   const platillos = await Platillo.find().lean();
-  // res.send(platillos);
-  // res.render("tablaplatillos", {title: "Platillos"});
-  res.render("tablaplatillos", {title: "Platillos",platillos: platillos});
+  const {id,nombre,precio,descripcion} = req.body;
+  res.render("administrarplatillo", {
+    title: "Administrar",
+    platillos,
+    nombre: nombre,
+    precio: precio,
+    descripcion: descripcion,
+  });
 };
 
 platilloCtrl.renderAdministrar = async (req, res) => {
-  res.render("administrarplatillo", { title: "Administrar" });
+  const platillos = await Platillo.find().lean();
+  res.render("administrarplatillo", {
+    title: "Administrar",
+    platillos,
+    nombre: "",
+    precio:"",
+    descripcion: "",
+  });
 };
 
 platilloCtrl.administrar = (req, res) => {
-  new platillo({
+  new Platillo({
     nombre: req.body.nombre,
     descripcion: req.body.descripcion,
     precio: req.body.precio,
@@ -23,7 +36,7 @@ platilloCtrl.administrar = (req, res) => {
   }).save(function (err) {
     if (!err) {
       console.log("Platillo agregado con éxito");
-      console.log(platillo);
+      console.log(Platillo);
       res.send("Platillo agregado");
     } else {
       console.log("Ha ocurrido un error", err);
