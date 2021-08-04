@@ -9,8 +9,11 @@
     }
   </style>
   <script>
-    function cargar(nombre) {
-      document.getElementById("nombre").value = nombre;
+    function cargar(id,nombre,precio,descripcion) {
+      document.getElementById("idnombre").value = nombre;
+      document.getElementById("idprecio").value = precio;
+      document.getElementById("iddescripcion").t = descripcion;
+
     }
   </script>
   <body
@@ -85,7 +88,7 @@
 
                   <div class="col-12 mt-2">
                     <div class="row">
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
                         <button
                                                   
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
@@ -199,7 +202,7 @@
                                     <input type="hidden" name="_method" value="PUT">
                                     <input id="edit" type="submit" name="editar" value="Edit" />
                                   </form>-->
-                                  <a href="#" onclick="return cargar('nombre')">MODIFICAR</a>
+                                  <a href="#" onclick="return cargar('<%= platillo.id %>','<%= platillo.nombre %>','<%= platillo.precio %>','<%= platillo.descripcion %>')">MODIFICAR</a>
                                 </td>
                               </tr>
                               <% }); %>
