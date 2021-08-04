@@ -12,8 +12,9 @@
     function cargar(id,nombre,precio,descripcion) {
       document.getElementById("idnombre").value = nombre;
       document.getElementById("idprecio").value = precio;
-      document.getElementById("iddescripcion").textContent = descripcion;
-    }
+      // document.getElementById("iddescripcion").textContent = descripcion;
+      document.getElementById("iddescripcion").value =descripcion;
+    };
   </script>
   <body
     style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10))"
@@ -66,11 +67,7 @@
                   <input id="idprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>">
                  </div>
                   <div class="form-group">
-                        <% if(descripcion!="") {%>
-                          <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                          <% } else{%>
-                            <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                            <% } %> 
+                      <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %> </textarea>
                   </div>
                   
 
