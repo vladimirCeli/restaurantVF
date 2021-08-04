@@ -9,8 +9,11 @@
     }
   </style>
   <script>
-    function cargar(nombre) {
-      document.getElementById("nombre").value = nombre;
+    function cargar(id,nombre,precio,descripcion) {
+      document.getElementById("idnombre").value = nombre;
+      document.getElementById("idprecio").value = precio;
+      document.getElementById("iddescripcion").t = descripcion;
+
     }
   </script>
   <body
@@ -58,21 +61,17 @@
                 />
               </div>
                 <form  id="formulario1" class="form" action="" method="post">
-                  <div class="form-group"><input id="nombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
-                 <div class="form-group">
-                  <input id="precio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>">
-                 </div>
-                  <div class="form-group">
-                        <% if(descripcion!="") {%>
-                          <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                          <% } else{%>
-                            <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                            <% } %> 
-                  </div>
+                    <div class="form-group"><input id="idnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
+                    <div class="form-group">
+                    <input id="idprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>">
+                    </div>
+                    <div class="form-group">
+                      <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
+                    </div>
                   
                   <div class="col-12 mt-2">
                     <div class="row">
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
                         <button
                                                   
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
@@ -202,7 +201,7 @@
                                     <input type="hidden" name="_method" value="PUT">
                                     <input id="edit" type="submit" name="editar" value="Edit" />
                                   </form>-->
-                                  <a href="#" onclick="return cargar('<%= platillo.nombre %>')">MODIFICAR</a>
+                                  <a href="#" onclick="return cargar('<%= platillo.id %>','<%= platillo.nombre %>','<%= platillo.precio %>','<%= platillo.descripcion %>')">MODIFICAR</a>
                                 </td>
                               </tr>
                               <% }); %>
