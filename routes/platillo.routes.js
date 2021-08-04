@@ -12,5 +12,16 @@ router.delete("/administrar", buscarPlatillo);
 
 //Ingreso de platillos por administrador
 router.post("/administrar", administrar);
+
+router.post("/administrar?_method=PUT", administrar);
+
+router.post("/actualizarPlatillo",async (req, res) => {
+    alert("Es el nombre ");
+    const {id,nombre,descripcion} = req.body;
+    alert(nombre + "Es el nombre ");
+    await Platillo.findByIdAndUpdate(id,{id,nombre,descripcion});
+    alert("Se actualizo el platillo seleccionado");
+    
+});
  
 module.exports = router;

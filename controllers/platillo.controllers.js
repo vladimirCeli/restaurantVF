@@ -1,6 +1,7 @@
 const Platillo = require("../models/platillo");
 const { Router } = require("express");
 const { path } = require("../app");
+const { NotExtended } = require("http-errors");
 const platilloCtrl = Router();
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
@@ -8,7 +9,8 @@ platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const { id, nombre, precio, descripcion } = req.body;
   res.render("administrarplatillo", {
     title: "Administrar",
-    platillos,
+    platillos,    
+    
     nombre: nombre,
     precio: precio,
     descripcion: descripcion,
@@ -52,6 +54,7 @@ platilloCtrl.renderAdministrar = async (req, res) => {
 
 platilloCtrl.administrar = (req, res) => {
   new Platillo({
+    
     nombre: req.body.nombre,
     descripcion: req.body.descripcion,
     precio: req.body.precio,
@@ -69,5 +72,7 @@ platilloCtrl.administrar = (req, res) => {
     }
   });
 };
+
+
 
 module.exports = platilloCtrl;

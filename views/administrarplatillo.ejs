@@ -8,6 +8,11 @@
       }
     }
   </style>
+  <script>
+    function cargar(nombre) {
+      document.getElementById("nombre").value = nombre;
+    }
+  </script>
   <body
     style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10))"
   >
@@ -52,10 +57,10 @@
                   alt="imagen"
                 />
               </div>
-                <form class="form" action="/administrar" method="post">
-                  <div class="form-group"><input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
+                <form  id="formulario1" class="form" action="" method="post">
+                  <div class="form-group"><input id="nombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
                  <div class="form-group">
-                  <input type="text" name="precio" placeholder="Precio" class="form-control" value="<%= precio %>">
+                  <input id="precio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>">
                  </div>
                   <div class="form-group">
                         <% if(descripcion!="") {%>
@@ -69,16 +74,23 @@
                     <div class="row">
                       <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
                         <button
-                          type="button"
+                                                  
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
+                          onclick= "document.formulario1.action ='/administrar'; 
+                          document.formulario1.submit()"  
+
                         >
                           <div class="mx-auto">Nuevo</div>
                         </button>
                       </div>
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto" >
                         <button
-                          type="submit"
+                          id="guardar"                           
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
+                          
+                          onclick= "document.formulario1.action ='/actualizarPlatillo';
+                          document.formulario1.submit()
+                          "                       
                         >
                           <div class="mx-auto">Guardar</div>
                         </button>
@@ -181,7 +193,7 @@
                                 <td><%= platillo.precio %></td>
                                 <td><%= platillo.calificacion %></td>
                                 <td>
-                                  <form action="/administrar?_method=PUT" method="POST">
+                                 <!-- <form action="/administrar?_method=PUT" method="POST">
                                     <input id="id" type="hidden" name="id" value="<%= platillo.id %>">
                                     <input id="name" type="hidden" name="nombre" value="<%= platillo.nombre %>" />
                                     <input id="value" type="hidden" name="precio" value="<%= platillo.precio %>" />
@@ -189,7 +201,8 @@
                                     <input id="descripcion" type="hidden" name="descripcion" value="<%= platillo.descripcion %>" />
                                     <input type="hidden" name="_method" value="PUT">
                                     <input id="edit" type="submit" name="editar" value="Edit" />
-                                  </form>
+                                  </form>-->
+                                  <a href="#" onclick="return cargar('<%= platillo.nombre %>')">MODIFICAR</a>
                                 </td>
                               </tr>
                               <% }); %>
