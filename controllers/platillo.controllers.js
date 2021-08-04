@@ -10,7 +10,7 @@ platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,    
-    
+    id:id,
     nombre: nombre,
     precio: precio,
     descripcion: descripcion,
@@ -33,6 +33,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
+
     nombre: "",
     precio: "",
     descripcion: "",
