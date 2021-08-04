@@ -8,7 +8,7 @@
     <div class="container">  <% if (!user ) { %>
         <div class="card text-white  mx-auto col-md-6 col-lg-6 " style="background-color: black;"> 
       
-            <h3 class="mr-auto"> El acceso a este apartado está restringido para algunos usuarios!, ponte en contacto con el administrador.</h4>
+            <h3 class="mr-auto"> El acceso a este apartado está restringido para algunos usuarios, ponte en contacto con el administrador.</h4>
            
             
               <div class="copyright float-right text-white">
@@ -21,7 +21,7 @@
       <% }else if ( user.rol == 1) { %>
         <div class="card text-white  mx-auto col-md-6 col-lg-6 " style="background-color: black;"> 
       
-            <h3 class="mr-auto"> <%= user.name %> <%= user.surname %>, tu rol como usuario no te permite acceder a esta sección!, ponte en contacto con el administrador.</h4>
+            <h3 class="mr-auto"> <%= user.name %> <%= user.surname %>,  El acceso a este apartado está restringido para algunos usuarios, ponte en contacto con el administrador.</h4>
            
             
               <div class="copyright float-right text-white">
@@ -33,18 +33,40 @@
             </div> 
   <% } else if (user.rol == 2) { %> 
      
-    <div class="card text-white  mx-auto col-md-6 col-lg-6 " style="background-color: black;"> 
-      
-    <h3 class="mr-auto"> <%= user.name %> <%= user.surname %>, tu rol como usuario no te permite acceder a esta sección!, ponte en contacto con el administrador.</h4>
-   
-    
-      <div class="copyright float-right text-white">
-        ©
-        <script>
-          document.write(new Date().getFullYear())
-        </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+    <div class="section card" style=" position: absolute;margin-top: -27%;">
+      <div class="container text-dark" style="margin-top: -6&;"> 
+          <h3 class="mr-auto ">Asignación de Roles </h4>
+              <h4>Usuario: <b><%= user.name %> <%= user.surname %></b></h4>
+              <div class="  bg-dark">
+                <nav class="bg-danger"> <h4 style=" " class="text-white"> Todos los Usuarios:</h4></nav>
+                 <hr> <br>
+                  <% for(var i=0;i<users.length;i++) { %> 
+                 <div  class="card container  bg-white text-dark col-md-7 mx-auto" style="background-color:000;opacity: 0.98; margin-top: -3%;">
+                   <div class="" style=" "> 
+                    <b class="text-primary"><%= i+1 %>  <%= users[i].name %> <%= users[i].surname %></b> <br> 
+                    <b>Email: <%= users[i].email %></b> <br> 
+                    <b>CI:  <%= users[i].cedula %></b><br> 
+                    <b>Dirección:  <%= users[i].dir %></b><br> 
+                     <b>Nivel de acceso:   <b class="text-success"><%= users[i].rol %></b> </b>  
+                 </div>
+                 </div><br> 
+               <% } %>  
       </div>
-    </div> 
+  </div><br>
+  <div class=" bg-dark">
+      <h4 class="text-white">Otras acciones:</h4>
+   <button class="btn btn-lg  ">Administrar Menú</button>
+   <button class="btn btn-lg btn-success">Añadir un platillo</button>
+   <button class="btn btn-lg btn-warning">Editar Platillos</button>
+   <button class="btn btn-lg btn-rose">Eliminar Platillo</button>
+  </div>
+    <div class="copyright float-right text-dark mr-auto">
+      ©
+      <script>
+        document.write(new Date().getFullYear())
+      </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+    </div>
+  </div>  
   
     <% } else if (user.rol == 3) { %> 
          
