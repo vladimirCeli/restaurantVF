@@ -13,8 +13,9 @@
       document.getElementById("id").value = id;
       document.getElementById("idnombre").value = nombre;
       document.getElementById("idprecio").value = precio;
-      document.getElementById("iddescripcion").value = descripcion;
-    }
+      // document.getElementById("iddescripcion").textContent = descripcion;
+      document.getElementById("iddescripcion").value =descripcion;
+    };
   </script>
   <body
     style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10))"
@@ -124,8 +125,8 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-6 d-flex">
-          <div class="card tablaif">
+        <div class="col-12 col-lg-6">
+          <div class="card">
             <div class="card-body">
               <div class="row h-100">
                 <div class="col-12 col-sm-9 col-md-9 p-1" style="height: 35px">
@@ -161,16 +162,16 @@
                     </select>
                   </span>
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <span class="input-group-text"
                     >Tabla Platillos</span
                   >
-                </div>
-                <div class="col-12 pb-4" style="height: 380px">
-                  <div class="card m-0">
+                </div> -->
+                <div class="col-12 pb-4">
+                  <div class="card p-auto">
                     <div class="card-body">
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 overflow-auto" style="height: 300px;">
                           <table class="table table-hover">
                             <thead>
                               <tr>
@@ -183,26 +184,18 @@
                             </thead>
               
                             <tbody>
-                              <% platillos.forEach(function(platillo) { %>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td><%= platillo.nombre %></td>
-                                <td><%= platillo.precio %></td>
-                                <td><%= platillo.calificacion %></td>
+                              <% for(var i = 0; i < platillos.length; i++) { %>
+                                <tr>
+                                <th scope="row"><%=(i+1)%></th>
+                                <td><%= platillos[i].nombre %></td>
+                                <td><%= platillos[i].precio %></td>
+                                <td><%= platillos[i].calificacion %></td>
                                 <td>
-                                 <!-- <form action="/administrar?_method=PUT" method="POST">
-                                    <input id="id" type="hidden" name="id" value="<%= platillo.id %>">
-                                    <input id="name" type="hidden" name="nombre" value="<%= platillo.nombre %>" />
-                                    <input id="value" type="hidden" name="precio" value="<%= platillo.precio %>" />
-                                    <input id="rang" type="hidden" name="calificacion" value="<%= platillo.calificacion %>" />
-                                    <input id="descripcion" type="hidden" name="descripcion" value="<%= platillo.descripcion %>" />
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <input id="edit" type="submit" name="editar" value="Edit" />
-                                  </form>-->
-                                  <a href="#" onclick="return cargar('<%= platillo.id %>','<%= platillo.nombre %>','<%= platillo.precio %>','<%= platillo.descripcion %>')">MODIFICAR</a>
+                                  <a href="#" onclick="return cargar('<%= platillos[i].id %>','<%= platillos[i].nombre %>','<%= platillos[i].precio %>','<%= platillos[i].descripcion %>')">MODIFICAR</a>
                                 </td>
                               </tr>
-                              <% }); %>
+                              <% } %>
+                              
                             </tbody>
                           </table>
                         </div>
