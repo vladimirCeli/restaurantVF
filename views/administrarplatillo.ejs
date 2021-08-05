@@ -10,9 +10,10 @@
   </style>
   <script>
     function cargar(id,nombre,precio,descripcion) {
+      document.getElementById("id").value = id;
       document.getElementById("idnombre").value = nombre;
       document.getElementById("idprecio").value = precio;
-      document.getElementById("iddescripcion").textContent = descripcion;
+      document.getElementById("iddescripcion").value = descripcion;
     }
   </script>
   <body
@@ -61,16 +62,13 @@
               </div>
                 <form  id="formulario1" class="form" action="" method="post">
                   <input id="id" type="text" name="id" class="form-control" value="" style="display:none;">
-                  <div class="form-group"><input id="idnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
+                  <div class="form-group"><input id="idnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>" required></div>
                  <div class="form-group">
-                  <input id="idprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>">
+                  <input id="idprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= precio %>" required>
                  </div>
                   <div class="form-group">
-                        <% if(descripcion!="") {%>
-                          <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                          <% } else{%>
-                            <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                            <% } %> 
+                    <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control" required><%= descripcion %></textarea>    
+                 
                   </div>
                   
 
@@ -100,12 +98,12 @@
                       </div>
                       <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto" >
                         <button
-                          id="guardar"                           
+                        onclick= "document.formulario1.action ='/actualizarPlatillo';
+                        document.formulario1.submit()
+                        "                            
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
                           
-                          onclick= "document.formulario1.action ='/actualizarPlatillo';
-                          document.formulario1.submit()
-                          "                       
+                                             
                         >
                           <div class="mx-auto">Guardar</div>
                         </button>
