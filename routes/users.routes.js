@@ -3,7 +3,7 @@ const router = Router();
  const passport = require("passport");
  require("../passport/local-auth")(passport);
 
-const {renderRegistrarse,registrarse,renderIngresar,ingresar,logout,renderEditar,renderRoles,editRoles} = require('../controllers/users.controllers');
+const {renderRegistrarse,registrarse,renderIngresar,ingresar,logout,renderEditar,renderRoles,editRoles,renderPagar} = require('../controllers/users.controllers');
 
 router.get("/editar", renderEditar);
 router.get("/roles", renderRoles);
@@ -25,7 +25,7 @@ router.get('/login', renderIngresar);
      failureFlash: true,
    }));
 
-
+router.get("/pagar", renderPagar);
   
 router.get('/logout', logout);
 

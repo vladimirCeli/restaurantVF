@@ -41,6 +41,7 @@ usersCtrl.logout = (req, res, next) => {
 usersCtrl.renderEditar = (req, res) => {
   res.render("editarp", { title: "Editar Perfil" });
 };
+
 usersCtrl.renderRoles = (req, res) => {
   users.find({}, (error, users) => { 
     res.render('asigroles', { users, title: 'Asignacion de roles', 
@@ -61,5 +62,9 @@ usersCtrl.editRoles = async (req, res, next) => {
   await user.save(); 
   res.redirect('/roles');
 };
- 
+
+usersCtrl.renderPagar = (req, res) => {
+  res.render("tarjeta", { title: "Editar Perfil" });
+};
+
 module.exports = usersCtrl;
