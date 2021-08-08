@@ -34,7 +34,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
-    
+
     nombre: "",
     precio: "",
     descripcion: "",
