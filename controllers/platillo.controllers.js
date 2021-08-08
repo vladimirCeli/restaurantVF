@@ -69,6 +69,8 @@ platilloCtrl.administrar = (req, res) => {
     calificacion: 5,
     estado: true,
   }).save(function (err) {
+    //destruyendo session
+    req.session.destroy();
     if (!err) {
       console.log("Platillo agregado con éxito");
       console.log(Platillo);
