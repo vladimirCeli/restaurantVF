@@ -1,105 +1,137 @@
 <!-- Navbar -->
 
-  <nav class=" navbar bg-dark  navbar-expand-lg  fixed-top" color-on-scroll="300" style="  opacity: 0.96"  >
-    <div class="container ">
-      <div class="navbar-translate" >
-        <a class="navbar-brand" href="/" rel="tooltip" title="Index" data-placement="bottom" target="">
-          <img style="width: 18%" src="./assets/img/logo.png" class="img-fluid">
-          <span class="copyright"><i class="fa fa-heart heart" style="opacity: 0.6"></i></span> </a>
+<nav class=" navbar bg-dark  navbar-expand-lg  fixed-top" color-on-scroll="300" style="  opacity: 0.96">
+  <div class="container ">
+    <div class="navbar-translate">
+      <a class="navbar-brand" href="/" rel="tooltip" title="Index" data-placement="bottom" target="">
+        <img style="width: 18%" src="./assets/img/logo.png" class="img-fluid">
+        <span class="copyright"><i class="fa fa-heart heart" style="opacity: 0.6"></i></span> </a>
 
-        <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class=" collapse navbar-collapse  justify-content-end " id="navigation"> 
+      <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class=" collapse navbar-collapse  justify-content-end " id="navigation">
 
-        <% if (!user) { %>
-          
-        <ul class="navbar-nav ml-auto"> 
+      <% if (!user) { %>
+
+        <ul class="navbar-nav ml-auto">
           <li class=" dropdown nav-item ">
-            <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Redes Sociales<div class="ripple-container"></div></a>
-            <div class="dropdown-menu"> 
-              <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href="" target="_blank">
+            <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Redes
+              Sociales<div class="ripple-container"></div></a>
+            <div class="dropdown-menu">
+              <a class="nav-link" rel="tooltip" title="Síguenos en Instagram" data-placement="bottom" href=""
+                target="_blank">
                 <i class="fa fa-instagram"></i>
                 <p class="d-lg-none">Insta</p>
               </a>
-              <a class="nav-link" rel="tooltip" title="Escríbenos a Whatsapp" data-placement="bottom" href="/editarperfil"  >
+              <a class="nav-link" rel="tooltip" title="Escríbenos a Whatsapp" data-placement="bottom"
+                href="/editarperfil">
                 <i class="fa fa-whatsapp"></i>
                 <p class="d-lg-none">Whatsapp</p>
               </a>
-              <a class="nav-link" rel="tooltip" title="Síguenos en Facebook" data-placement="bottom" href="https://www.facebook.com" target="_blank">
+              <a class="nav-link" rel="tooltip" title="Síguenos en Facebook" data-placement="bottom"
+                href="https://www.facebook.com" target="_blank">
                 <i class="fa fa-facebook-square"></i>
                 <p class="d-lg-none">Facebook</p>
               </a>
-            </div> </li> 
-          <a class="btn  btn-success btn-raised" href="/login" >Acceder</a>
-          <a class="btn  btn-danger btn-raised" href="/registrarse" >Registrarse</a>
+            </div>
+          </li>
+          <a class="btn  btn-success btn-raised" href="/login">Acceder</a>
+          <a class="btn  btn-danger btn-raised" href="/registrarse">Registrarse</a>
         </ul>
-  <% } else { %>
-    <% if (user.rol == 1) { %>
-      <ul class="navbar-nav ml-auto"> 
-        <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
-          </a>
-      <li class=" dropdown nav-item ">
-        <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Configuración<div class="ripple-container"></div></a>
-        <div class="dropdown-menu"> 
-          <a href="/menu" class=" nav-link  " title="Administrar Menú" >Menú</a>
-          <a href="/carrito" class=" nav-link  " title="Administrar Menú" >Perfil</a>
-          <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
-        </div> </li> 
-    </ul>
-    <% } if (user.rol == 2) { %>
-      <ul class="navbar-nav ml-auto"> 
-          <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
-            </a>
-        <li class=" dropdown nav-item ">
-          <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Administrar<div class="ripple-container"></div></a>
-          <div class="dropdown-menu"> 
-            <a href="/menu" class=" nav-link  " title="Administrar Menú" >Listar Usuarios</a>
-            <a href="/menu" class=" nav-link  " title="Administrar Menú" >Administrar Menú</a>
-            <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
-          </div> </li> 
-      </ul>
-      <% }  if (user.rol == 3) { %>
-        <ul class="navbar-nav ml-auto"> 
-            <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i> <%= user.name %> <%= user.surname %> 
-              </a>
-          <li class=" dropdown nav-item ">
-            <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Administrar<div class="ripple-container"></div></a>
-            <div class="dropdown-menu"> 
-              <a href="/roles" class=" nav-link  " title="Administrar Menú" >Listar Usuarios</a>
-              <a href="/menu" class=" nav-link  " title="Administrar Menú" >Administrar Menú</a>
-              <a href="logout" class="nav-link bg-danger nav-link-sm"  title="Salir" > Salir</a> 
-            </div> </li> 
-        </ul>
-        <% } %>
-      <% } %>
-      </div>
+        <% } else { %>
+ 
+            <% if (user.rol==1) { %>
+              <ul class="navbar-nav ml-auto">
+                <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
+                  <%= user.name %>
+                    <%= user.surname %>
+                      <% if (session.cart) { %>
+                        <span class="badge bg-primary">
+                          <%= session.cart.quantity %>
+                        </span>
+                        <% } else { %>
+                          <span class="badge bg-primary"> 0 </span>
+                          <% } %>
+
+                </a>
+                <li class=" dropdown nav-item ">
+                  <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                    aria-expanded="false">Configuración<div class="ripple-container"></div></a>
+                  <div class="dropdown-menu">
+                    <a href="/menu" class=" nav-link  " title="Administrar Menú">Menú</a>
+                    <a href="/profile" class=" nav-link  " title="Perfil de usuario">Perfil</a>
+                    <a href="/carrito" class=" nav-link  " title="Ver carrito">Carrito</a>
+                    <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
+                  </div>
+                </li>
+              </ul>
+              <% } if (user.rol==2) { %>
+                <ul class="navbar-nav ml-auto">
+                  <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
+                    <%= user.name %>
+                      <%= user.surname %>
+                  </a>
+                  <li class=" dropdown nav-item ">
+                    <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                      aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+                    <div class="dropdown-menu">
+                      <a href="/menu" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
+                      <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                      <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
+                    </div>
+                  </li>
+                </ul>
+                 
+                <% } if (user.rol==3) { %>
+                  <ul class="navbar-nav ml-auto">
+                    <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
+                      <%= user.name %>
+                        <%= user.surname %>
+                    </a>
+                    <li class=" dropdown nav-item ">
+                      <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                        aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+                      <div class="dropdown-menu">
+                        <a href="/roles" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
+                        <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                        <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
+                      </div>
+                    </li>
+                  </ul>
+                  <% } %>
+                    <% } %>
+ 
+
+
     </div>
+  </div>
   </div>
 </nav>
 
-  <script type="text/javascript">
-function ocultar(){
-document.getElementById('obj1').style.display = 'none';
-}
-function mostrar(){
-document.getElementById('obj2').style.display = 'block';
-}
-    </script>
-    <!--   Core JS Files   -->
-    <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./assets/js/plugins/bootstrap-switch.js"></script>
-    <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-    <script src="./assets/js/plugins/moment.min.js"></script>
-    <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="./assets/js/material-kit.js" type="text/javascript"></script>
-    <!--  Google Maps Plugin   
+<script type="text/javascript">
+  function ocultar() {
+    document.getElementById('obj1').style.display = 'none';
+  }
+  function mostrar() {
+    document.getElementById('obj2').style.display = 'block';
+  }
+</script>
+<!--   Core JS Files   -->
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/bootstrap-switch.js"></script>
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/moment.min.js"></script>
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="./assets/js/material-kit.js" type="text/javascript"></script>
+<!--  Google Maps Plugin   
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=369"></script> -->
 <script>
   $(document).ready(function () {
