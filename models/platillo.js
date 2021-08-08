@@ -21,7 +21,7 @@ const platilloSchema = new Schema({
     requered: true
   } ,
   precio: {
-    type: String,
+    type: Number,
     requered: true
   },
   url: {
