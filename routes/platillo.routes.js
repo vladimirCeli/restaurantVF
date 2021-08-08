@@ -13,7 +13,12 @@ router.delete("/administrar", buscarPlatillo);
 //Ingreso de platillos por administrador
 router.post("/administrar", administrar);
 
+<<<<<<< HEAD
 // router.post("/administrar?_method=PUT", administrar);
+=======
+router.post("/administrar?_method=PUT", administrar);
+
+>>>>>>> parent of 6e2d72d (uniendo con alt-willian)
 router.post("/actualizarPlatillo",async (req, res) => {
     alert("Es el nombre ");
     const {id,nombre,precio,descripcion} = req.body;
