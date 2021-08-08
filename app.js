@@ -27,7 +27,7 @@ mongoose.connect(URI, {
 app.use(session({
   secret: "secret",
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: mongoose.connection
   }),

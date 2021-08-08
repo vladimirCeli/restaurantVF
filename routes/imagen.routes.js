@@ -19,8 +19,13 @@ router.post('/upload', (req, res) => {
             return res.send(err);
         }
         console.log(req.file);
+        
         // res.send('Subida exitosa');
     });
+    console.log("post upload ///////////////////// ",req.file.filename);
+    req.session.imagen=req.file.filename;
+    console.log("post upload ///////////////////// session ",req.session.imagen);
+    res.redirect('/administrar');
 });
  
 module.exports = router;
