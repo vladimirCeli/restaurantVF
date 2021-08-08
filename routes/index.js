@@ -46,12 +46,3 @@ router.get('/delete-all-cart/:id', function (req, res, next) {
 
 
 module.exports = router;
-exports.copyandpay = function(req,res){
-	var paymentToken=generateCheckoutId(function(result){
-		if(result != null && result != undefined)
-			res.render("copyandpay", {checkoutId: result.id})
-		else
-			res.render("copyandpay", "none")
-	})
-
-};

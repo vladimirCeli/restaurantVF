@@ -27,7 +27,7 @@ mongoose.connect(URI, {
 app.use(session({
   secret: "secret",
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: mongoose.connection
   }),
@@ -73,6 +73,19 @@ app.use(
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  }),
+  cookie: {
+    maxAge: 180 * 60 * 1000
+  }
+}));
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -82,7 +95,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(require('./routes/index'));
 app.use(require('./routes/menu.routes'));
-app.use(require('./routes/imagen.routes'));
+// app.use(require('./controllers/imagen.controllers'));
 app.use(require('./routes/platillo.routes'));
 app.use(require('./routes/users.routes'));
 app.use(express.static(path.join(__dirname, 'public')));

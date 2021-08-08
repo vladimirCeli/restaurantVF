@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { path } = require("../app");
 const { NotExtended } = require("http-errors");
 const platilloCtrl = Router();
+const {subirImagen} = require("./imagen.controllers");
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
@@ -43,6 +44,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
+  console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
@@ -50,37 +52,32 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     precio: "",
     descripcion: "",
     buscar: "",
+    imagenCap: req.session.imagen,
   });
 };
 
-platilloCtrl.administrar = async(req, res) => {
-  
-  if(req.body.id == ""){
-    new Platillo({
-      nombre: req.body.nombre,
-      descripcion: req.body.descripcion,
-      precio: req.body.precio,
-      url: "/uploads/"+ req.body.nombre+".jpg",
-      calificacion: 5,
-      estado: true,
-    }).save(function (err) {
-      if (!err) {
-        console.log("Platillo agregado con éxito");
-        console.log(Platillo);
-        res.send("Platillo agregado");
-      } else {
-        console.log("Ha ocurrido un error", err);
-        res.send("error");
-      }
-    });    
-  }else{
-    const {id,nombre,precio,descripcion} = req.body;
-    alert(nombre + "Es el nombre ");
-    await Platillo.findByIdAndUpdate(req.body.id,{nombre,precio,descripcion});
-    alert("Se actualizo el platillo seleccionado");
-    res.send("Actualizado");
-  }
-  
+platilloCtrl.administrar = (req, res) => {
+
+  const {nombre,descripcion,precio}=req.body;
+
+  new Platillo({
+    
+    nombre: nombre,
+    descripcion: descripcion,
+    precio: precio,
+    url: "/uploads/" + req.session.imagen,
+    calificacion: 5,
+    estado: true,
+  }).save(function (err) {
+    if (!err) {
+      console.log("Platillo agregado con éxito");
+      console.log(Platillo);
+      res.send("Platillo agregado ");
+    } else {
+      console.log("Ha ocurrido un error ", err);
+      res.send("error ");
+    }
+  });
 };
 
 
