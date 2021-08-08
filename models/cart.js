@@ -44,6 +44,12 @@ module.exports = function Cart(oldCart) {
         return arr;
     }
 
+    this.copyandpay = function(){
+        var paymentToken=generateCheckoutId(function(result){
+            if(result != null && result != undefined)
+            var checkoutId=result.id;
+           return checkoutId }) 
+    };
 
 
 }
