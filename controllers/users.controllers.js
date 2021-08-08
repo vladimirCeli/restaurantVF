@@ -175,7 +175,7 @@ usersCtrl.editRoles = async (req, res, next) => {
 };
 
 usersCtrl.renderPagar = (req, res) => {
-  res.render("success", { title: "Compra Exitosa" });
+  res.render("tarjeta", { title: "Editar Perfil" });
 };
 
 module.exports = usersCtrl;

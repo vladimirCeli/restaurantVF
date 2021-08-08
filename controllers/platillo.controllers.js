@@ -51,6 +51,7 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     precio: "",
     descripcion: "",
     buscar: "",
+    img: ""
   });
 };
 

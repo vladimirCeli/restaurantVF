@@ -26,27 +26,19 @@
                                     <p class="card-text">
                                         <%= user.phone %>
                                     </p>
-                                    <a href="/menu" class="btn btn-black"><i class="fa fa-map"></i> Ir al menú</a>
-                                    <a href="/editar/<%=user._id%>" class="btn btn-black"><i class="fa fa-pencil" aria-hidden="true"></i> Modificar datos</a>
-                                    <a href="/carrito" class="btn btn-black"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carrito</a>
+                                    <a href="/menu" class="btn btn-black">Ir al menú</a>
+                                    <a href="/editar/<%=user._id%>" class="btn btn-black">Modificar datos</a>
                                     <!-- <a class="btn btn-black">Cambiar contraseña</a> -->
                                     <!-- <a class="btn btn-black">Dar de baja</a> -->
                                 </div>
                             </div>
-                           
+                            <% } %>
 
 
                 </section>
-                <br> 
+                <br>
             </div>
-            <% }else{%> 
-                <div class="card"> 
-                    <h4 class=" ">Parece que no has ingresado a tu cuenta: 
-                        <a href="/login">Accede.</a> o   
-                        <a href="/registrarse">Regístrate</a>
-                    </h4>
-                </div>                 
-            <% }%>
+            
             <footer class="footer footer-default">
                 <div class="container">
                     <nav class="float-left">
