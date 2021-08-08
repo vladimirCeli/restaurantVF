@@ -43,6 +43,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
+  console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
@@ -50,29 +51,30 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     precio: "",
     descripcion: "",
     buscar: "",
+    imagenCap: req.session.imagen,
   });
 };
 
 platilloCtrl.administrar = (req, res) => {
 
-  const {nombre,descripcion,precio,image}=req.body;
+  const {nombre,descripcion,precio}=req.body;
 
   new Platillo({
     
     nombre: nombre,
     descripcion: descripcion,
     precio: precio,
-    url: "/uploads/" + image,
+    url: "/uploads/" + req.session.imagen,
     calificacion: 5,
     estado: true,
   }).save(function (err) {
     if (!err) {
       console.log("Platillo agregado con éxito");
       console.log(Platillo);
-      res.send("Platillo agregado "+image);
+      res.send("Platillo agregado ");
     } else {
       console.log("Ha ocurrido un error ", err);
-      res.send("error "+image);
+      res.send("error ");
     }
   });
 };
