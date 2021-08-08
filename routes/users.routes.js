@@ -17,11 +17,17 @@ const {
   editRoles,
   renderEditarPut,
   renderM,
+  renderEditarPasswordPost,
   renderPagar
 } = require('../controllers/users.controllers');
 
 router.get("/editar/:id", renderEditar);
 router.put("/editar/:id", renderEditarPut);
+router.post("/editarc", passport.authenticate("local-change-pass", {
+  successRedirect: "/profile",
+  failureRedirect: "/",
+  failureFlash: true,
+}));
 router.get("/profile", renderProfile);
 router.get("/roles", renderRoles);
 router.get("/guardarol/:id", editRoles);
@@ -40,7 +46,7 @@ router.get('/login', renderIngresar);
 //router.post("/login",ingresar);
 router.post("/login", passport.authenticate("local-signin", {
   successRedirect: "/",
-  failureRedirect: "/iniciosesion",
+  failureRedirect: "/login",
   failureFlash: true,
 }));
 

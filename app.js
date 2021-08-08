@@ -49,11 +49,13 @@ app.use(multer({
   }),
 
 }).single('image'));
-app.use(session({
-  secret: 'restorantesession',
-  resave: false,
-  saveUnitialized: false
-}));
+
+// app.use(session({
+//   secret: 'restorantesession',
+//   resave: false,
+//   saveUnitialized: false
+// }));
+
 app.use(flash());
 app.use(methodOverride('_method'));
 app.use(passport.initialize());
