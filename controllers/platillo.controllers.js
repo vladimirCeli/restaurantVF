@@ -54,22 +54,25 @@ platilloCtrl.renderAdministrar = async (req, res) => {
 };
 
 platilloCtrl.administrar = (req, res) => {
+
+  const {nombre,descripcion,precio,image}=req.body;
+
   new Platillo({
     
-    nombre: req.body.nombre,
-    descripcion: req.body.descripcion,
-    precio: req.body.precio,
-    url: "/uploads/" + req.body.image,
+    nombre: nombre,
+    descripcion: descripcion,
+    precio: precio,
+    url: "/uploads/" + image,
     calificacion: 5,
     estado: true,
   }).save(function (err) {
     if (!err) {
       console.log("Platillo agregado con éxito");
       console.log(Platillo);
-      res.send("Platillo agregado");
+      res.send("Platillo agregado "+image);
     } else {
-      console.log("Ha ocurrido un error", err);
-      res.send("error");
+      console.log("Ha ocurrido un error ", err);
+      res.send("error "+image);
     }
   });
 };
