@@ -45,48 +45,36 @@
           <a class="btn  btn-danger btn-raised" href="/registrarse">Registrarse</a>
         </ul>
         <% } else { %>
-          <% if (user.rol==1) { %>
-            <ul class="navbar-nav ml-auto">
-              <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
-                <%= user.name %>
-                  <%= user.surname %>
-                    <% if (session.cart) { %>
-                      <span class="badge bg-primary">
-                        <%= session.cart.quantity %>
-                      </span>
-                      <% } else { %>
-                        <span class="badge bg-primary"> 0 </span>
-                        <% } %>
 
-              </a>
-              <li class=" dropdown nav-item ">
-                <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
-                  aria-expanded="false">Configuración<div class="ripple-container"></div></a>
-                <div class="dropdown-menu">
-                  <a href="/menu" class=" nav-link  " title="Administrar Menú">Menú</a>
-                  <a href="/profile" class=" nav-link  " title="Perfil de usuario">Perfil</a>
-                  <a href="/carrito" class=" nav-link  " title="Ver carrito">Carrito</a>
-                  <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
-                </div>
-              </li>
-            </ul>
-            <% } if (user.rol==2) { %>
+          <% if (user) { %>
+
+
+            <% if (user.rol==1) { %>
               <ul class="navbar-nav ml-auto">
-                <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
+                <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
                   <%= user.name %>
                     <%= user.surname %>
+                      <% if (session.cart) { %>
+                        <span class="badge bg-primary">
+                          <%= session.cart.quantity %>
+                        </span>
+                        <% } else { %>
+                          <span class="badge bg-primary"> 0 </span>
+                          <% } %>
+
                 </a>
                 <li class=" dropdown nav-item ">
                   <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
-                    aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+                    aria-expanded="false">Configuración<div class="ripple-container"></div></a>
                   <div class="dropdown-menu">
-                    <a href="/menu" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
-                    <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                    <a href="/menu" class=" nav-link  " title="Administrar Menú">Menú</a>
+                    <a href="/profile" class=" nav-link  " title="Perfil de usuario">Perfil</a>
+                    <a href="/carrito" class=" nav-link  " title="Ver carrito">Carrito</a>
                     <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
                   </div>
                 </li>
               </ul>
-              <% } if (user.rol==3) { %>
+              <% } if (user.rol==2) { %>
                 <ul class="navbar-nav ml-auto">
                   <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
                     <%= user.name %>
@@ -96,14 +84,34 @@
                     <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
                       aria-expanded="false">Administrar<div class="ripple-container"></div></a>
                     <div class="dropdown-menu">
-                      <a href="/roles" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
+                      <a href="/menu" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
                       <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
                       <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
                     </div>
                   </li>
                 </ul>
-                <% } %>
+                <% } if (user.rol==3) { %>
+                  <ul class="navbar-nav ml-auto">
+                    <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
+                      <%= user.name %>
+                        <%= user.surname %>
+                    </a>
+                    <li class=" dropdown nav-item ">
+                      <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
+                        aria-expanded="false">Administrar<div class="ripple-container"></div></a>
+                      <div class="dropdown-menu">
+                        <a href="/roles" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
+                        <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                        <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
+                      </div>
+                    </li>
+                  </ul>
                   <% } %>
+                    <% } %>
+
+                      <% } %>
+
+
     </div>
   </div>
   </div>
