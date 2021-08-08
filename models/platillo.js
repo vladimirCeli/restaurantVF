@@ -28,6 +28,10 @@ const platilloSchema = new Schema({
     type: String,
     requered: true
   },
+  estado: {
+    type: Boolean,
+    requered: true
+  },
 
 },{
   timestamps: true
