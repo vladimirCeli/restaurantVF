@@ -78,7 +78,13 @@
                                 <mr />
                                 <p>Total :<span style="font-weight: 600; font-size: 1.3rem;">$<%= total %></span>
                                   </h4>
-                                  <button class="btn btn-success col-md-12 ml-auto">Pagar con tarjeta</button>
+                                  
+	<form action = "/carrito/" class = "paymentWidgets" data-brands = "AMEX MASTER UNIONPAY VISA"> </form>
+
+    
+  <!-- ACI Payment Integration Copy And Pay -->
+  <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=05D64DBD7749BE37300016AB6E8C3A0B.uat01-vm-tx03"></script>
+  <!-- ACI Payment Integration Copy And Pay -->
                               </div>
 
                             </div>
