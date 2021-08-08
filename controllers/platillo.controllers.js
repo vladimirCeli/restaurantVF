@@ -33,7 +33,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
-
+    
     nombre: "",
     precio: "",
     descripcion: "",
@@ -53,25 +53,34 @@ platilloCtrl.renderAdministrar = async (req, res) => {
   });
 };
 
-platilloCtrl.administrar = (req, res) => {
-  new Platillo({
-    
-    nombre: req.body.nombre,
-    descripcion: req.body.descripcion,
-    precio: req.body.precio,
-    url: "/uploads/" + req.body.image,
-    calificacion: 5,
-    estado: true,
-  }).save(function (err) {
-    if (!err) {
-      console.log("Platillo agregado con éxito");
-      console.log(Platillo);
-      res.send("Platillo agregado");
-    } else {
-      console.log("Ha ocurrido un error", err);
-      res.send("error");
-    }
-  });
+platilloCtrl.administrar = async(req, res) => {
+  
+  if(req.body.id == ""){
+    new Platillo({
+      nombre: req.body.nombre,
+      descripcion: req.body.descripcion,
+      precio: req.body.precio,
+      url: "/uploads/"+ req.body.nombre+".jpg",
+      calificacion: 5,
+      estado: true,
+    }).save(function (err) {
+      if (!err) {
+        console.log("Platillo agregado con éxito");
+        console.log(Platillo);
+        res.send("Platillo agregado");
+      } else {
+        console.log("Ha ocurrido un error", err);
+        res.send("error");
+      }
+    });    
+  }else{
+    const {id,nombre,precio,descripcion} = req.body;
+    alert(nombre + "Es el nombre ");
+    await Platillo.findByIdAndUpdate(req.body.id,{nombre,precio,descripcion});
+    alert("Se actualizo el platillo seleccionado");
+    res.send("Actualizado");
+  }
+  
 };
 
 
