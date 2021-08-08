@@ -60,7 +60,7 @@ platilloCtrl.administrar = async(req, res) => {
       nombre: req.body.nombre,
       descripcion: req.body.descripcion,
       precio: req.body.precio,
-      url: "/uploads/" + req.body.image,
+      url: "/uploads/"+ req.body.nombre+".jpg",
       calificacion: 5,
       estado: true,
     }).save(function (err) {
