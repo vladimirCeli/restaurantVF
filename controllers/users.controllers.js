@@ -115,34 +115,6 @@ usersCtrl.renderEditarPut = async (req, res) => {
   }
 };
 
-// usersCtrl.renderEditarPasswordPost = () => passport.authenticate("local-change-pass", {
-//   successRedirect: "/profile",
-//   failureRedirect: "/",
-//   failureFlash: true,
-// });
-
-// usersCtrl.renderEditarPasswordPost = async (req, res) => {
-//   const body = req.body;
-//   try {
-//     const user = await users.findOne({
-//       email: body.email
-//     });
-//     console.log(user, 'USER CHANGE PASS');
-//     await user.setPassword(body.password);
-//     await user.save();
-   
-//     res.json({
-//       estado: true,
-//       mensaje: 'Pass changed'
-//     })
-//   } catch (error) {
-//     console.log('error', error);
-//     res.json({
-//       estado: false,
-//       mensaje: 'No se completo la acción!!'
-//     })
-//   }
-// };
 
 usersCtrl.renderRoles = (req, res) => {
   users.find({}, (error, users) => {
