@@ -14,7 +14,6 @@ router.delete("/administrar", buscarPlatillo);
 router.post("/administrar", administrar);
 
 // router.post("/administrar?_method=PUT", administrar);
-
 router.post("/actualizarPlatillo",async (req, res) => {
     alert("Es el nombre ");
     const {id,nombre,precio,descripcion} = req.body;

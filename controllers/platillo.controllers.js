@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { path } = require("../app");
 const { NotExtended } = require("http-errors");
 const platilloCtrl = Router();
+const {subirImagen} = require("./imagen.controllers");
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
@@ -33,7 +34,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
-
+    
     nombre: "",
     precio: "",
     descripcion: "",
@@ -50,31 +51,35 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     precio: "",
     descripcion: "",
     buscar: "",
+    img: ""
   });
 };
 
 platilloCtrl.administrar = (req, res) => {
-
+  
   const {nombre,descripcion,precio,image}=req.body;
-
-  new Platillo({
+  
+  const file = subirImagen(req,res);
+  console.log(file);
+  res.send(file);
+  // new Platillo({
     
-    nombre: nombre,
-    descripcion: descripcion,
-    precio: precio,
-    url: "/uploads/" + image,
-    calificacion: 5,
-    estado: true,
-  }).save(function (err) {
-    if (!err) {
-      console.log("Platillo agregado con éxito");
-      console.log(Platillo);
-      res.send("Platillo agregado "+image);
-    } else {
-      console.log("Ha ocurrido un error ", err);
-      res.send("error "+image);
-    }
-  });
+    //   nombre: nombre,
+    //   descripcion: descripcion,
+    //   precio: precio,
+    //   url: "/uploads/" + image,
+  //   calificacion: 5,
+  //   estado: true,
+  // }).save(function (err) {
+  //   if (!err) {
+  //     console.log("Platillo agregado con éxito");
+  //     console.log(Platillo);
+  //     res.send("Platillo agregado "+image);
+  //   } else {
+  //     console.log("Ha ocurrido un error ", err);
+  //     res.send("error "+image);
+  //   }
+  // });
 };
 
 

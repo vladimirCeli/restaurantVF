@@ -39,20 +39,20 @@
                     </div>
                   </div>
                 </div>
-                <form action="/upload" method="post" enctype="multipart/form-data">
+                <form action="/administrar" method="post" enctype="multipart/form-data">
                   <div class="input-group ">
                       <div class="custom-file">
-                          <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
-                          <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Elegir Imagen</label>
+                          <input type="file" class="custom-file-input" id="inputGroupFile02">
+                          <label class="btn" name="image" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Elegir Imagen</label>
                       </div>
                   </div>
                  
-                  <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
+                  <!-- <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
                       <button type="submit" class="btn btn-success btn-block">
                           Subir Imagen
                       </button>
-                  </div>
-              </form>
+                  </div> -->
+              <!-- </form> -->
               <div class="col-12 col-sm-6 col-md-6 mx-auto">
                 <img
                   src="../assets/img/face.jpg"
@@ -60,7 +60,7 @@
                   alt="imagen"
                 />
               </div>
-                <form  id="formulario1" class="form" action="" method="post">
+                <!-- <form  id="formulario1" class="form" action="" method="post"> -->
                   <input id="id" type="text" name="id" class="form-control" value="" style="display:none;">
                   <div class="form-group"><input id="idnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%=nombre%>" required></div>
                  <div class="form-group">
@@ -69,8 +69,6 @@
                   <div class="form-group">
                       <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control" required><%=descripcion%></textarea>
                   </div>
-                  
-
                   <div class="togglebutton">
                     <label >
                       <input type="checkbox" checked>
@@ -80,8 +78,6 @@
                       Estado del platillo
                     </label>
                   </div>
-
-
                   <div class="col-12 mt-2">
                     <div class="row">
                       <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
@@ -106,17 +102,12 @@
                         >
                           <div class="mx-auto">Guardar</div>
                         </button>
-
-                        
                       </div>
                     </form>
                       <div
                         class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"
                       >
-                     
-                      </div>
-                      
-                      
+                      </div> 
                     </div>
                   </div>
               </div>
@@ -200,7 +191,6 @@
                       </div>
                     </div>
                   </div>
-              
                 </div>
               </div>
             </div>
