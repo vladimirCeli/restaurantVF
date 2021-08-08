@@ -52,7 +52,7 @@ platilloCtrl.administrar = (req, res) => {
     nombre: req.body.nombre,
     descripcion: req.body.descripcion,
     precio: req.body.precio,
-    url: "/uploads/" + req.body.image,
+    url: "/uploads/" + req.body.image.filename,
     calificacion: 5,
   }).save(function (err) {
     if (!err) {
