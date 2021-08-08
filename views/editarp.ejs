@@ -1,57 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('fragmentos/head'); %> 
-<body style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));" >
-    <%- include('fragmentos/navbar'); %>  
-    
-   <div class="container"  style="margin-top: 0;">
-    <div class="section section-signup page-header" style=" background-image: url(/assets/img/fondo.jpg)">
-        <br>
-        <div class="container" style="margin-top: 150px;">
-          <div class="row">
-            <div class="col-lg-5 col-md-6 mx-auto">
-              <div class="card card-login">
-                <form class="form">
-                    <div class="card-header card-header-primary text-center">
-                        <h4 class="card-title ">Editar Perfil</h4>
-                         
-                      </div>
-                  <div class="card-body">
-                    <span class="bmd-form-group"><div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">
-                              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                          </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Nombres">
-                      </div></span>
-                    <span class="bmd-form-group"><div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fa fa-envelope"> </i>
-                        </span>
-                      </div>
-                      <input type="email" class="form-control" placeholder="Email">
-                    </div></span>
-                    <span class="bmd-form-group"><div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fa fa-key"> </i>
-                        </span>
-                      </div>
-                      <input type="password" class="form-control" placeholder="Contraseña" autocomplete="">
-                    </div></span>
-                  </div>
-                  <div class="footer text-center">
-                      <div class=" bg-warning"><p class="col-md-9 mx-auto text-center">Si cambias tu correo deberás usar el nuevo para poder acceder a tu cuenta.</p></div>
-                    <a href="javascript:;" class="btn btn-primary btn-link btn-wd btn-lg">Guardar cambios</a>                  </div>
-                </form>
+
+<head>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+</head>
+
+<body class=" bg-dark text-white" style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));">
+
+  <% if (user) { %>
+    <% if (!error) { %>
+      <!-- <div class="container mt-5" style="background: white;"> -->
+      <!-- <div class="row"> -->
+      <div class="row justify-content-md-center align-items-center mt-5">
+        <div class="card p-3">
+          <h2 class="text-center" style="color: black;">Editar Perfil</h2>
+          <div class="card-body text-center">
+            <form id="formularioEditar" data-id="<%= user._id %>" class="text-center">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombres" name="name" value="<%= user.name %>"
+                  id="nameInput">
               </div>
-            </div>
-            
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" name="email" value="<%= user.email %>"
+                  id="emailInput">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Dirección" name="dir" value="<%= user.dir %>"
+                  id="dirInput">
+              </div>
+
+              <div class=" text-center">
+                <div class=" bg-warning">
+                  <p class="col-md-9 mx-auto text-center">Si cambias tu correo deberás usar el nuevo para poder acceder
+                    a tu cuenta.</p>
+                </div>
+                <button  class="btn btn-success  btn-wd btn-lg col-md-4 mx-auto " type="submit">
+                  Guardar cambios
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-   </div>
+
+      <div class="row justify-content-md-center align-items-center mt-2">
+        <div class="card p-3">
+          <h2 class="text-center mt-4" style="color: black;">Cambiar contraseña</h2>
+          <div class="card-body text-center">
+            <form action="/editarc" method="POST" class="text-center">
+              <div class="form-group">
+                <input type="email" class="form-control" value="<%= user.email %>" placeholder="Email" name="email"
+                  required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nueva contraseña" name="password" required>
+              </div>
+              <div class=" text-center">
+                <div class=" bg-warning">
+                  <p class="col-md-9 mx-auto text-center">Si cambias tu contraseña deberás usar la nueva para poder
+                    acceder a tu cuenta</p>
+                </div>
+                <button  class="btn btn-success  btn-wd btn-lg col-md-4 mx-auto " type="submit">
+                  Cambiar contraseña
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      </div>
+      <!-- </div> -->
+      <!-- </div> -->
+
+      <% } %>
+
+        <% if (error) { %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+          <% } %>
+            <% } %>
+
+
 </body>
+
+
+
+<script>
+
+  formularioEditar.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const name = formularioEditar.elements['nameInput'].value
+    const email = document.querySelector('#emailInput').value
+    const dir = document.querySelector('#dirInput').value
+    const id = formularioEditar.dataset.id
+    try {
+      const data = await fetch(`/editar/${id}`, {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, dir })
+      })
+      const res = await data.json()
+      if (res.estado) {
+        window.location.href = '/profile'
+      } else {
+        console.log(res)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
+  formChangePass.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const newPassword = document.querySelector('#newPassInput').value
+    const email = formChangePass.dataset.email
+    console.log(newPassword, email, 'pas and email');
+    try {
+      const data = await fetch(`/editarc`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, newPassword })
+      })
+      const res = await data.json()
+      if (res.estado) {
+        window.location.href = '/profile'
+      } else {
+        console.log(res)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
+</script>
+
 </html>

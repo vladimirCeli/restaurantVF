@@ -10,73 +10,91 @@
           <section class=" u-align-center u-clearfix u-grey-10 u-section-1" id="carousel_4daf"
             style="background-image: url('../assets/img/fondo.jpg')">
             <div class="u-clearfix u-sheet u-valign-middle u-sheet-1 " style="margin-top: 100px;">
-              <h1 class=" u-text-palette-3-base u-text-1">Carrito</h1>
-              <p class="u-text u-text-2 text-white">A continuacon presentamos los platos seleccionados en el menu marque porfavor la cantidad de los mismos </p>
+              <h1 class=" u-text-palette-3-base ">Mi Carrito</h1>
+              <p class="u-text u-text-2 text-white">A continuacon presentamos los platos seleccionados en el menu marque
+                porfavor la cantidad de los mismos </p>
 
               <div class="card col-md-8 bg-dark   mx-auto ">
-                <h3>Tu carrito de compras</h3>
-
                 <div
                   class="  u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xl u-container-layout-1"
                   style="text-align: left; margin-top: 0px;">
                   <div>
-                    <div class="card  ">
-                      <button class="btn btn-sm btn-danger col-md-3 ml-auto"> <i class="fa fa-remove"></i> Eliminar</button>
-                      <img alt="" class="u-expanded-width-xs  u-image u-image-1" src="images/imagen-Fritada.jpg"
-                      style="width: 300px; margin-top: -35px;">
-                      <div
-                        class="u-align-left-xs u-container-style u-expanded-width-xs u-group u-video-cover u-group-1">
-                        <div class="u-container-layout u-valign-middle-xs u-container-layout-2"  style="margin-top: 45px; margin-bottom: 9px;">
-                          <h4>Fritada</h3>
-                          <h6 class="u-text u-text-palette-3-base u-text-5">$5.00</h6>
-                          <input type="text" class="form-control" placeholder="Cantidad">
-                          <p class="u-text u-text-4"> Subtotal : </p>
-                        </div>
-                      </div>
-                    </div> 
-                    
-                    <div class="card   ">
-                      <button class="btn btn-sm btn-danger col-md-3 ml-auto"> <i class="fa fa-remove"></i> Eliminar</button>
-                      <img alt="" class="u-expanded-width-xs u-image u-image-default u-image-2" 
-                      style="width: 300px; margin-top: -35px;" src="images/imagen-encebollado.jpg">
-                      <div class="u-group-1">
-                        <div class="u-container-layout u-valign-middle-xs u-container-layout-2" style="margin-top: 45px; margin-bottom: 9px;">
-                          <h4>Encebollado</h3>
-                          <h6 class="u-text u-text-palette-3-base u-text-5">$3.00</h6>
-                          <input type="text" class="form-control" placeholder="Cantidad">
-                          <p class="u-text u-text-4"> Subtotal : </p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="card   ">
-                      <button class="btn btn-sm btn-danger col-md-3 ml-auto"> <i class="fa fa-remove"></i> Eliminar</button>
-                      <img alt="" class="u-expanded-width-xs u-image u-image-default u-image-2" src="images/imagen-ArrozConMenestra.jpg"
-                      style="width: 300px; margin-top: -35px;">
-                      <div
-                        class="u-group-1">
-                        <div class="u-container-layout u-valign-middle-xs u-container-layout-2"  style="margin-top: 45px; margin-bottom: 9px;">
-                          <h4>Arroz con menestra</h3>
-                          <h6 class="u-text u-text-palette-3-base u-text-5">$5.00</h6>
-                          <input type="text" class="form-control" placeholder="Cantidad">
-                          <p class="u-text u-text-4"> Subtotal : </p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <div class="card col-md-5 mx-auto " style="text-align: left; margin-top: 0px;">
- <a class="ml-auto"  href="/menu">añadir mas platillos<button class="btn btn-primary btn-fab btn-round">
-  <i class="fa fa-plus"></i> </button></a>  
-                    <div style="margin-top: -18px;"> 
-                      <h5> Detalle total </h4>
-                      <p>Total :<br />Descuento : <br />Cargo por entrega :</p>
-                      <mr />
-                      <p>Total :</h4>
-                      <button class="btn btn-success col-md-12 ml-auto">Pagar con tarjeta</button>
-                    </div>
 
+                    <% if (platillos.length> 0) { %>
+                      <% platillos.forEach(p=> { %>
+                        <div class="card">
+                          <a href="/delete-all-cart/<%= p.item._id %>" class="btn btn-sm btn-danger col-md-3 ml-auto">
+                            <i class="fa fa-remove"></i>
+                            Eliminar
+                          </a>
+                          <img alt="" class="u-expanded-width-xs u-image u-image-default u-image-2"
+                            src="images/imagen-ArrozConMenestra.jpg" style="width: 300px; margin-top: -35px;">
+                          <div class="u-group-1">
+                            <div class="u-container-layout u-valign-middle-xs u-container-layout-2"
+                              style="margin-top: 45px; margin-bottom: 9px;">
+                              <h4>
+                                <%= p.item.nombre %>
+                                  </h3>
+                                  <h6 class="u-text u-text-palette-3-base u-text-5"> $<%= p.item.precio %>
+                                  </h6>
+                                  <div class="row">
+                                    <div class="col-sm">
+                                      <a class="ml-auto" href="/delete-to-cart/<%= p.item._id %>">
+                                        <button class="btn btn-primary btn-sm btn-fab btn-round">
+                                          <i class="fa fa-minus-circle"></i>
+                                        </button>
+                                      </a>
+                                    </div>
+                                    <div class="col-sm">
+                                      <%= p.qty %>
+                                    </div>
+                                    <div class="col-sm">
+                                      <a class="ml-auto" href="/add-to-cart/<%= p.item._id %>">
+                                        <button class="btn btn-primary btn-sm btn-fab btn-round">
+                                          <i class="fa fa-plus"></i>
+                                        </button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <p class="u-text u-text-4"> Subtotal : <span
+                                      style="font-weight: 600; font-size: 1.2rem;">$<%= p.precio %></span> </p>
+                            </div>
+                          </div>
+                        </div>
+                        <% }) %>
+                          <% if (platillos.length> 0) { %>
+                            <div class="card col-md-5 mx-auto " style="text-align: left; margin-top: 0px;">
+                              <a class="ml-auto" href="/menu">
+                                añadir mas platillos
+                                <button class="btn btn-primary btn-fab btn-round">
+                                  <i class="fa fa-plus"></i>
+                                </button></a>
+                              <div style="margin-top: -18px;">
+                                <h5 class="text-center"> Detalle total </h5>
+                                <p>Total : <span style="font-weight: 600; font-size: 1.3rem;">$<%= total %></span>
+                                  <br />Descuento : <span style="font-weight: 600; font-size: 1rem;">$0</span>
+                                  <br />Cargo por entrega :<span style="font-weight: 600; font-size: 1rem;">$0</span>
+                                </p>
+                                <mr />
+                                <p>Total :<span style="font-weight: 600; font-size: 1.3rem;">$<%= total %></span>
+                                  </h4>
+                                  <button class="btn btn-success col-md-12 ml-auto">Pagar con tarjeta</button>
+                              </div>
+
+                            </div>
+                            <% } %>
+
+
+                              <% } else { %>
+
+                                <h2 class="text-center"> Carrito sin productos </h2>
+                                <div class="text-center">
+                                  <a href="/menu" type="button" class="btn btn-primary text-center">Ir al menú</a>
+                                </div>
+                                <% } %>
                   </div>
+
+
                 </div>
               </div>
           </section>
