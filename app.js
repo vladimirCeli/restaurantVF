@@ -16,7 +16,7 @@ app.user
 require('./passport/local-auth')(passport);
 const https = require('https');
 // database//
-const URI = 'mongodb+srv://rubier:19jL34e7vWy4MHoI@cluster0.5xarr.mongodb.net/restaurant?retryWrites=true&w=majority'
+const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
