@@ -45,10 +45,7 @@
           <a class="btn  btn-danger btn-raised" href="/registrarse">Registrarse</a>
         </ul>
         <% } else { %>
-
-          <% if (user) { %>
-
-
+ 
             <% if (user.rol==1) { %>
               <ul class="navbar-nav ml-auto">
                 <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
@@ -90,9 +87,7 @@
                     </div>
                   </li>
                 </ul>
-                <% } %>
-                
-                  <% } %>
+                 
                 <% } if (user.rol==3) { %>
                   <ul class="navbar-nav ml-auto">
                     <a href="/carrito" class="nav-item"><i class="material-icons fa fa-user"></i>
@@ -111,8 +106,7 @@
                   </ul>
                   <% } %>
                     <% } %>
-
-                      <% } %>
+ 
 
 
     </div>
