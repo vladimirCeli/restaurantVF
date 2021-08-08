@@ -44,7 +44,6 @@ usersCtrl.ingresar = () => passport.authenticate("local-signin", {
 });
 
 usersCtrl.logout = (req, res, next) => {
-  req.session.destroy();
   req.logout();
   res.redirect("/login");
 };
@@ -148,7 +147,7 @@ usersCtrl.editRoles = async (req, res, next) => {
 };
 
 usersCtrl.renderPagar = (req, res) => {
-  res.render("success", { title: "Compra Exitosa" });
+  res.render("tarjeta", { title: "Editar Perfil" });
 };
 
 module.exports = usersCtrl;

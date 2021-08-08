@@ -28,19 +28,17 @@
                             Eliminar
                           </a>
                           <img alt="" class="u-expanded-width-xs u-image u-image-default u-image-2"
-                            src="<%= p.item.url %>" style="width: 300px; margin-top: -35px;">
+                            src="images/imagen-ArrozConMenestra.jpg" style="width: 300px; margin-top: -35px;">
                           <div class="u-group-1">
                             <div class="u-container-layout u-valign-middle-xs u-container-layout-2"
                               style="margin-top: 45px; margin-bottom: 9px;">
                               <h4>
                                 <%= p.item.nombre %>
                                   </h3>
-                                  <p>Precio:</p> 
                                   <h6 class="u-text u-text-palette-3-base u-text-5"> $<%= p.item.precio %>
                                   </h6>
-                                  <p>Cantidad:</p> 
                                   <div class="row">
-                                   <div class="col-sm">
+                                    <div class="col-sm">
                                       <a class="ml-auto" href="/delete-to-cart/<%= p.item._id %>">
                                         <button class="btn btn-primary btn-sm btn-fab btn-round">
                                           <i class="fa fa-minus-circle"></i>
@@ -65,7 +63,7 @@
                         </div>
                         <% }) %>
                           <% if (platillos.length> 0) { %>
-                            <div class="card col-md-7 mx-auto " style="text-align: left; margin-top: 0px;">
+                            <div class="card col-md-5 mx-auto " style="text-align: left; margin-top: 0px;">
                               <a class="ml-auto" href="/menu">
                                 añadir mas platillos
                                 <button class="btn btn-primary btn-fab btn-round">
@@ -73,19 +71,19 @@
                                 </button></a>
                               <div style="margin-top: -18px;">
                                 <h5 class="text-center"> Detalle total </h5>
-                                <p>Total : <span style="font-weight: 600; font-size: 1.3rem;" name="total">$<%= total %></span>
+                                <p>Total : <span style="font-weight: 600; font-size: 1.3rem;">$<%= total %></span>
                                   <br />Descuento : <span style="font-weight: 600; font-size: 1rem;">$0</span>
                                   <br />Cargo por entrega :<span style="font-weight: 600; font-size: 1rem;">$0</span>
                                 </p>
                                 <mr />
                                 <p>Total :<span style="font-weight: 600; font-size: 1.3rem;">$<%= total %></span>
                                   </h4>
-                                <h5>Pagar con Tarjeta <i class="fa fa-credit-card" aria-hidden="true"></i></h5>  
-	<form action = "/success/" class = "paymentWidgets" data-brands = "AMEX MASTER UNIONPAY VISA"> </form>
+                                  
+	<form action = "/carrito/" class = "paymentWidgets" data-brands = "AMEX MASTER UNIONPAY VISA"> </form>
 
     
   <!-- ACI Payment Integration Copy And Pay -->
-  <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=54BA42FE7968FE23582D797C4C221660.uat01-vm-tx04"></script>
+  <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=05D64DBD7749BE37300016AB6E8C3A0B.uat01-vm-tx03"></script>
   <!-- ACI Payment Integration Copy And Pay -->
                               </div>
 
