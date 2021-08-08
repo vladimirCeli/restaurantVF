@@ -12,8 +12,8 @@ const request = async () => {
 	const path='/v1/checkouts';
 	const data = querystring.stringify({
 		'entityId':'8a8294175d602369015d73bf009f1808',
-		'amount':'92.00',
-		'currency':'EUR',
+		'amount':req.body.total,
+		'currency':'USD',
 		'paymentType':'DB'
 	});
 	const options = {
