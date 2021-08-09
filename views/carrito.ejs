@@ -85,8 +85,12 @@
 
     
   <!-- ACI Payment Integration Copy And Pay -->
-  <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=<%=checkoutId%>"></script>
+  <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=<%checkoutId.id%>"></script>
+
   <!-- ACI Payment Integration Copy And Pay -->
+  <script> 
+  request().then(console.log).catch(console.error); 
+   </script>
                               </div>
 
                             </div>

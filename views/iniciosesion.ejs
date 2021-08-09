@@ -10,6 +10,12 @@
             <form class="form" method="POST" action="/login">
               <div class="card-header card-header-success text-center">
                 <h4 class="card-title">Iniciar Sesión</h4>
+                <%if (signinMessage != null) {%>
+                  
+                  <div class="bg-danger"><p ><%= signinMessage %></p></div> 
+                <% } if (signupMessage  != null) {%>
+                  <div class="bg-danger"><p><%= signupMessage %></p></div> 
+                <% } %>
               </div>
               <div class="card-body" style = "margin-top: 100px;">
                 <span class="bmd-form-group"><div class="input-group">

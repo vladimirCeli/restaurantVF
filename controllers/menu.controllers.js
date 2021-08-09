@@ -65,18 +65,23 @@ menuCtrl.renderCarrito = (req, res) => {
   if (!req.session.cart) {
     return res.render("carrito", {
       title: 'Carrito',
-      platillos: []
+      platillos: [],
+	  checkoutId: request() 
     });
-  }
+  } 
+   copyandpay = function(){
+        var ctrl=request(function(result){
+            if(result != null && result != undefined)
+            var checkoutId=result.id;
+           return checkoutId }) 
+    };
+
   var cart = new Cart(req.session.cart);
   res.render('carrito', {
     title: 'Carrito',
     platillos: cart.generateArray(),
-    total: cart.total,
-    checkoutId: function(result){
-      if(result != null && result != undefined)
-      var checkoutId=result.id;
-      return checkoutId }
+    total: cart.total, 
+	checkoutId: request()
   });
 };
 module.exports = menuCtrl;
