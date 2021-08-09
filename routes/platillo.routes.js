@@ -13,7 +13,7 @@ router.delete("/administrar", buscarPlatillo);
 //Ingreso de platillos por administrador
 router.post("/administrar", administrar);
 
-router.post("/administrar?_method=PUT", administrar);
+// router.post("/administrar?_method=PUT", administrar);
 
 router.post("/actualizarPlatillo",async (req, res) => {
     alert("Es el nombre ");
