@@ -8,9 +8,25 @@
       }
     }
   </style>
+  <script>
+    function cargar(id,nombre,precio,descripcion) {
+      document.getElementById("idnombre").value = nombre;
+      document.getElementById("idprecio").value = precio;
+      // document.getElementById("iddescripcion").textContent = descripcion;
+      document.getElementById("iddescripcion").value =descripcion;
+    };
+  </script>
   <body
     style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10))"
   >
+  <% if (!user ){ %>
+    <%- include('fragmentos/navbar'); %>
+ 
+    <div class="card" style="margin-top: 15%;"> <h4>No tienes permitido ingresar a esta dirección <a href="/registrarse">Regístrate</a></h4></div>
+    <% } else if (user.rol == 1) { %>
+      <div class="card" style="margin-top: 15%;"> <h4>No tienes permitido ingresar a esta dirección</h4></div>
+      <% } else if (user.rol == 2||user.rol == 3) { %>  
+         
     <!--
     <%- include('fragmentos/navbar'); %>
     -->
@@ -26,97 +42,111 @@
                   <div class="row">
                     
                     <div class="col-12 col-sm-6 col-md-6">
-                      <h5>Nuevo Platillo</h4>
+                      <h5>Nuevo Platillo <i class="fa fa-cutlery" aria-hidden="true"></i>
+                      </h4>
                       
                     </div>
                   </div>
                 </div>
                 <form action="/upload" method="post" enctype="multipart/form-data">
                   <div class="input-group ">
-                      <div class="custom-file">
+                      <div class=" ">
                           <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
-                          <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Elegir Imagen</label>
+                          <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02"><i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            Elegir Imagen</label>
                       </div>
                   </div>
                  
                   <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
                       <button type="submit" class="btn btn-success btn-block">
-                          Subir Imagen
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        Subir Imagen
                       </button>
                   </div>
               </form>
               <div class="col-12 col-sm-6 col-md-6 mx-auto">
-                <img
+                <% if(typeof imagenCap == 'undefined'){ %>
+                  <img
                   src="../assets/img/face.jpg"
                   class="img-thumbnail"
                   alt="imagen"
                 />
+                <% }else{ %> 
+                  <img
+                  src="<%=('../uploads/'+imagenCap)%>"
+                  class="img-thumbnail"
+                  alt="imagen"
+                />
+                <% } %> 
+                
               </div>
-                <form class="form" action="/administrar" method="post">
-                  <div class="form-group"><input type="text" name="nombre" placeholder="Nombre del Platillo" class="form-control" value="<%= nombre %>"></div>
+                <form  id="formulario1" class="form mx-auto" action="" method="post">
+                  <input id="id" type="text" name="id" class="form-control" value="" style="display:none;">
+                  <div class="form-group"><input id="idnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%=nombre%>" required></div>
                  <div class="form-group">
-                  <input type="text" name="precio" placeholder="Precio" class="form-control" value="<%= precio %>">
+                  <input id="idprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%=precio%>" required>
                  </div>
                   <div class="form-group">
-                        <% if(descripcion!="") {%>
-                          <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                          <% } else{%>
-                            <textarea name="descripcion" placeholder="Descripción" class="form-control"><%= descripcion %></textarea>
-                            <% } %> 
+                      <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control" required><%=descripcion%></textarea>
                   </div>
                   
+
+                  <div class="togglebutton">
+                    <label >
+                      <input type="checkbox" checked>
+                      <span class="toggle">
+                       
+                      </span>
+                      Estado del platillo
+                    </label>
+                  </div>
+
+
                   <div class="col-12 mt-2">
                     <div class="row">
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-aut">
-                        <button
-                          type="button"
-                          class="py-3 px-2 w-100 btn btn-outline-secondary"
-                        >
-                          <div class="mx-auto">Nuevo</div>
-                        </button>
-                      </div>
                       <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
                         <button
-                          type="submit"
+                                                  
                           class="py-3 px-2 w-100 btn btn-outline-secondary"
+                          onclick= "document.formulario1.action ='/administrar'; 
+                          document.formulario1.submit()"  
+
                         >
-                          <div class="mx-auto">Guardar</div>
+                          <div class="mx-auto">Nuevo <i class="fa fa-plus-square" aria-hidden="true"></i>
+                          </div>
                         </button>
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto" >
+                        <button
+                          id="guardar"                           
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+                          
+                          onclick= "document.formulario1.action ='/actualizarPlatillo';
+                          document.formulario1.submit()
+                          "                       
+                        >
+                          <div class="mx-auto"><i class="fa fa-pencil" aria-hidden="true"></i>
+                             Guardar</div>
+                        </button>
+
+                        
                       </div>
                     </form>
                       <div
                         class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"
                       >
-                        <button
-                          type="button"
-                          class="py-3 px-2 w-100 btn btn-outline-secondary"
-                          onclick="javascript:sendForm();" 
-                        >
-                          <div class="mx-auto">Activo</div>
-                        </button>
-                        <button
-                          type="button"
-                          class="py-3 px-2 w-100 btn btn-outline-secondary"
-                        >
-                          <div class="mx-auto">Desac.</div>
-                        </button>
+                     
                       </div>
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
-                        <button
-                          type="button"
-                          class="py-3 px-2 w-100 btn btn-outline-danger"
-                        >
-                          <div class="mx-auto">Eliminar</div>
-                        </button>
-                      </div>
+                      
+                      
                     </div>
                   </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-6 d-flex">
-          <div class="card tablaif">
+        <div class="col-12 col-lg-6">
+          <div class="card">
             <div class="card-body">
               <div class="row h-100">
                 <div class="col-12 col-sm-9 col-md-9 p-1" style="height: 35px">
@@ -152,16 +182,16 @@
                     </select>
                   </span>
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <span class="input-group-text"
                     >Tabla Platillos</span
                   >
-                </div>
-                <div class="col-12 pb-4" style="height: 380px">
-                  <div class="card m-0">
+                </div> -->
+                <div class="col-12 pb-4">
+                  <div class="card p-auto">
                     <div class="card-body">
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 overflow-auto" style="height: 300px;">
                           <table class="table table-hover">
                             <thead>
                               <tr>
@@ -174,25 +204,18 @@
                             </thead>
               
                             <tbody>
-                              <% platillos.forEach(function(platillo) { %>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td><%= platillo.nombre %></td>
-                                <td><%= platillo.precio %></td>
-                                <td><%= platillo.calificacion %></td>
+                              <% for(var i = 0; i < platillos.length; i++) { %>
+                                <tr>
+                                <th scope="row"><%=(i+1)%></th>
+                                <td><%= platillos[i].nombre %></td>
+                                <td><%= platillos[i].precio %></td>
+                                <td><%= platillos[i].calificacion %></td>
                                 <td>
-                                  <form action="/administrar?_method=PUT" method="POST">
-                                    <input id="id" type="hidden" name="id" value="<%= platillo.id %>">
-                                    <input id="name" type="hidden" name="nombre" value="<%= platillo.nombre %>" />
-                                    <input id="value" type="hidden" name="precio" value="<%= platillo.precio %>" />
-                                    <input id="rang" type="hidden" name="calificacion" value="<%= platillo.calificacion %>" />
-                                    <input id="descripcion" type="hidden" name="descripcion" value="<%= platillo.descripcion %>" />
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <input id="edit" type="submit" name="editar" value="Edit" />
-                                  </form>
+                                  <a href="#" onclick="return cargar('<%= platillos[i].id %>','<%= platillos[i].nombre %>','<%= platillos[i].precio %>','<%= platillos[i].descripcion %>')">MODIFICAR</a>
                                 </td>
                               </tr>
-                              <% }); %>
+                              <% } %>
+                              
                             </tbody>
                           </table>
                         </div>
@@ -207,5 +230,6 @@
         </div>
       </div>
     </main>
+    <% } %>   
   </body>
 </html>

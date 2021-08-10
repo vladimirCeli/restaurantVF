@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('fragmentos/head'); %>
+
+    <body class=" bg-dark text-white" style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));">
+        <%- include('fragmentos/navbar'); %>
+            <div style="background-image: url('../assets/img/fondo.jpg')">
+                <section class=" u-align-center u-clearfix u-grey-10 u-section-1" id="carousel_4daf"
+                    style="background-image: url('../assets/img/fondo.jpg')">
+                    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                        <% if (user) { %>
+
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img class="avatar rounded-circle" style="height: 5rem;width: 5rem;"
+                                        src="https://www.placidsoftware.com/assets/images/user-img.png" alt="Bologna">
+                                    <h4 class="card-title">
+                                        <%= user.name %>
+                                            <%= user.surname %>
+                                    </h4>
+                                    <h6 class="card-subtitle mb-1 text-muted"
+                                        style="text-transform: lowercase; font-size: 1rem;">
+                                        <%= user.email %>
+                                    </h6>
+                                    <p class="card-text">
+                                        <%= user.phone %>
+                                    </p>
+                                    <a href="/menu" class="btn btn-black"><i class="fa fa-map"></i> Ir al menú</a>
+                                    <a href="/editar/<%=user._id%>" class="btn btn-black"><i class="fa fa-pencil" aria-hidden="true"></i> Modificar datos</a>
+                                    <a href="/carrito" class="btn btn-black"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carrito</a>
+                                    <!-- <a class="btn btn-black">Cambiar contraseña</a> -->
+                                    <!-- <a class="btn btn-black">Dar de baja</a> -->
+                                </div>
+                            </div>
+                           
+
+
+                </section>
+                <br> 
+            </div>
+            <% }else{%> 
+                <div class="card"> 
+                    <h4 class=" ">Parece que no has ingresado a tu cuenta: 
+                        <a href="/login">Accede.</a> o   
+                        <a href="/registrarse">Regístrate</a>
+                    </h4>
+                </div>                 
+            <% }%>
+            <footer class="footer footer-default">
+                <div class="container">
+                    <nav class="float-left">
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    Ir a la página principal
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Registrarse
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Licencia
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright float-right">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+                    </div>
+                </div>
+            </footer>
+
+    </body>
+
+</html>

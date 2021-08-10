@@ -7,10 +7,15 @@
       <div class="page-header"> 
         <div class="row ">
           <div class="col-lg-6 col-md-9 ml-auto mr-auto card card-login">
-            <div class="">
+            <div class="text-center">
               <form class="form" action="/registrarse" method="POST">
                 <div class="card-header col-md-6 mx-auto card-header-warning text-center">
-                  <h4 class="card-title">Registrarse</h4>
+                  <h4 class="card-title">Registrarse</h4>                
+<%if (signinMessage != null) {%>
+  <div class="bg-danger"><p ><%= signinMessage %></p></div> 
+<% } if (signupMessage  != null) {%>
+  <div class="bg-danger"><p><%= signupMessage %></p></div> 
+<% } %>
                 </div>
                 <div class="card-body px-0" style="margin-top: 30px;">
                   <div class="row d-flex mx-2">
@@ -96,11 +101,9 @@
                       </div>
                     </div>
                   </div> 
-                </div><div class="m-4" >
-                  
-                </div> 
+                </div><button class="btn text-center btn-success  btn-wd btn-lg col-md-4 mx-auto ">Registrarse</button><br>
             </div>
-            <button class="btn btn-success  btn-wd btn-lg col-md-4 mx-auto ">Registrarse</button><br>
+            
           </div>
           </form>
         </div>

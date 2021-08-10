@@ -13,7 +13,8 @@ const userSchema = new Schema({
   rol: Number,
   phone: String,
   dir: String,
-  cedula: String
+  cedula: String,
+  carrito:  [Array],
 
 });
 
