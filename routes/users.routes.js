@@ -51,7 +51,7 @@ router.post("/login", passport.authenticate("local-signin", {
 }));
 
 
-router.get("/pagar", renderPagar);
+router.get("/success", renderPagar);
   
 
 router.get('/logout', logout);

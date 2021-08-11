@@ -405,10 +405,7 @@
         
       <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
         <div class="row">
-          <a href="" ><button class="btn btn-lg  ">Administrar Menú</button></a>
-        <a href="" ><button class="btn btn-lg btn-success">Añadir un platillo</button></a>
-        <a href="" ><button class="btn btn-lg btn-warning">Editar Platillos</button></a>
-        <a href="" ><button class="btn btn-lg btn-rose">Eliminar Platillo</button></a> 
+        <a href="/administrar" ><button class="btn btn-lg  ">Administrar Menú</button></a> 
         <a href="/roles" ><button class="btn btn-lg btn-danger" >Ver Roles</button></a>
 
         </div>
@@ -424,13 +421,12 @@
      
       <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
         
-      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
+      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4> <a href="/editar/<%=user._id%>" ><i class="fa fa-pencil"></i> Editar Perfil</a>
+        <br>
         <div class="row">
-          <a href="" ><button class="btn btn-lg  ">Administrar Menú</button></a>
-        <a href="" ><button class="btn btn-lg btn-success">Añadir un platillo</button></a>
-        <a href="" ><button class="btn btn-lg btn-warning">Editar Platillos</button></a>
-        <a href="" ><button class="btn btn-lg btn-rose">Eliminar Platillo</button></a>
+        <a href="/administrar" ><button class="btn btn-lg btn-primary  ">Administrar Menú</button></a> 
         <a href="/roles" ><button class="btn btn-lg btn-danger" >Asignar Roles</button></a>
+        
         </div>
       
         <div class="copyright float-right text-white">

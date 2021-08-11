@@ -70,11 +70,11 @@
   
     <% } else if (user.rol == 3) { %> 
          
-        <div class="section card" style=" position: absolute;margin-top: -27%;">
-            <div class="container text-dark" style="margin-top: -6&;"> 
+        <div class="section card p-auto" style=" position: absolute;margin-top: -27%;">
+            <div class="col-12  " > 
                 <h3 class="mr-auto ">Asignación de Roles </h4>
                     <h4>Usuario: <b><%= user.name %> <%= user.surname %></b></h4>
-                    <div class="  bg-dark">
+                    <div class="  bg-dark" style=" height:555px; overflow: scroll;">
                       <nav class="bg-danger"> <h4 style=" " class="text-white"> Todos los Usuarios:</h4></nav>
                        <hr> <br>
                         <% for(var i=0;i<users.length;i++) { %> 
@@ -95,14 +95,13 @@
                      <% } %>  
             </div>
         </div><br>
-        <div class=" bg-dark">
+        <div class="text-center bg-dark">
             <h4 class="text-white">Otras acciones:</h4>
-         <button class="btn btn-lg  ">Administrar Menú</button>
-         <button class="btn btn-lg btn-success">Añadir un platillo</button>
-         <button class="btn btn-lg btn-warning">Editar Platillos</button>
-         <button class="btn btn-lg btn-rose">Eliminar Platillo</button>
+            <a href="/administrar" class="btn btn-success"><i class="fa fa-map"></i>Administrar Platillos</a>
+            <a href="/editar/<%=user._id%>" class="btn btn-rose"><i class="fa fa-pencil" aria-hidden="true"></i> Modificar perfil</a>
+            <a href="/carrito" class="btn btn-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i> Carrito</a>
         </div>
-          <div class="copyright float-right text-dark mr-auto">
+          <div class="text-center copyright float-right text-dark mx-auto">
             ©
             <script>
               document.write(new Date().getFullYear())
