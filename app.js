@@ -16,25 +16,12 @@ app.user
 require('./passport/local-auth')(passport);
 const https = require('https');
 // database//
-const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-mongoose.connect(URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
-  .then(db => console.log('base de datos conectada'))
-  .catch(err => console.log(err));
-
-app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection
-  }),
-  cookie: {
-    maxAge: 180 * 60 * 1000
-  }
-}));
+const URI='mongodb+srv://rubier:19jL34e7vWy4MHoI@cluster0.5xarr.mongodb.net/restaurant?retryWrites=true&w=majority'
+mongoose.connect( URI, {useUnifiedTopology: true,useNewUrlParser: true    
+})
+.then(db => console.log('base de datos conectada'))
+.catch(err => console.log(err));
+ 
 
 // Middelwares
 app.use(multer({
