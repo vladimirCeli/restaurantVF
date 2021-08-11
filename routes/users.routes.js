@@ -18,6 +18,7 @@ const {
   renderEditarPut,
   renderM,
   renderEditarPasswordPost, 
+  renderVerPago,
 } = require('../controllers/users.controllers');
 
 router.get("/editar/:id", renderEditar);
@@ -50,7 +51,7 @@ router.post("/login", passport.authenticate("local-signin", {
 }));
 
 
-
+router.get("/verpagos", renderVerPago);
   
 
 router.get('/logout', logout);

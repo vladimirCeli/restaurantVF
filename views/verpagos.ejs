@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include('fragmentos/head'); %> 
+  <body style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));">
+    
+     <% if (!user ) { %>
+        <div class="card">
+            <h3>Inicia Sesión!!!</h3>
+        </div>
+  <% } else if (user.rol == 2) { %> 
+    <%- include('fragmentos/navbar'); %> <hr>
+    <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
+        
+      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
+        <div class="row">
+        <a href="/administrar" ><button class="btn btn-lg  ">Administrar Menú</button></a> 
+        <a href="/roles" ><button class="btn btn-lg btn-danger" >Ver Roles</button></a>
+
+        </div>
+
+        <div class="copyright float-right text-white">
+          ©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+        </div>
+      </div> 
+    <%  } else if (user.rol == 3) { %> 
+        <%- include('fragmentos/navbar'); %> <hr>
+      
+<div class="col-12 pb-4">
+    <div class="card p-auto">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 overflow-auto" style="height: 300px;">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nro</th>
+                  <th scope="col">Id</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Fecha</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% for(var i = 0; i < pagos.length; i++) { %>
+                  <tr>
+                  <th scope="row"><%=(i+1)%></th>
+                  <td><%= pagos[i].id %></td>
+                  <td><%= pagos[i].total %></td>
+                  <td><%= pagos[i].estado %></td> 
+                  <td><%= pagos[i].updatedAt %></td>  
+                </tr>
+                <% } %>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
+      <% } %> 
+ </body>
+</html>
+

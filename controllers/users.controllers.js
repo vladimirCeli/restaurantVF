@@ -3,6 +3,7 @@ const {
 } = require("express");
 const usersCtrl = Router();
 const passport = require("passport");
+const pagos = require("../models/pagos");
 const users = require("../models/users");
 require("../passport/local-auth")(passport);
 
@@ -175,6 +176,17 @@ usersCtrl.editRoles = async (req, res, next) => {
 };
  
 
+
+
+module.exports = usersCtrl;
+//this function verify if user it's loggued
+function isLogged(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    return res.redirect('/');
+  }
+}
 usersCtrl.renderPagar = (req, res) => {
   res.render("success", { title: "Editar Perfil" });
   const {estado,total,id}=req.body; 
@@ -193,15 +205,27 @@ usersCtrl.renderPagar = (req, res) => {
 	  }
 	});
 };
+usersCtrl.renderVerPago = (req, res, next) => {
+  if (req.isAuthenticated()) { 
+    pagos.find({}, (error, pagos) => {
+      res.render('verpagos', {
+        pagos,
+        title: "Lista de Pagos Realizados",
+        sesion: false,
+        msg: {
+          error: req.flash('error'),
+          info: req.flash('info')
+        },
+      });
+    }).sort({
+      timestamp: -1
+    }); 
 
-module.exports = usersCtrl;
-//this function verify if user it's loggued
-function isLogged(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
   } else {
-    return res.redirect('/');
+    res.render("iniciosesion", {
+      title: "Accede"
+    });
+    // next();
   }
-}
-
+};
 module.exports = usersCtrl;
