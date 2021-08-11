@@ -50,11 +50,11 @@ app.use(multer({
 
 }).single('image'));
 
-// app.use(session({
-//   secret: 'restorantesession',
-//   resave: false,
-//   saveUnitialized: false
-// }));
+app.use(session({cookie: { maxAge: 60000 },
+  secret: 'restorantesession',
+  resave: false,
+  saveUnitialized: false
+ }));
 
 app.use(flash());
 app.use(methodOverride('_method'));
@@ -62,6 +62,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(
   function (req, res, next) {
+    res.locals.signinMessage = req.flash('signinMessage');
+    res.locals.signupMessage = req.flash('signupMessage');
     res.locals.user = req.user || null;
     res.locals.session = req.session;
     next();
@@ -73,19 +75,6 @@ app.use(
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection
-  }),
-  cookie: {
-    maxAge: 180 * 60 * 1000
-  }
-}));
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -95,7 +84,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(require('./routes/index'));
 app.use(require('./routes/menu.routes'));
-// app.use(require('./controllers/imagen.controllers'));
+app.use(require('./routes/imagen.routes'));
 app.use(require('./routes/platillo.routes'));
 app.use(require('./routes/users.routes'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -107,17 +96,19 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use((req, res, next) => {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
+  res.locals.sucess_msg =req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
+  next();
   res.status(err.status || 500);
   res.render('error');
 });
 
 module.exports = app;
+
 
 
 

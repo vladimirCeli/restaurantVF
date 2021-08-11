@@ -3,6 +3,7 @@ const {
 } = require("express");
 const usersCtrl = Router();
 const passport = require("passport");
+const pagos = require("../models/pagos");
 const users = require("../models/users");
 require("../passport/local-auth")(passport);
 
@@ -44,7 +45,6 @@ usersCtrl.ingresar = () => passport.authenticate("local-signin", {
 });
 
 usersCtrl.logout = (req, res, next) => {
-  req.session.destroy();
   req.logout();
   res.redirect("/login");
 };
@@ -116,6 +116,34 @@ usersCtrl.renderEditarPut = async (req, res) => {
   }
 };
 
+// usersCtrl.renderEditarPasswordPost = () => passport.authenticate("local-change-pass", {
+//   successRedirect: "/profile",
+//   failureRedirect: "/",
+//   failureFlash: true,
+// });
+
+// usersCtrl.renderEditarPasswordPost = async (req, res) => {
+//   const body = req.body;
+//   try {
+//     const user = await users.findOne({
+//       email: body.email
+//     });
+//     console.log(user, 'USER CHANGE PASS');
+//     await user.setPassword(body.password);
+//     await user.save();
+   
+//     res.json({
+//       estado: true,
+//       mensaje: 'Pass changed'
+//     })
+//   } catch (error) {
+//     console.log('error', error);
+//     res.json({
+//       estado: false,
+//       mensaje: 'No se completo la acción!!'
+//     })
+//   }
+// };
 
 usersCtrl.renderRoles = (req, res) => {
   users.find({}, (error, users) => {
@@ -146,10 +174,9 @@ usersCtrl.editRoles = async (req, res, next) => {
   await user.save();
   res.redirect('/roles');
 };
+ 
 
-usersCtrl.renderPagar = (req, res) => {
-  res.render("success", { title: "Compra Exitosa" });
-};
+
 
 module.exports = usersCtrl;
 //this function verify if user it's loggued
@@ -160,5 +187,45 @@ function isLogged(req, res, next) {
     return res.redirect('/');
   }
 }
+usersCtrl.renderPagar = (req, res) => {
+  res.render("success", { title: "Editar Perfil" });
+  const {estado,total,id}=req.body; 
+	new Pago({ 
+		id: id,
+		total: total,
+		estado: true,
+	}).save(function (err) { 
+	  if (!err) {
+		console.log("Pago guardado con éxito");
+		console.log(Platillo); 
+		res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
+	  } else {
+		console.log("Ha ocurrido un error ", err);
+		res.send("error ");
+	  }
+	});
+};
+usersCtrl.renderVerPago = (req, res, next) => {
+  if (req.isAuthenticated()) { 
+    pagos.find({}, (error, pagos) => {
+      res.render('verpagos', {
+        pagos,
+        title: "Lista de Pagos Realizados",
+        sesion: false,
+        msg: {
+          error: req.flash('error'),
+          info: req.flash('info')
+        },
+      });
+    }).sort({
+      timestamp: -1
+    }); 
 
+  } else {
+    res.render("iniciosesion", {
+      title: "Accede"
+    });
+    // next();
+  }
+};
 module.exports = usersCtrl;

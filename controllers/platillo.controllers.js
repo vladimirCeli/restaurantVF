@@ -2,8 +2,8 @@ const Platillo = require("../models/platillo");
 const { Router } = require("express");
 const { path } = require("../app");
 const { NotExtended } = require("http-errors");
+const flash = require('connect-flash');
 const platilloCtrl = Router();
-const {subirImagen} = require("./imagen.controllers");
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
@@ -34,7 +34,7 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
-    
+
     nombre: "",
     precio: "",
     descripcion: "",

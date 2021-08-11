@@ -42,8 +42,5 @@ module.exports = function Cart(oldCart) {
             arr.push(this.items[id]);
         }
         return arr;
-    }
-
-
-
+    }  
 }
