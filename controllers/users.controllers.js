@@ -4,6 +4,7 @@ const {
 const usersCtrl = Router();
 const passport = require("passport");
 const users = require("../models/users");
+const Cart = require("../models/cart");
 require("../passport/local-auth")(passport);
 
 usersCtrl.renderRegistrarse = (req, res, next) => {
@@ -44,6 +45,7 @@ usersCtrl.ingresar = () => passport.authenticate("local-signin", {
 });
 
 usersCtrl.logout = (req, res, next) => {
+  req.session.cart = {};
   req.logout();
   res.redirect("/login");
 };
@@ -130,7 +132,7 @@ usersCtrl.renderEditarPut = async (req, res) => {
 //     console.log(user, 'USER CHANGE PASS');
 //     await user.setPassword(body.password);
 //     await user.save();
-   
+
 //     res.json({
 //       estado: true,
 //       mensaje: 'Pass changed'

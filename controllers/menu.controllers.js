@@ -1,6 +1,7 @@
 const menuCtrl = {};
 const Platillo = require("../models/platillo");
-const Cart = require("../models/cart");;
+const Cart = require("../models/cart");
+const User = require("../models/users");
 
 menuCtrl.renderMenu = async (req, res) => {
   try {
@@ -15,18 +16,37 @@ menuCtrl.renderMenu = async (req, res) => {
 };
 
 menuCtrl.renderCarrito = (req, res) => {
-  if (!req.session.cart) {
-    return res.render("carrito", {
-      title: 'Carrito',
-      platillos: []
-    });
-  }
-  var cart = new Cart(req.session.cart);
+  var user = req.user || null;
+  console.log(user.carrito[0], 'CARRITO TO RENDER');
   res.render('carrito', {
     title: 'Carrito',
-    platillos: cart.generateArray(),
-    total: cart.total
+    platillos: generateArray(user.carrito[0].items),
+    total: user.carrito[0].total
   });
+
+
+  // if (!req.session.cart) {
+  //   return res.render("carrito", {
+  //     title: 'Carrito',
+  //     platillos: []
+  //   });
+  // }
+  // var cart = new Cart(req.session.cart);
+  // res.render('carrito', {
+  //   title: 'Carrito',
+  //   platillos: cart.generateArray(),
+  //   total: cart.total
+  // });
 };
+
+generateArray = function (cart) {
+  console.log(cart, 'cart en fuction');
+  var arr = [];
+  for (const p in cart) {
+    arr.push(cart[p]);
+  }
+  console.log(arr, 'array cart');
+  return arr;
+}
 
 module.exports = menuCtrl;
