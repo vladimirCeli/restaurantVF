@@ -50,11 +50,11 @@ app.use(multer({
 
 }).single('image'));
 
-// app.use(session({
-//   secret: 'restorantesession',
-//   resave: false,
-//   saveUnitialized: false
-// }));
+app.use(session({cookie: { maxAge: 60000 },
+  secret: 'restorantesession',
+  resave: false,
+  saveUnitialized: false
+ }));
 
 app.use(flash());
 app.use(methodOverride('_method'));

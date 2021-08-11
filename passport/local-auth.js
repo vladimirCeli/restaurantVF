@@ -32,6 +32,9 @@ module.exports = function (passport) {
     }
     if (req.body.password != req.body.password2) {
       return done(null, false, req.flash('signupMessage', 'Las contraseñas no coinciden'));
+    } 
+    if (req.body.email= "" ||" " ||"  "  ) {
+      return done(null, false, req.flash('signupMessage', 'Debes ingresar un correo electronico'));
     } else {
       const newUser = new User();
       newUser.name = req.body.name;

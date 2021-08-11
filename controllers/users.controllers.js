@@ -173,9 +173,25 @@ usersCtrl.editRoles = async (req, res, next) => {
   await user.save();
   res.redirect('/roles');
 };
+ 
 
 usersCtrl.renderPagar = (req, res) => {
-  res.render("tarjeta", { title: "Editar Perfil" });
+  res.render("success", { title: "Editar Perfil" });
+  const {estado,total,id}=req.body; 
+	new Pago({ 
+		id: id,
+		total: total,
+		estado: true,
+	}).save(function (err) { 
+	  if (!err) {
+		console.log("Pago guardado con éxito");
+		console.log(Platillo); 
+		res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
+	  } else {
+		console.log("Ha ocurrido un error ", err);
+		res.send("error ");
+	  }
+	});
 };
 
 module.exports = usersCtrl;

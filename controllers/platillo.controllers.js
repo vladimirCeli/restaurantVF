@@ -2,6 +2,7 @@ const Platillo = require("../models/platillo");
 const { Router } = require("express");
 const { path } = require("../app");
 const { NotExtended } = require("http-errors");
+const flash = require('connect-flash');
 const platilloCtrl = Router();
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
@@ -69,11 +70,11 @@ platilloCtrl.administrar = (req, res) => {
     estado: true,
   }).save(function (err) {
     //destruyendo session
-    req.session.destroy();
+   
     if (!err) {
       console.log("Platillo agregado con éxito");
-      console.log(Platillo);
-      res.send("Platillo agregado ");
+      console.log(Platillo); 
+      res.send(req.flash('success_msg', 'Platillo agregado con éxito')); req.session.destroy(); 
     } else {
       console.log("Ha ocurrido un error ", err);
       res.send("error ");
