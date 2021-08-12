@@ -44,7 +44,8 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
-  console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
+    console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
+  
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,

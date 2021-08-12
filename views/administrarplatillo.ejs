@@ -10,6 +10,7 @@
   </style>
   <script>
     function cargar(id,nombre,precio,descripcion) {
+      document.getElementById("_id").value = _id;
       document.getElementById("idnombre").value = nombre;
       document.getElementById("idprecio").value = precio;
       // document.getElementById("iddescripcion").textContent = descripcion;
@@ -211,7 +212,7 @@
                                 <td><%= platillos[i].precio %></td>
                                 <td><%= platillos[i].calificacion %></td>
                                 <td>
-                                  <a href="#" onclick="return cargar('<%= platillos[i].id %>','<%= platillos[i].nombre %>','<%= platillos[i].precio %>','<%= platillos[i].descripcion %>')">MODIFICAR</a>
+                                  <a href="#" onclick="return cargar('<%= platillos[i]._id %>','<%= platillos[i].nombre %>','<%= platillos[i].precio %>','<%= platillos[i].descripcion %>')">MODIFICAR</a>
                                 </td>
                               </tr>
                               <% } %>
