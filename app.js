@@ -67,7 +67,11 @@ app.use(
     next();
   });
 
-//Variables globales
+// Variables globales
+app.use((req,res,next)=>{
+  res.locals.error_msg= req.flash('error_msg');
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -98,6 +102,7 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // res.locals.error_msg= req.flash('error_msg');
 
   // render the error page
   res.status(err.status || 500);

@@ -2,6 +2,7 @@ const Platillo = require("../models/platillo");
 const { Router } = require("express");
 const { path } = require("../app");
 const { NotExtended } = require("http-errors");
+const { log } = require("debug");
 const platilloCtrl = Router();
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
@@ -52,33 +53,42 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     descripcion: "",
     buscar: "",
     imagenCap: req.session.imagen,
+    error_msg: req.session.error_msg,
   });
 };
 
-platilloCtrl.administrar = (req, res) => {
+platilloCtrl.administrar = async (req, res) => {
 
   const {nombre,descripcion,precio}=req.body;
-
-  new Platillo({
+  const existeNombre = await Platillo.findOne({nombre});
+  if (existeNombre) {
+    console.log("ya existe un platillo con el mismo nombre");
+    req.session.error_msg="ya existe un platillo con el mismo nombre";
+    req.flash("error_msg","El platillo ya existe");
+    res.redirect("/administrar");
+  } else {
+    new Platillo({
     
-    nombre: nombre,
-    descripcion: descripcion,
-    precio: precio,
-    url: "/uploads/" + req.session.imagen,
-    calificacion: 5,
-    estado: true,
-  }).save(function (err) {
-    //destruyendo session
-    req.session.destroy();
-    if (!err) {
-      console.log("Platillo agregado con éxito");
-      console.log(Platillo);
-      res.send("Platillo agregado ");
-    } else {
-      console.log("Ha ocurrido un error ", err);
-      res.send("error ");
-    }
-  });
+      nombre: nombre,
+      descripcion: descripcion,
+      precio: precio,
+      url: "/uploads/" + req.session.imagen,
+      calificacion: 5,
+      estado: true,
+    }).save(function (err) {
+      //destruyendo session
+      req.session.destroy();
+      if (!err) {
+        console.log("Platillo agregado con éxito");
+        console.log(Platillo);
+        // res.send("Platillo agregado ");
+        res.redirect("/administrar");
+      } else {
+        console.log("Ha ocurrido un error ", err);
+        res.redirect("/administrar");
+      }
+    });
+  }
 };
 
 

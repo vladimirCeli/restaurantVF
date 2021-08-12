@@ -30,6 +30,7 @@ module.exports = function (passport) {
     if (user) { //SI hay un usuario con ese correo show that
       return done(null, false, req.flash('signupMessage', 'El correo ya está resgistrado.'));
     }
+
     if (req.body.password != req.body.password2) {
       return done(null, false, req.flash('signupMessage', 'Las contraseñas no coinciden'));
     } else {
@@ -47,6 +48,8 @@ module.exports = function (passport) {
       done(null, newUser);
     }
   }));
+
+  
 
   passport.use('local-signin', new LocalStrategy({
     usernameField: 'email',
