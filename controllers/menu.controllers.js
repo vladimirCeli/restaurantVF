@@ -14,7 +14,9 @@ menuCtrl.renderMenu = async (req, res) => {
 	}
 };
 
-//ACI PAYMENT CHECKOUT
+/**
+  *ACI PAYMENT CHECKOUT
+  */  
 const https = require('https');
 const querystring = require('querystring');
 const request = async (total) => {  
@@ -55,7 +57,9 @@ const request = async (total) => {
 };
 
 
-
+/**
+  * Renderizado de carrito
+  */  
 menuCtrl.renderCarrito = (req, res) => {
 	if (!req.session.cart) {
 		return res.render("carrito", {
@@ -73,7 +77,9 @@ res.render('carrito', {
 });
 };
 
-
+/**
+  * renderizado de tarjeta + request ACI PAYMENT
+  */  
 menuCtrl.renderpago = (req, res) => {
 	request(req.session.cart.total).then(function (data) {
 		console.log(data.id)
@@ -85,6 +91,9 @@ menuCtrl.renderpago = (req, res) => {
 	}).catch(console.error);
 }
 
+/**
+  * Renderizado post pago, ventana de success + request ACI PAY
+  */  
 menuCtrl.renderpagar = (req, res) => {
 	request(req.session.cart.total).then(function (data) {
 		console.log(data.id)
@@ -105,24 +114,6 @@ menuCtrl.renderpagar = (req, res) => {
 	}).catch(console.error);
 	
 	res.render("success", { title: "Pago Exitoso" });  
-  };
-
-menuCtrl.guardarpago = (req, res) => { 
-	const {estado,total,id}=req.body; 
-	new Pago({ 
-		id: id,
-		total: total,
-		estado: true,
-	}).save(function (err) { 
-	  if (!err) {
-		console.log("Pago guardado con éxito");
-		console.log(Platillo); 
-		res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
-	  } else {
-		console.log("Ha ocurrido un error ", err);
-		res.send("error ");
-	  }
-	});
-  };
+  }; 
 
 module.exports = menuCtrl;

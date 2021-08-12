@@ -5,6 +5,9 @@ const { NotExtended } = require("http-errors");
 const flash = require('connect-flash');
 const platilloCtrl = Router();
 
+/**
+  * Función listar platillos
+  */ 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
   const { id, nombre, precio, descripcion } = req.body;
@@ -20,6 +23,9 @@ platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   });
 };
 
+/**
+  * Función buscar platillo
+  */ 
 platilloCtrl.buscarPlatillo = async (req, res) => {
   const { buscar } = req.body;
   // String cadena = ;
@@ -42,6 +48,9 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   });
 };
 
+/**
+  * renderizado administrar platillo 
+  */ 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
   console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
@@ -56,12 +65,12 @@ platilloCtrl.renderAdministrar = async (req, res) => {
   });
 };
 
-platilloCtrl.administrar = (req, res) => {
-
-  const {nombre,descripcion,precio}=req.body;
-
-  new Platillo({
-    
+/**
+  * Post nuevo platillo
+  */ 
+platilloCtrl.administrar = (req, res) => { 
+  const {nombre,descripcion,precio}=req.body; 
+  new Platillo({ 
     nombre: nombre,
     descripcion: descripcion,
     precio: precio,
@@ -69,12 +78,13 @@ platilloCtrl.administrar = (req, res) => {
     calificacion: 5,
     estado: true,
   }).save(function (err) {
-    //destruyendo session
    
     if (!err) {
       console.log("Platillo agregado con éxito");
       console.log(Platillo); 
-      res.send(req.flash('success_msg', 'Platillo agregado con éxito')); req.session.destroy(); 
+      res.send(req.flash('success_msg', 'Platillo agregado con éxito')); 
+       //destruyendo session
+        req.session.destroy(); 
     } else {
       console.log("Ha ocurrido un error ", err);
       res.send("error ");

@@ -6,7 +6,9 @@ const passport = require("passport");
 const pagos = require("../models/pagos");
 const users = require("../models/users");
 require("../passport/local-auth")(passport);
-
+/**
+  * Renderizado registrarse 
+  */
 usersCtrl.renderRegistrarse = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.render("index", {
@@ -19,12 +21,20 @@ usersCtrl.renderRegistrarse = (req, res, next) => {
   }
 };
 
+
+/**
+  * Función Post Registrarse, llamando a passport
+  */ 
 usersCtrl.registrarse = () => passport.authenticate("local-signup", {
   successRedirect: "/",
   failureRedirect: "/registrarse",
   failureFlash: true,
 });
 
+
+/**
+  * Renderizado Login
+  */ 
 usersCtrl.renderIngresar = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.render("index", {
@@ -38,18 +48,29 @@ usersCtrl.renderIngresar = (req, res, next) => {
   }
 };
 
+
+/**
+  * Función para iniciar sesión llamando a passport
+  */ 
 usersCtrl.ingresar = () => passport.authenticate("local-signin", {
   successRedirect: "/",
   failureRedirect: "/login",
   failureFlash: true,
 });
 
+
+/**
+  * función de cerrar sesión
+  */ 
 usersCtrl.logout = (req, res, next) => {
   req.logout();
   res.redirect("/login");
 };
 
-//render to profile
+
+/**
+  * Renderizado perfil
+  */ 
 usersCtrl.renderProfile = (req, res) => {
   try {
     res.render('profile', {
@@ -65,7 +86,10 @@ usersCtrl.renderProfile = (req, res) => {
   }
 };
 
-//all edit user here
+
+/**
+  * Post editar perfil
+  */ 
 usersCtrl.renderEditar = async (req, res) => {
   try {
     const existUser = await users.findOne({
@@ -86,12 +110,20 @@ usersCtrl.renderEditar = async (req, res) => {
   }
 };
 
+
+/**
+  * Renderizado editar perfil
+  */ 
 usersCtrl.renderM = (req, res) => {
   res.render('editarp', {
     title: 'nuevo'
   });
 };
 
+
+/**
+  *  función para hacer put dentro de la vista administrar platillo, para proceder a editar
+  */ 
 usersCtrl.renderEditarPut = async (req, res) => {
   const id = req.params.id
   const body = req.body
@@ -145,6 +177,9 @@ usersCtrl.renderEditarPut = async (req, res) => {
 //   }
 // };
 
+/**
+  * Renderizado editar roles  
+  */ 
 usersCtrl.renderRoles = (req, res) => {
   users.find({}, (error, users) => {
     res.render('asigroles', {
@@ -160,8 +195,12 @@ usersCtrl.renderRoles = (req, res) => {
     timestamp: -1
   });
 };
-usersCtrl.editRoles = async (req, res, next) => {
 
+
+/**
+  * post editar roles 
+  */ 
+usersCtrl.editRoles = async (req, res, next) => {
   let {
     id
   } = req.params;
@@ -179,7 +218,9 @@ usersCtrl.editRoles = async (req, res, next) => {
 
 
 module.exports = usersCtrl;
-//this function verify if user it's loggued
+/**
+  * Esta finción verifica si un usuario está loggeado
+  */ 
 function isLogged(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -187,6 +228,9 @@ function isLogged(req, res, next) {
     return res.redirect('/');
   }
 }
+/**
+  * Renderizado post pago
+  */ 
 usersCtrl.renderPagar = (req, res) => {
   res.render("success", { title: "Editar Perfil" });
   const {estado,total,id}=req.body; 
@@ -205,6 +249,10 @@ usersCtrl.renderPagar = (req, res) => {
 	  }
 	});
 };
+
+/**
+  * Renderizado lista de pagos
+  */ 
 usersCtrl.renderVerPago = (req, res, next) => {
   if (req.isAuthenticated()) { 
     pagos.find({}, (error, pagos) => {

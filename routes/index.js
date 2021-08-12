@@ -5,13 +5,18 @@ const Cart = require("../models/cart");
 const Platillo = require("../models/platillo");
 var router = Router();
  
-
+/**
+  * Renderizado vista principal
+  */ 
 router.get("/", function (req, res, next) {
   res.render("index", {
     title: "Bienvenido a La Place"
   });
 });
 
+/**
+  * Añadir al carrito 
+  */ 
 router.get('/add-to-cart/:id', function (req, res) {
   var pId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -27,7 +32,9 @@ router.get('/add-to-cart/:id', function (req, res) {
   });
 });
 
-
+/**
+  * Borrar del carrito 
+  */ 
 router.get('/delete-to-cart/:id', function (req, res, next) {
   var prodId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -36,6 +43,10 @@ router.get('/delete-to-cart/:id', function (req, res, next) {
   res.redirect('/carrito');
 });
 
+
+/**
+  * Borrar sesión de carrito 
+  */ 
 router.get('/delete-all-cart/:id', function (req, res, next) {
   var prodId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
