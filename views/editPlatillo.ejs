@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+  </head>
+  <body
+    style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));"
+  >
+    
+    <main class="container d-flex align-items-center justify-content-center">
+      <div class="row border rounded">
+        <div class="col-12 col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    
+                    <div class="col-12 col-sm-6 col-md-6">
+                      <h5>Editar platillo<i class="fa fa-cutlery" aria-hidden="true"></i>
+                      </h4>
+                      
+                    </div>
+                  </div>
+                </div>
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                  <div class="input-group ">
+                      <div class=" ">
+                          <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                          <label class="  btn" style="background-color: black;" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02"><i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            Elegir Imagen</label>
+                      </div>
+                  </div>
+                 
+                  <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
+                      <button type="submit" class="btn btn-success btn-block">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        Subir Imagen
+                      </button>
+                  </div>
+              </form>
+              <div class="col-12 col-sm-6 col-md-6 mx-auto">
+                <% if(typeof imagenCap == 'undefined'){ %>
+                  <img
+                  src="../assets/img/face.jpg"
+                  class="img-thumbnail"
+                  alt="imagen"
+                />
+                <% }else{ %> 
+                  <img
+                  src="<%=platillo.url %>"
+                  class="img-thumbnail"
+                  alt="imagen"
+                />
+                <% } %> 
+                
+              </div>
+                <form  id="formulario2" class="form mx-auto" action="/administrar/edit/<%= platillo.id %>?_method=PUT" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                  <div class="form-group"><input id="editaridnombre" type="text" name="nombre"  placeholder="Nombre del Platillo" class="form-control" value="<%= platillo.nombre %>" required></div>
+                 <div class="form-group">
+                  <input id="editaridprecio" type="text" name="precio"  placeholder="Precio" class="form-control" value="<%= platillo.precio %>" required>
+                 </div>
+                  <div class="form-group">
+                      <textarea id="editariddescripcion" name="descripcion" placeholder="Descripción" class="form-control" required><%= platillo.descripcion %></textarea>
+                  </div>                  
+
+                  <div class="togglebutton">
+                    <label >
+                      <input type="checkbox" checked>
+                      <span class="toggle">
+                       
+                      </span>
+                      Estado del platillo
+                    </label>
+                  </div>
+
+                  <div class="col-12 mt-2">
+                    <div class="row">
+                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto">
+                        <button                                                  
+                          class="py-3 px-2 w-100 btn btn-outline-secondary"
+                          onclick= "formulario1.submit()"  
+                        >
+                          <div class="mx-auto">Nuevo <i class="fa fa-plus-square" aria-hidden="true"></i>
+                          </div>
+                        </button>
+                      </div>
+                      
+                    </form>
+                      
+                      
+                      
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        
+     
+    </main>      
+  </body>
+</html>

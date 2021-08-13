@@ -4,6 +4,7 @@ const { path } = require("../app");
 const { NotExtended } = require("http-errors");
 const flash = require('connect-flash');
 const platilloCtrl = Router();
+const mongoose = require('mongoose');
 
 platilloCtrl.cargarDatosPlatillo = async (req, res) => {
   const platillos = await Platillo.find().lean();
@@ -56,6 +57,36 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     imagenCap: req.session.imagen,
   });
 };
+platilloCtrl.renderPlatillo = async (req, res) => {
+  //res.send("editar");
+  //let {
+  //  id
+  //} = req.params;
+  console.log("id : "+  req.params.id)
+  try {
+    
+    const platillo = await Platillo.findById(req.params.id);
+  
+    
+    res.render('editPlatillo', {platillo,
+      title: "Editar platillo"
+    });
+    
+  } catch (error) {
+    res.send("error");
+    console.log('error', error);
+  }
+  //res.send("/administrar/editPlatillo");
+  //res.render("administrarplatillo", {
+    //title: "Administrar",
+    //platillos,
+    //nombre: "",
+    //precio: "",
+    //descripcion: "",
+    //buscar: "",
+    //imagenCap: req.session.imagen,
+//});
+};
 
 platilloCtrl.administrar = async(req, res) => {
   
@@ -87,6 +118,21 @@ platilloCtrl.administrar = async(req, res) => {
   
 };
 
+platilloCtrl.actualizarPlatillo = async(req, res) => {
+    console.log("id : "+  req.params.id)  
+    const {nombre, precio, descripcion } = req.body;
+    await Platillo.findByIdAndUpdate(req.params.id,{nombre, precio, descripcion})
+    res.render("administrarplatillo", {
+      title: "Administrar",
+      platillos,
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      buscar: "",
+      imagenCap: req.session.imagen,
+    });
+  
+};
 
 
 module.exports = platilloCtrl;
