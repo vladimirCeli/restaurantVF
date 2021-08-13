@@ -40,12 +40,10 @@ menuCtrl.renderCarrito = (req, res) => {
 };
 
 generateArray = function (cart) {
-  console.log(cart, 'cart en fuction');
   var arr = [];
   for (const p in cart) {
     arr.push(cart[p]);
   }
-  console.log(arr, 'array cart');
   return arr;
 }
 

@@ -14,16 +14,16 @@ router.get("/", function (req, res, next) {
 
 router.get('/add-to-cart/:id', function (req, res) {
   var pId = req.params.id;
-  var cart = new Cart(req.session.cart ? req.session.cart : {});
-  console.log(req.session.cart, 'req.session.cart');
+  var user = req.user || null;
+  var cart = new Cart(user.carrito[0]);
+  console.log(cart, 'req.session.cart');
   Platillo.findById(pId, function (err, platillo) {
     if (err) {
       return res.redirect('/menu');
     }
     cart.add(platillo, platillo.id);
     req.session.cart = cart;
-    var user = req.user || null;
-    console.log(user, 'sesion de usuario');
+    
     var body = {
       carrito: cart
     }
@@ -33,7 +33,6 @@ router.get('/add-to-cart/:id', function (req, res) {
 });
 
 async function editUser(user, body) {
-  console.log(user, body, 'user y body');
   try {
     const usuarioActualizado = await User.findByIdAndUpdate(user._id, body, {
       useFindAndModify: false
@@ -48,11 +47,10 @@ async function editUser(user, body) {
 
 router.get('/delete-to-cart/:id', function (req, res, next) {
   var prodId = req.params.id;
-  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  var user = req.user || null;
+  var cart = new Cart(user.carrito[0]);
   cart.decrease(prodId);
   req.session.cart = cart;
-  var user = req.user || null;
-  console.log(user, 'sesion de usuario');
   var body = {
     carrito: cart
   }
@@ -62,11 +60,10 @@ router.get('/delete-to-cart/:id', function (req, res, next) {
 
 router.get('/delete-all-cart/:id', function (req, res, next) {
   var prodId = req.params.id;
-  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  var user = req.user || null;
+  var cart = new Cart(user.carrito[0]);
   cart.delete(prodId);
   req.session.cart = cart;
-  var user = req.user || null;
-  console.log(user, 'sesion de usuario');
   var body = {
     carrito: cart
   }
@@ -75,12 +72,10 @@ router.get('/delete-all-cart/:id', function (req, res, next) {
 });
 
 generateArray = function (cart) {
-  console.log(cart, 'cart en fuction');
   var arr = [];
   for (const p in cart) {
     arr.push(cart[p]);
   }
-  console.log(arr, 'array cart');
   return arr;
 }
 
