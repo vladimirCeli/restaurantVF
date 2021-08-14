@@ -31,6 +31,21 @@
     <!--
     <%- include('fragmentos/navbar'); %>
     -->
+    <% if (success_msg.length >0 ){ %>
+      <div class="alert alert-succes alert-dismissible fade show " role="alert">
+        <div class="container mx-auto" style="position: absolute;text-align: center;">  
+          <div class="container " style="position: absolute;margin-top: 5%; text-align: center;"> <p class="alert alert-danger text-center ">
+            <span aria-hidden="true">&times;</span>
+            <%= success_msg %></p> </div> </div>  
+        
+      </div>
+      
+       <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+       </button>
+      
+      
+      <% } %> 
     <div class="wcontainer"></div>
     <main class="container d-flex align-items-center justify-content-center">
       <div class="row border rounded">
@@ -117,21 +132,7 @@
                           </div>
                         </button>
                       </div>
-                      <div class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto" >
-                        <button
-                          id="guardar"                           
-                          class="py-3 px-2 w-100 btn btn-outline-secondary"
-                          
-                          onclick= "document.formulario1.action ='/actualizarPlatillo';
-                          document.formulario1.submit()
-                          "                       
-                        >
-                          <div class="mx-auto"><i class="fa fa-pencil" aria-hidden="true"></i>
-                             Guardar</div>
-                        </button>
-
-                        
-                      </div>
+                      
                     </form>
                       <div
                         class="col-12 col-sm-6 col-md-3 col-lg-6 mx-auto d-flex"

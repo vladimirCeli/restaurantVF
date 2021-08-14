@@ -69,7 +69,8 @@ platilloCtrl.renderPlatillo = async (req, res) => {
   
     
     res.render('editPlatillo', {platillo,
-      title: "Editar platillo"
+      title: "Editar platillo",
+      imagenCap: req.session.imagen,
     });
     
   } catch (error) {
@@ -89,13 +90,11 @@ platilloCtrl.renderPlatillo = async (req, res) => {
 };
 
 platilloCtrl.administrar = async(req, res) => {
-  
-  if(req.body.id == ""){
-    new Platillo({
+      new Platillo({
       nombre: req.body.nombre,
       descripcion: req.body.descripcion,
       precio: req.body.precio,
-      url: "/uploads/"+ req.body.nombre+".jpg",
+      url: "/uploads/"+  req.session.imagen,
       calificacion: 5,
       estado: true,
     }).save(function (err) {
@@ -108,29 +107,20 @@ platilloCtrl.administrar = async(req, res) => {
         res.send("error");
       }
     });    
-  }else{
-    const {id,nombre,precio,descripcion} = req.body;
-    alert(nombre + "Es el nombre ");
-    await Platillo.findByIdAndUpdate(req.body.id,{nombre,precio,descripcion});
-    alert("Se actualizo el platillo seleccionado");
-    res.send("Actualizado");
-  }
+  
   
 };
 
 platilloCtrl.actualizarPlatillo = async(req, res) => {
+    const url = "/uploads/"+  req.session.imagen;
     console.log("id : "+  req.params.id)  
     const {nombre, precio, descripcion } = req.body;
-    await Platillo.findByIdAndUpdate(req.params.id,{nombre, precio, descripcion})
-    res.render("administrarplatillo", {
-      title: "Administrar",
-      platillos,
-      nombre: "",
-      precio: "",
-      descripcion: "",
-      buscar: "",
-      imagenCap: req.session.imagen,
-    });
+    await Platillo.findByIdAndUpdate(req.params.id,{nombre, precio, descripcion,url})
+    req.flash('success_msg','Se ha actualizado un platillo')
+    res.redirect('/administrar',{
+      imagenCap:''
+    }
+    );
   
 };
 
