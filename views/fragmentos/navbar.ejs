@@ -1,7 +1,17 @@
 <!-- Navbar -->
 
 <nav class=" navbar bg-dark  navbar-expand-lg  fixed-top" color-on-scroll="300" style="  opacity: 0.96">
+  
+   
+    
   <div class="container ">
+    <%if (signinMessage.length >0) {%>
+      <div class="container mx-auto" style="position: absolute;text-align: center;">    
+      <div class="container " style="position: absolute;margin-top: 5%; text-align: center;"> <p class="alert alert-danger text-center "><%= signinMessage %></p> </div> </div>
+    <% } if (signupMessage.length >0) {%>
+      <div class="container mx-auto" style="position: absolute;text-align: center;">    
+        <div class="container " style="position: absolute;margin-top: 5%; text-align: center;"> <p class="alert alert-danger text-center "><%= signupMessage %></p> </div> </div>      
+    <% } %>
     <div class="navbar-translate">
       <a class="navbar-brand" href="/" rel="tooltip" title="Index" data-placement="bottom" target="">
         <img style="width: 18%" src="./assets/img/logo.png" class="img-fluid">
@@ -15,8 +25,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-    <div class=" collapse navbar-collapse  justify-content-end " id="navigation">
-
+    <div class=" collapse navbar-collapse  justify-content-end " id="navigation"> 
+      
       <% if (!user) { %>
 
         <ul class="navbar-nav ml-auto">
@@ -106,7 +116,7 @@
                   </ul>
                   <% } %>
                     <% } %>
- 
+                    
 
 
     </div>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<%- include('fragmentos/head'); %>
+
+  <body style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10));">
+
+    <% if (!user ) { %>
+      <div class="card">
+        <h3>Inicia Sesión!!!</h3>
+      </div>
+      <% } if (user.rol==1) { %>
+        <%- include('fragmentos/navbar'); %>
+          <hr>
+
+          <div class="container col-12 pb-4  mx-auto" style=" position: absolute;margin-top: 10%;">
+            <div class="card p-auto col-md-8  mx-auto">
+              <div class="card-body  mx-auto">
+                <div class="row">
+                  <div class="col-12 overflow-auto" style="height: 300px;">
+                    <h4>No tienes permisos para ingresar a este apartado!</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center bg-dark">
+              <h4 class="text-white">Otras acciones:</h4>
+              <a href="/administrar" class="btn btn-success"><i class="fa fa-map"></i> Administrar Platillos</a>
+              <a href="/roles" class="btn btn-rose"><i class="fa fa-pencil" aria-hidden="true"></i> Administrar
+                Roles</a>
+            </div>
+            <div class="text-center copyright float-right text-dark mx-auto">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+            </div>
+          </div>
+
+          <% } else if (user.rol==2) { %>
+            <%- include('fragmentos/navbar'); %>
+              <hr>
+
+              <div class="container col-12 pb-4  mx-auto" style=" position: absolute;margin-top: 8%;">
+                <div class="card p-auto col-md-8  mx-auto">
+                  <div class="card-body  mx-auto">
+                    <div class="row">
+
+                      <h4>Lista de pagos realizados</h4>
+                      <div class="col-12 overflow-auto" style="height: 300px;">
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col"> </th>
+                              <th scope="col">Id</th>
+                              <th scope="col">Monto</th>
+                              <th scope="col">Estado</th>
+                              <th scope="col">Fecha</th>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% for(var i=0; i < pagos.length; i++) { %>
+                              <tr>
+                                <th scope="row">
+                                  <%=(i+1)%>
+                                </th>
+                                <td>
+                                  <%= pagos[i].id %>
+                                </td>
+                                <td>
+                                  <%= pagos[i].total %>
+                                </td>
+                                <td>
+                                  <%= pagos[i].estado %>
+                                </td>
+                                <td>
+                                  <%= pagos[i].updatedAt %>
+                                </td>
+                              </tr>
+                              <% } %>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center bg-dark">
+                  <h4 class="text-white">Otras acciones:</h4>
+                  <a href="/administrar" class="btn btn-success"><i class="fa fa-map"></i> Administrar Platillos</a>
+                  <a href="/roles" class="btn btn-rose"><i class="fa fa-pencil" aria-hidden="true"></i> Administrar
+                    Roles</a>
+                </div>
+                <div class="text-center copyright float-right text-dark mx-auto">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear())
+                  </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+                </div>
+              </div>
+
+              <% } else if (user.rol==3) { %>
+                <%- include('fragmentos/navbar'); %>
+                  <hr>
+
+                  <div class="container col-12 pb-4  mx-auto" style=" position: absolute;margin-top: 8%;">
+                    <div class="card p-auto col-md-8  mx-auto">
+                      <div class="card-body  mx-auto">
+                        <div class="row">
+                          <h4>Lista de pagos realizados</h4>
+                          <div class="col-12 overflow-auto" style="height: 300px;">
+
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col"> </th>
+                                  <th scope="col">Id</th>
+                                  <th scope="col">Monto</th>
+                                  <th scope="col">Estado</th>
+                                  <th scope="col">Fecha</th>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <% for(var i=0; i < pagos.length; i++) { %>
+                                  <tr>
+                                    <th scope="row">
+                                      <%=(i+1)%>
+                                    </th>
+                                    <td>
+                                      <%= pagos[i].id %>
+                                    </td>
+                                    <td>
+                                      <%= pagos[i].total %>
+                                    </td>
+                                    <td>
+                                      <%= pagos[i].estado %>
+                                    </td>
+                                    <td>
+                                      <%= pagos[i].updatedAt %>
+                                    </td>
+                                  </tr>
+                                  <% } %>
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center bg-dark">
+                      <h4 class="text-white">Otras acciones:</h4>
+                      <a href="/administrar" class="btn btn-success"><i class="fa fa-map"></i> Administrar Platillos</a>
+                      <a href="/roles" class="btn btn-rose"><i class="fa fa-pencil" aria-hidden="true"></i> Administrar
+                        Roles</a>
+                    </div>
+                    <div class="text-center copyright float-right text-dark mx-auto">
+                      ©
+                      <script>
+                        document.write(new Date().getFullYear())
+                      </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
+                    </div>
+                  </div>
+
+                  <% } %>
+  </body>
+
+</html>

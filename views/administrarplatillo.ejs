@@ -19,6 +19,14 @@
   <body
     style="background: linear-gradient(90deg, rgb(14, 0, 3), rgb(51, 18, 10))"
   >
+  <% if (!user ){ %>
+    <%- include('fragmentos/navbar'); %>
+ 
+    <div class="card" style="margin-top: 15%;"> <h4>No tienes permitido ingresar a esta dirección <a href="/registrarse">Regístrate</a></h4></div>
+    <% } else if (user.rol == 1) { %>
+      <div class="card" style="margin-top: 15%;"> <h4>No tienes permitido ingresar a esta dirección</h4></div>
+      <% } else if (user.rol == 2||user.rol == 3) { %>  
+         
     <!--
     <%- include('fragmentos/navbar'); %>
     -->
@@ -224,5 +232,6 @@
         </div>
       </div>
     </main>
+    <% } %>   
   </body>
 </html>

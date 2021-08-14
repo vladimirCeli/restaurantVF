@@ -5,13 +5,17 @@ const multer = require('multer');
 
 ////////////////////////////////
 
- 
+ /**
+  * CArgar imagen con MULTER
+  */ 
 const uploadImage = multer({
     storage,
     limits: {fileSize: 1000000}
 }).single('image');
 
- 
+ /**
+  * Subir imagen con MULTER
+  */ 
 router.post('/upload', (req, res) => {
     uploadImage(req, res, (err) => {
         if (err) {

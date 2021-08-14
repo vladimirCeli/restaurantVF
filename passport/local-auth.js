@@ -12,6 +12,9 @@ module.exports = function (passport) {
     done(null, user);
   });
 
+/**
+  * Registro con el metodo local con passport
+  */  
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -33,7 +36,7 @@ module.exports = function (passport) {
 
     if (req.body.password != req.body.password2) {
       return done(null, false, req.flash('signupMessage', 'Las contraseñas no coinciden'));
-    } else {
+    }    else {
       const newUser = new User();
       newUser.name = req.body.name;
       newUser.surname = req.body.surname;
@@ -49,8 +52,9 @@ module.exports = function (passport) {
     }
   }));
 
-  
-
+  /**
+  * Login con el metodo local con passport
+  */ 
   passport.use('local-signin', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -68,6 +72,9 @@ module.exports = function (passport) {
     return done(null, user);
   }));
 
+  /**
+  * cambiar contraseña con el metodo local con passport
+  */ 
   passport.use('local-change-pass', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
