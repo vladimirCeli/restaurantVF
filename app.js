@@ -64,16 +64,13 @@ app.use(
   function (req, res, next) {
     res.locals.signinMessage = req.flash('signinMessage');
     res.locals.signupMessage = req.flash('signupMessage');
+    res.locals.success_msg = req.flash('success_msg');
     res.locals.user = req.user || null;
     res.locals.session = req.session;
     next();
   });
 
-// Variables globales
-app.use((req,res,next)=>{
-  res.locals.error_msg= req.flash('error_msg');
-  next();
-});
+//Variables globales
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

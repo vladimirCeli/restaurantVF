@@ -6,8 +6,7 @@ const platilloSchema = new Schema({
   
   nombre:{
     type: String,
-    requered: true,
-    unique: true,
+    requered: true  
   },
   descripcion:{
     type: String,

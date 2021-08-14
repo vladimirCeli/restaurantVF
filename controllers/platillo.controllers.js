@@ -5,6 +5,7 @@ const { NotExtended } = require("http-errors");
 // const { log } = require("debug");
 // const flash = require('connect-flash');
 const platilloCtrl = Router();
+const mongoose = require('mongoose');
 
 /**
   * Función listar platillos
@@ -54,7 +55,8 @@ platilloCtrl.buscarPlatillo = async (req, res) => {
   */ 
 platilloCtrl.renderAdministrar = async (req, res) => {
   const platillos = await Platillo.find().lean();
-  console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
+    console.log("render adminnistrar =============",req.session.imagen,"la imagen es indefinida?:",(req.session.imagen===undefined));
+  
   res.render("administrarplatillo", {
     title: "Administrar",
     platillos,
@@ -63,44 +65,69 @@ platilloCtrl.renderAdministrar = async (req, res) => {
     descripcion: "",
     buscar: "",
     imagenCap: req.session.imagen,
-    error_msg: req.session.error_msg,
   });
 };
-
-platilloCtrl.administrar = async (req, res) => {
-
-  const {nombre,descripcion,precio}=req.body;
-  const existeNombre = await Platillo.findOne({nombre});
-  if (existeNombre) {
-    console.log("ya existe un platillo con el mismo nombre");
-    req.session.error_msg="ya existe un platillo con el mismo nombre";
-    req.flash("error_msg","El platillo ya existe");
-    res.redirect("/administrar");
-  } else {
-    new Platillo({
+platilloCtrl.renderPlatillo = async (req, res) => {
+  //res.send("editar");
+  //let {
+  //  id
+  //} = req.params;
+  console.log("id : "+  req.params.id)
+  try {
     
-      nombre: nombre,
-      descripcion: descripcion,
-      precio: precio,
-      url: "/uploads/" + req.session.imagen,
+    const platillo = await Platillo.findById(req.params.id);
+  
+    
+    res.render('editPlatillo', {platillo,
+      title: "Editar platillo",
+      imagenCap: req.session.imagen,
+    });
+    
+  } catch (error) {
+    res.send("error");
+    console.log('error', error);
+  }
+  //res.send("/administrar/editPlatillo");
+  //res.render("administrarplatillo", {
+    //title: "Administrar",
+    //platillos,
+    //nombre: "",
+    //precio: "",
+    //descripcion: "",
+    //buscar: "",
+    //imagenCap: req.session.imagen,
+//});
+};
+
+platilloCtrl.administrar = async(req, res) => {
+      new Platillo({
+      nombre: req.body.nombre,
+      descripcion: req.body.descripcion,
+      precio: req.body.precio,
+      url: "/uploads/"+  req.session.imagen,
       calificacion: 5,
       estado: true,
     }).save(function (err) {
-      //destruyendo session
-      req.session.destroy();
       if (!err) {
         console.log("Platillo agregado con éxito");
         console.log(Platillo);
-        // res.send("Platillo agregado ");
-        res.redirect("/administrar");
+        res.send("Platillo agregado");
       } else {
-        console.log("Ha ocurrido un error ", err);
-        res.redirect("/administrar");
+        console.log("Ha ocurrido un error", err);
+        res.send("error");
       }
     });
-  }
-};
+  };
 
+platilloCtrl.actualizarPlatillo = async(req, res) => {
+    const url = "/uploads/"+  req.session.imagen;
+    console.log("id : "+  req.params.id)  
+    const {nombre, precio, descripcion } = req.body;
+    await Platillo.findByIdAndUpdate(req.params.id,{nombre, precio, descripcion,url})
+    req.flash('success_msg','Se ha actualizado un platillo')
+    res.redirect('/administrar');
+  
+};
 
 
 module.exports = platilloCtrl;
