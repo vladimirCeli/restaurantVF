@@ -6,6 +6,7 @@ const passport = require("passport");
 const users = require("../models/users");
 const Cart = require("../models/cart");
 require("../passport/local-auth")(passport);
+const bcrypt = require('bcrypt-nodejs');
 
 usersCtrl.renderRegistrarse = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -55,12 +56,14 @@ usersCtrl.renderProfile = (req, res) => {
   try {
     res.render('profile', {
       user: req.user,
-      title: 'Perfil'
+      title: 'Perfil',
+      msgOK: req.flash('msgOK'),
+      msg: req.flash('msg')
     });
   } catch (error) {
     res.render("/", {
       error: true,
-      msg: 'Datos no válidos'
+      // msg: 'Datos no válidos'
     });
     console.log('error', error);
   }
@@ -72,11 +75,11 @@ usersCtrl.renderEditar = async (req, res) => {
     const existUser = await users.findOne({
       _id: req.params.id
     });
-    console.log(existUser, 'USER OK');
     res.render("editarp", {
       user: existUser,
       error: false,
-      title: 'Editar'
+      title: 'Editar',
+      msg: req.flash('msg')
     });
   } catch (error) {
     res.render("profile", {
@@ -96,20 +99,16 @@ usersCtrl.renderM = (req, res) => {
 usersCtrl.renderEditarPut = async (req, res) => {
   const id = req.params.id
   const body = req.body
-
   try {
     const user = await users.findByIdAndUpdate(id, body, {
       useFindAndModify: false
     })
-    console.log(user, 'USER PUT')
     res.json({
       estado: true,
       mensaje: 'Editado'
     })
-
   } catch (error) {
     console.log('error', error);
-
     res.json({
       estado: false,
       mensaje: 'No se completo la acción!!'
@@ -117,34 +116,27 @@ usersCtrl.renderEditarPut = async (req, res) => {
   }
 };
 
-// usersCtrl.renderEditarPasswordPost = () => passport.authenticate("local-change-pass", {
-//   successRedirect: "/profile",
-//   failureRedirect: "/",
-//   failureFlash: true,
-// });
-
-// usersCtrl.renderEditarPasswordPost = async (req, res) => {
-//   const body = req.body;
-//   try {
-//     const user = await users.findOne({
-//       email: body.email
-//     });
-//     console.log(user, 'USER CHANGE PASS');
-//     await user.setPassword(body.password);
-//     await user.save();
-
-//     res.json({
-//       estado: true,
-//       mensaje: 'Pass changed'
-//     })
-//   } catch (error) {
-//     console.log('error', error);
-//     res.json({
-//       estado: false,
-//       mensaje: 'No se completo la acción!!'
-//     })
-//   }
-// };
+usersCtrl.renderEditarPasswordPost = async (req, res) => {
+  const body = req.body
+  var user = req.user || null;
+  var iguales = await bcrypt.compareSync(body.password, user.password);
+  console.log(iguales, 'password ok ');
+  if (iguales) {
+    data = {
+      password: bcrypt.hashSync(body.password2, bcrypt.genSaltSync(10))
+    };
+    const actualizado = await users.findByIdAndUpdate(user._id, data, {
+      useFindAndModify: false
+    });
+    req.flash('msgOK', 'Contraseña actualizada');
+    res.redirect('/profile');
+    console.log(actualizado, 'datos actualizados');
+  } else {
+    console.log('datos NO actualizados');
+    req.flash('msg', 'Su contraseña actual no es válida');
+    res.redirect('/profile');
+  }
+};
 
 usersCtrl.renderRoles = (req, res) => {
   users.find({}, (error, users) => {

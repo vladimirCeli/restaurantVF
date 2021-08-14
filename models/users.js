@@ -16,7 +16,6 @@
     dir: String,
     cedula: String,
     carrito: []
-
   });
 
   userSchema.methods.encryptPassword = (password) => {

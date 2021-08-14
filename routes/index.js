@@ -5,7 +5,6 @@ const Cart = require("../models/cart");
 const User = require("../models/users");
 const Platillo = require("../models/platillo");
 var router = Router();
-
 router.get("/", function (req, res, next) {
   res.render("index", {
     title: "Bienvenido a La Place"
@@ -23,7 +22,6 @@ router.get('/add-to-cart/:id', function (req, res) {
     }
     cart.add(platillo, platillo.id);
     req.session.cart = cart;
-    
     var body = {
       carrito: cart
     }
@@ -37,8 +35,6 @@ async function editUser(user, body) {
     const usuarioActualizado = await User.findByIdAndUpdate(user._id, body, {
       useFindAndModify: false
     })
-    console.log(usuarioActualizado, 'SE ACTUALIZO EL CARRITO');
-
   } catch (error) {
     console.log('error', error);
   }
