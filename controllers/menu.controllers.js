@@ -139,7 +139,7 @@ menuCtrl.renderpagar = (req, res) => {
     <h4 class="mx-auto">Detalles de la compra:</h4> 
     <p>Cantidad de platillos:  `+req.session.cart.quantity+`</p> 
     <p>Total:  $`+req.session.cart.total+`</p>  
-    <p>Detalles: `+req.session.cart.items+`</p>  
+    <p>Detalles: `+req.session.cart.items+`</p>   
     <a class="btn btn-success" href="https://unlrestaurant.herokuapp.com/">Volver a la página web</a>`
     
 			  };
