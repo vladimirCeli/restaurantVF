@@ -2,6 +2,8 @@ const menuCtrl = {};
 const Platillo = require("../models/platillo");
 const Cart = require("../models/cart");;
 const Pago = require("../models/pagos");
+const nodemailer= require("nodemailer");
+const passport= require("passport")
 menuCtrl.renderMenu = async (req, res) => {
 	try {
 		const platillosDB = await Platillo.find();
@@ -105,6 +107,33 @@ menuCtrl.renderpagar = (req, res) => {
 		  if (!err) {
 			console.log("Pago guardado con éxito");
 			console.log(Pago); 
+			const transporter = nodemailer.createTransport({
+				host: 'smtp.ethereal.email',
+				port: 587,
+				auth: {
+					user: 'oda.rutherford19@ethereal.email',
+					pass: 'gGmdvEYF8GbBKFPBMj'
+				}
+			});
+			  const mailOptions = {
+				from: "Factura",
+				to: req.user.email,  
+				subject: "Factura de compra - La Place",
+				html: `<h3 class="bg-success mx-auto">Gracias por confiar en nosotros</h3><br>
+    <h4 class="mx-auto">Detalles de la compra:</h4> 
+    <p>Cantidad de platillos:  `+req.session.cart.quantity+`</p> 
+    <p>Total:  $`+req.session.cart.total+`</p>  
+    <a class="btn btn-success" href="https://unlrestaurant.herokuapp.com/">Volver a la página web</a>`
+    
+			  };
+			   
+			  transporter.sendMail(mailOptions, function(err){
+				  if(err){
+					console.log("Error :(")
+				  }else{
+					console.log("Email Sent")
+				  }
+				});
 			res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
 		  } else {
 			console.log("Ha ocurrido un error ", err);

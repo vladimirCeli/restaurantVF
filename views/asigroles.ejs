@@ -68,30 +68,83 @@
   
     <% } else if (user.rol == 3) { %> 
          
-        <div class="section card p-auto" style=" position: absolute;margin-top: -27%;">
+        <div class="section card p-auto" style=" position: absolute;margin-top: -21%;">
             <div class="col-12  " > 
                 <h3 class="mr-auto ">Asignación de Roles </h4>
                     <h4>Usuario: <b><%= user.name %> <%= user.surname %></b></h4>
-                    <div class="  bg-dark" style=" height:555px; overflow: scroll;">
-                      <nav class="bg-danger"> <h4 class="text-white"> Todos los Usuarios:</h4></nav>
-                       <hr> <br>
-                        <% for(var i=0;i<users.length;i++) { %> 
-                       <div  class="card container  bg-white text-dark col-md-7 mx-auto" style="background-color:000;opacity: 0.98; margin-top: -3%;">
-                         <div > 
-                          <b class="text-primary"><%= i+1 %>  <%= users[i].name %> <%= users[i].surname %></b> <br> 
-                          <b>Email: <%= users[i].email %></b> <br> 
-                          <b>CI:  <%= users[i].cedula %></b><br> 
-                          <b>Dirección:  <%= users[i].dir %></b><br> 
-                           <b>Nivel de acceso:   <b class="text-success"><%= users[i].rol %></b> </b>   
-                            <% if (users[i].rol == 1) { %> 
-                                 <a class="btn btn-danger btn-sm" href="/guardarol/<%= users[i].id %>">  Cambiar rol a administrador </a>
-                            
-                                <% } else if (users[i].rol == 2) { %> <a class="btn btn-danger btn-sm" href="/guardarol/<%= users[i].id %>"> Cambiar rol a Cliente</a>
-                                    <% } %>  
-                       </div>
-                       </div><br> 
-                     <% } %>  
-            </div>
+                    <div class="col-12 col-sm-9 col-md-9 p-1" style="height: 35px">
+                      <div class="input-group input-group-sm m-0">
+                        <div class="row mx-0 w-100">
+                          <span
+                            class="col-3 input-group-text"
+                            id="inputGroup-sizing-sm"
+                            >Buscar:</span
+                          >
+                          <div class="col-9 px-auto">
+                            <form action="/roles?_method=DELETE" method="POST">
+                              <input
+                              type="text"
+                              class="form-control"
+                              aria-label="Nombre"
+                              aria-describedby="basic-addon1"
+                              name="buscar"
+                              onchange="form.submit();"
+                              value="<%=buscar%> "
+                            /> 
+                            </form>
+                            <!-- <input type="button" class="form-control" value="Pinchame y verás"  /> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr> 
+                  <div class="container col-12 pb-4  mx-auto"  >
+                    <div class="card p-auto col-md-8  mx-auto">
+                      <div class="  mx-auto">
+                        <div class="row"> 
+                          <div class="  overflow-auto" style="height: 300px;">
+
+                            <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th scope="col"> </th>
+                                  <th scope="col">Usuario</th> 
+                                  <th scope="col">Correo</th>
+                                  <th scope="col">Nivel de acceso</th>
+                                </tr>
+                              </thead>
+<h3 class="card nav bg-success mx-auto">Gracias por confiar en nosotros</h3><br>
+<h4 class="mx-auto">Detalle de la compra</h4>
+                              <tbody>
+                                <% for(var i=0;i<users.length;i++) { %> 
+                                  <tr>
+                                    <th scope="row">
+                                      <%=(i+1)%>
+                                    </th>
+                                    <td>
+                                      <%= users[i].name %> <%= users[i].surname %>
+                                    </td>
+                                    <td>
+                                      <%= users[i].email %>
+                                    </td> 
+                                    <td>
+                                      <% if (users[i].rol == 1) { %> 
+                                        <a class="btn btn-danger btn-sm" href="/guardarol/<%= users[i].id %>">  Cambiar rol a administrador </a>
+                                   
+                                       <% } else if (users[i].rol == 2) { %> <a class="btn btn-success btn-sm" href="/guardarol/<%= users[i].id %>"> Cambiar rol a Cliente</a>
+                                           <% } %> 
+                                    </td>
+                                  </tr>
+                                  <% } %>
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                     
         </div><br>
         <div class="text-center bg-dark">
             <h4 class="text-white">Otras acciones:</h4>

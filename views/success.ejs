@@ -7,8 +7,37 @@
   <link href="./stylesheets/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/stylesheets/style.css" media="screen">
 </head>
-
-<body class=" " style="background: linear-gradient(90deg, rgb(10, 4, 4), rgb(78, 46, 38));">
+<script>
+  
+const nodemailer= require("nodemailer");
+    function test(){
+    const {estado,total,id,quantity}=req.body; 
+  
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'oda.rutherford19@ethereal.email',
+        pass: 'gGmdvEYF8GbBKFPBMj'
+    }
+});
+  const mailOptions = {
+    from: "Factura",
+    to: "juanpablotorrescalva@gmail.com",  
+    subject: "Factura de compra - La Place",
+    text:"it works"
+  };
+   
+    transporter.sendEmail(mailOptions, function(err){
+      if(err){
+        console.log("Error :(")
+      }else{
+        console.log("Email Sent")
+      }
+    });
+   }
+</script>
+<body onload="test()" style="background: linear-gradient(90deg, rgb(10, 4, 4), rgb(78, 46, 38));">
   <div>
     <div class="container mx-auto"style="margin-left: 12%;" > 
         <div class="container card text-center" style="background-color: blanchedalmond ;position: absolute; text-align: center; margin-top: 10%;">

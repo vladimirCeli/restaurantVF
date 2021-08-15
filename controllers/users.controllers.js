@@ -4,7 +4,7 @@ const {
 const usersCtrl = Router();
 const passport = require("passport");
 const pagos = require("../models/pagos");
-const users = require("../models/users");
+const user = require("../models/users");
 const nodemailer= require("nodemailer");
 require("../passport/local-auth")(passport);
 /**
@@ -93,7 +93,7 @@ usersCtrl.renderProfile = (req, res) => {
   */ 
 usersCtrl.renderEditar = async (req, res) => {
   try {
-    const existUser = await users.findOne({
+    const existUser = await user.findOne({
       _id: req.params.id
     });
     console.log(existUser, 'USER OK');
@@ -130,10 +130,10 @@ usersCtrl.renderEditarPut = async (req, res) => {
   const body = req.body
 
   try {
-    const user = await users.findByIdAndUpdate(id, body, {
+    const users = await user.findByIdAndUpdate(id, body, {
       useFindAndModify: false
     })
-    console.log(user, 'USER PUT')
+    console.log(users, 'USER PUT')
     res.json({
       estado: true,
       mensaje: 'Editado'
@@ -182,11 +182,12 @@ usersCtrl.renderEditarPut = async (req, res) => {
   * Renderizado editar roles  
   */ 
 usersCtrl.renderRoles = (req, res) => {
-  users.find({}, (error, users) => {
+  user.find({}, (error, users) => {
     res.render('asigroles', {
       users,
       title: 'Asignacion de roles',
       sesion: false,
+      buscar: "",
       msg: {
         error: req.flash('error'),
         info: req.flash('info')
@@ -197,7 +198,20 @@ usersCtrl.renderRoles = (req, res) => {
   });
 };
 
-
+usersCtrl.buscarUsuario = async (req, res) => {
+  const { buscar } = req.body; 
+  let cadena = buscar.substring(1, buscar.length); 
+  const users = await user.find({nombre: cadena}).lean();
+   res.render("asigroles", {
+    title: "Busqueda Usuario "+cadena,
+    users, 
+    buscar,
+    msg: {
+        error: req.flash('error'),
+        info: req.flash('info')
+      },
+  });
+};
 /**
   * post editar roles 
   */ 
@@ -235,35 +249,13 @@ function isLogged(req, res, next) {
 usersCtrl.renderPagar = (req, res) => {
   res.render("success", { title: "Compra Exitosa" });
   const {estado,total,id,quantity}=req.body; 
-  var transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    auth: {
-        user: 'werner.cronin18@ethereal.email',
-        pass: 'yX4BRUrpNkVbnkkWFf'
-    }
-  });
-  var MailOptions = {
-    from: "Restaurant Online - Factura",
-    to: "juan.p.torres@unl.edu.ec", 
-    subject: "Factura de compra - La Place",
-    text: "Detalles de la compra: Total "
-  }
 	new Pago({ 
 		id: id,
 		total: total,
 		estado: true,
 	}).save(function (err) { 
-	  if (!err) {
-		console.log("Pago guardado con éxito");  
-    transporter.sendEmail(MailOptions, (error, info) => {
-      if(error){
-        res.status(500).send(error.message);
-      }else{
-        res.status(200).json(req.body);
-      }
-    });
-  console.log("Email Enviado");
+	  if (!err) { 
+		console.log("Pago guardado con éxito");   
 		res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
 	  } else {
 		console.log("Ha ocurrido un error ", err);
