@@ -51,6 +51,13 @@
               </a>
             </div>
           </li>
+          <a href="/carrito"> <% if (session.cart) { %>
+            <span class="badge bg-primary h5">
+              <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+            </span>
+            <% } else { %>
+              <span class="badge bg-primary"> 0 </span>
+              <% } %></a>
           <a class="btn  btn-success btn-raised" href="/login">Acceder</a>
           <a class="btn  btn-danger btn-raised" href="/registrarse">Registrarse</a>
         </ul>
@@ -61,13 +68,13 @@
                 <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
                   <%= user.name %>
                     <%= user.surname %>
-                      <% if (session.cart) { %>
-                        <span class="badge bg-primary">
-                          <%= session.cart.quantity %>
-                        </span>
-                        <% } else { %>
-                          <span class="badge bg-primary"> 0 </span>
-                          <% } %>
+                    <a href="/carrito"> <% if (session.cart) { %>
+                      <span class="badge bg-primary h5">
+                        <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                      </span>
+                      <% } else { %>
+                        <span class="badge bg-primary"> 0 </span>
+                        <% } %></a>
 
                 </a>
                 <li class=" dropdown nav-item ">
@@ -87,14 +94,22 @@
                     <%= user.name %>
                       <%= user.surname %>
                   </a>
+                  <a href="/carrito"> <% if (session.cart) { %>
+                    <span class="badge bg-primary h5">
+                      <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                    </span>
+                    <% } else { %>
+                      <span class="badge bg-primary"> 0 </span>
+                      <% } %></a>
                   <li class=" dropdown nav-item ">
                     <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
                       aria-expanded="false">Administrar<div class="ripple-container"></div></a>
-                    <div class="dropdown-menu">
-                      <a href="/menu" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
-                      <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
-                      <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
-                    </div>
+                      <div class="dropdown-menu">
+                        <a href="/roles" class=" nav-link  " title="Mostrar la lista de usuarios">Listar Usuarios</a>
+                        <a href="/pagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
+                        <a href="/administrar" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                        <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
+                      </div>
                   </li>
                 </ul>
                  
@@ -104,12 +119,20 @@
                       <%= user.name %>
                         <%= user.surname %>
                     </a>
+                    <a href="/carrito" title="Ver carrito"> <% if (session.cart) { %>
+                      <span class="badge bg-primary h5">
+                        <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                      </span>
+                      <% } else { %>
+                        <span class="badge bg-primary"> 0 </span>
+                        <% } %></a>
                     <li class=" dropdown nav-item ">
                       <a href="javascript:;" class="dropdown-toggle nav-link" data-toggle="dropdown"
                         aria-expanded="false">Administrar<div class="ripple-container"></div></a>
                       <div class="dropdown-menu">
-                        <a href="/roles" class=" nav-link  " title="Administrar Menú">Listar Usuarios</a>
-                        <a href="/menu" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
+                        <a href="/roles" class=" nav-link  " title="Mostrar la lista de usuarios">Listar Usuarios</a>
+                        <a href="/pagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
+                        <a href="/administrar" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
                         <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
                       </div>
                     </li>

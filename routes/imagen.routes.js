@@ -32,7 +32,8 @@ router.post('/upload', (req, res) => {
     res.redirect('/administrar');
 });
 
-router.post('/uploadEdit', (req, res) => {
+router.post('/uploadEdit ', (req, res) => {
+    console.log("id metodo imagen : ",req.params.id);
     uploadImage(req, res, (err) => {
         if (err) {
             err.message = 'El archivo es muy grande';
@@ -45,7 +46,8 @@ router.post('/uploadEdit', (req, res) => {
     console.log("post upload ///////////////////// ",req.file.filename);
     req.session.imagen=req.file.filename;
     console.log("post upload ///////////////////// session ",req.session.imagen);
-    //res.redirect('/administrar/edit/:id');
+
+    res.redirect('/administrar/edit/'+req.params.id);
 });
  
 module.exports = router;

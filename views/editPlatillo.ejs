@@ -19,7 +19,7 @@
                   <h5>Nuevo Platillo <i class="fa fa-cutlery" aria-hidden="true"></i>
                     </h4>
                 </div>
-                <form action="/uploadEdit" method="post" enctype="multipart/form-data">
+                <form action="/uploadEdit " method="post" enctype="multipart/form-data">
                   <div class="input-group ">
                     <div class=" ">
                       <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
@@ -30,7 +30,7 @@
                   </div>
 
                   <div class="form-group col-12 col-sm-6 col-md-6 mx-auto ml-auto">
-                    <button type="submit" class="btn btn-success btn-block">
+                    <button type="submit"  class="btn btn-success btn-block">
                       <i class="fa fa-upload" aria-hidden="true"></i>
                       Subir Imagen
                     </button>
@@ -39,7 +39,7 @@
                 <div class="col-12 col-sm-6 col-md-6 mx-auto">
 
                   <% if(typeof imagenCap=='undefined' ){ %>
-                    <img src="/assets/img/face.jpg" class="img-thumbnail" alt="imagen" />
+                    <img src="<%=platillo.url%>" class="img-thumbnail" alt="imagen" />
                     <% }else{ %>
                       <img src="<%=platillo.url%>" class="img-thumbnail" alt="imagen" />
                       <% } %>
@@ -64,9 +64,13 @@
                   </div>
 
 
-                  <div class="togglebutton">
+                  <div class="togglebutton"  >
                     <label>
-                      <input type="checkbox" checked>
+                      <% if(platillo.estado==true ){%>
+                      <input type="checkbox" name="e" id="e" checked  >
+                      <% } else {%> 
+                      <input type="checkbox" name="e"  id="e" >
+                      <% }%> 
                       <span class="toggle">
 
                       </span>

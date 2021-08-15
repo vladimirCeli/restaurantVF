@@ -28,7 +28,7 @@ router.get('/add-to-cart/:id', function (req, res) {
     cart.add(platillo, platillo.id);
     req.session.cart = cart;
     console.log(req.session.cart, 'CART OK');
-    res.redirect('/carrito');
+    res.redirect('/menu');
   });
 });
 
