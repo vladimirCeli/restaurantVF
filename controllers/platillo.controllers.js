@@ -131,7 +131,6 @@ platilloCtrl.actualizarPlatillo = async(req, res) => {
       nombre, precio, descripcion,url,estado})
     req.flash('success_msg','Se ha actualizado un platillo')
     res.redirect('/administrar');
-  
 };
 
 
