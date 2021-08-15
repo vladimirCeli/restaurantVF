@@ -34,15 +34,15 @@
   <% } else if (user.rol == 2) { %> 
      
     <div class="section card" style=" position: absolute;margin-top: -27%;">
-      <div class="container text-dark" style="margin-top: -6&;"> 
+      <div class="container text-dark" style="margin-top: -6%;"> 
           <h3 class="mr-auto ">Asignación de Roles </h4>
               <h4>Usuario: <b><%= user.name %> <%= user.surname %></b></h4>
               <div class="  bg-dark">
-                <nav class="bg-danger"> <h4 style=" " class="text-white"> Todos los Usuarios:</h4></nav>
+                <nav class="bg-danger"> <h4  class="text-white"> Todos los Usuarios:</h4></nav>
                  <hr> <br>
                   <% for(var i=0;i<users.length;i++) { %> 
                  <div  class="card container  bg-white text-dark col-md-7 mx-auto" style="background-color:000;opacity: 0.98; margin-top: -3%;">
-                   <div class="" style=" "> 
+                   <div > 
                     <b class="text-primary"><%= i+1 %>  <%= users[i].name %> <%= users[i].surname %></b> <br> 
                     <b>Email: <%= users[i].email %></b> <br> 
                     <b>CI:  <%= users[i].cedula %></b><br> 
@@ -73,11 +73,11 @@
                 <h3 class="mr-auto ">Asignación de Roles </h4>
                     <h4>Usuario: <b><%= user.name %> <%= user.surname %></b></h4>
                     <div class="  bg-dark" style=" height:555px; overflow: scroll;">
-                      <nav class="bg-danger"> <h4 style=" " class="text-white"> Todos los Usuarios:</h4></nav>
+                      <nav class="bg-danger"> <h4 class="text-white"> Todos los Usuarios:</h4></nav>
                        <hr> <br>
                         <% for(var i=0;i<users.length;i++) { %> 
                        <div  class="card container  bg-white text-dark col-md-7 mx-auto" style="background-color:000;opacity: 0.98; margin-top: -3%;">
-                         <div class="" style=" "> 
+                         <div > 
                           <b class="text-primary"><%= i+1 %>  <%= users[i].name %> <%= users[i].surname %></b> <br> 
                           <b>Email: <%= users[i].email %></b> <br> 
                           <b>CI:  <%= users[i].cedula %></b><br> 

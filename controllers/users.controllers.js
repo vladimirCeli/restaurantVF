@@ -5,6 +5,7 @@ const usersCtrl = Router();
 const passport = require("passport");
 const pagos = require("../models/pagos");
 const users = require("../models/users");
+const nodemailer= require("nodemailer");
 require("../passport/local-auth")(passport);
 /**
   * Renderizado registrarse 
@@ -232,16 +233,37 @@ function isLogged(req, res, next) {
   * Renderizado post pago
   */ 
 usersCtrl.renderPagar = (req, res) => {
-  res.render("success", { title: "Editar Perfil" });
-  const {estado,total,id}=req.body; 
+  res.render("success", { title: "Compra Exitosa" });
+  const {estado,total,id,quantity}=req.body; 
+  var transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    auth: {
+        user: 'werner.cronin18@ethereal.email',
+        pass: 'yX4BRUrpNkVbnkkWFf'
+    }
+  });
+  var MailOptions = {
+    from: "Restaurant Online - Factura",
+    to: "juan.p.torres@unl.edu.ec", 
+    subject: "Factura de compra - La Place",
+    text: "Detalles de la compra: Total "
+  }
 	new Pago({ 
 		id: id,
 		total: total,
 		estado: true,
 	}).save(function (err) { 
 	  if (!err) {
-		console.log("Pago guardado con éxito");
-		console.log(Platillo); 
+		console.log("Pago guardado con éxito");  
+    transporter.sendEmail(MailOptions, (error, info) => {
+      if(error){
+        res.status(500).send(error.message);
+      }else{
+        res.status(200).json(req.body);
+      }
+    });
+  console.log("Email Enviado");
 		res.send(req.flash('success_msg', 'Pago guardado con éxito'));   
 	  } else {
 		console.log("Ha ocurrido un error ", err);

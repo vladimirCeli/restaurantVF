@@ -12,9 +12,9 @@ module.exports = function (passport) {
     done(null, user);
   });
 
-/**
-  * Registro con el metodo local con passport
-  */  
+  /**
+    * Registro con el metodo local con passport
+    */
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -30,12 +30,43 @@ module.exports = function (passport) {
       'email': email
     })
 
-    if (user) { //SI hay un usuario con ese correo show that
+    if (user) { //SI hay un usuario registrado
       return done(null, false, req.flash('signupMessage', 'El correo ya está resgistrado.'));
     }
+    //contraseñas no coinciden
     if (req.body.password != req.body.password2) {
       return done(null, false, req.flash('signupMessage', 'Las contraseñas no coinciden'));
-    }    else {
+    }
+    //Contraseña mayor a 5 caracteres
+    if (req.body.password.length < 5) {
+      return done(null, false, req.flash('signupMessage', 'Las contraseña debe ser mayor a 5 caracteres'));
+    }
+    //verificar cédula valida
+    var cad = req.body.cedula;
+    var total = 0;
+    var longitud = cad.length;
+    var longcheck = longitud - 1;
+
+    if (cad !== "" && longitud === 10) {
+      for (i = 0; i < longcheck; i++) {
+        if (i % 2 === 0) {
+          var aux = cad.charAt(i) * 2;
+          if (aux > 9) aux -= 9;
+          total += aux;
+        } else {
+          total += parseInt(cad.charAt(i)); // parseInt o concatenará en lugar de sumar
+        }
+      }
+
+      total = total % 10 ? 10 - total % 10 : 0;
+
+      if (cad.charAt(longitud - 1) != total) {
+        return done(null, false, req.flash('signupMessage', 'ingresa una cédula valida'));
+      }
+    }
+    if (req.body.phone.length < 10) {
+      return done(null, false, req.flash('signupMessage', 'ingresa una número de celular válido'));
+    } else {
       const newUser = new User();
       newUser.name = req.body.name;
       newUser.surname = req.body.surname;
@@ -53,7 +84,7 @@ module.exports = function (passport) {
 
   /**
   * Login con el metodo local con passport
-  */ 
+  */
   passport.use('local-signin', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -73,7 +104,7 @@ module.exports = function (passport) {
 
   /**
   * cambiar contraseña con el metodo local con passport
-  */ 
+  */
   passport.use('local-change-pass', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',

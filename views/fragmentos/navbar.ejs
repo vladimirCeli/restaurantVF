@@ -50,14 +50,7 @@
                 <p class="d-lg-none">Facebook</p>
               </a>
             </div>
-          </li>
-          <a href="/carrito"> <% if (session.cart) { %>
-            <span class="badge bg-primary h5">
-              <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
-            </span>
-            <% } else { %>
-              <span class="badge bg-primary"> 0 </span>
-              <% } %></a>
+          </li> 
           <a class="btn  btn-success btn-raised" href="/login">Acceder</a>
           <a class="btn  btn-danger btn-raised" href="/registrarse">Registrarse</a>
         </ul>
@@ -70,7 +63,7 @@
                     <%= user.surname %>
                     <a href="/carrito"> <% if (session.cart) { %>
                       <span class="badge bg-primary h5">
-                        <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                        <i class="fa fa-cart-plus"></i> <%= session.cart.quantity %>
                       </span>
                       <% } else { %>
                         <span class="badge bg-primary"> 0 </span>
@@ -96,7 +89,7 @@
                   </a>
                   <a href="/carrito"> <% if (session.cart) { %>
                     <span class="badge bg-primary h5">
-                      <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                      <i class="fa fa-cart-plus"></i> <%= session.cart.quantity %>
                     </span>
                     <% } else { %>
                       <span class="badge bg-primary"> 0 </span>
@@ -106,7 +99,7 @@
                       aria-expanded="false">Administrar<div class="ripple-container"></div></a>
                       <div class="dropdown-menu">
                         <a href="/roles" class=" nav-link  " title="Mostrar la lista de usuarios">Listar Usuarios</a>
-                        <a href="/pagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
+                        <a href="/verpagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
                         <a href="/administrar" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
                         <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
                       </div>
@@ -117,11 +110,11 @@
                   <ul class="navbar-nav ml-auto">
                     <a href="/profile" class="nav-item"><i class="material-icons fa fa-user"></i>
                       <%= user.name %>
-                        <%= user.surname %>
-                    </a>
+                        <%= user.surname %> 
+                    </a> <p class="h2"></p>
                     <a href="/carrito" title="Ver carrito"> <% if (session.cart) { %>
                       <span class="badge bg-primary h5">
-                        <i class="fa fa-cart-plus"></i><%= session.cart.quantity %>
+                        <i class="fa fa-cart-plus"></i> <%= session.cart.quantity %>
                       </span>
                       <% } else { %>
                         <span class="badge bg-primary"> 0 </span>
@@ -131,7 +124,7 @@
                         aria-expanded="false">Administrar<div class="ripple-container"></div></a>
                       <div class="dropdown-menu">
                         <a href="/roles" class=" nav-link  " title="Mostrar la lista de usuarios">Listar Usuarios</a>
-                        <a href="/pagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
+                        <a href="/verpagos" class=" nav-link  " title="Mostrar la lista de pagos">Listar de Pagos</a>
                         <a href="/administrar" class=" nav-link  " title="Administrar Menú">Administrar Menú</a>
                         <a href="logout" class="nav-link bg-danger nav-link-sm" title="Salir"> Salir</a>
                       </div>

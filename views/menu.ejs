@@ -36,10 +36,17 @@
                               <h6 class="u-text u-text-palette-3-base u-text-3">
                                 <%= p.precio %>
                               </h6>
-                              <a href="/add-to-cart/<%= p._id %>"
-                                class="u-btn u-btn-rectangle btn-success u-button-style u-grey-10 u-btn-2">
-                                <i class="fa fa-cart-plus"></i>
-                                Añadir al carrito</a>
+                              <% if(user) {%>
+                                <a href="/add-to-cart/<%= p._id %>"
+                                  class="btn btn-success ">
+                                  <i class="fa fa-cart-plus"></i>
+                                  Añadir al carrito</a>
+                                  <% } else {%>
+                                    <a
+                                    class="btn btn-success ">
+                                      <i class="fa fa-cart-plus"></i>
+                                      Ingresa para comprar</a>
+                                    <% }%>
                             </div>
                           </div>
                         </div>
