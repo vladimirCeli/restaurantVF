@@ -9,6 +9,9 @@
                 <section class=" u-align-center u-clearfix u-grey-10 u-section-1" id="carousel_4daf"
                     style="background-image: url('../assets/img/fondo.jpg')">
                     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+
+
+
                         <% if (user) { %>
 
                             <div class="card">
@@ -34,6 +37,18 @@
                                 </div>
                             </div>
                            
+
+                                <% if (msgOK.length> 0) { %>
+                                    <div class="alert alert-success" role="alert">
+                                        <%= msgOK %>
+                                    </div>
+                                    <% } %>
+
+                                    <% if (msg.length> 0) { %>
+                                        <div class="alert alert-danger" role="alert">
+                                            <%= msg %>
+                                        </div>
+                                        <% } %>
 
 
                 </section>

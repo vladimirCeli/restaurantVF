@@ -1,19 +1,19 @@
-module.exports = function Cart(oldCart) {
-    this.items = oldCart.items || {};
-    this.quantity = oldCart.quantity || 0;
-    this.total = oldCart.total || 0;
+module.exports = function Cart(cart) {
+    this.items = cart.items || {};
+    this.quantity = cart.quantity || 0;
+    this.total = cart.total || 0;
 
     this.add = function (item, id) {
         var storedItem = this.items[id];
-        console.log(storedItem, 'stor');
+        
         if (!storedItem) {
-            console.log('no hay store');
             storedItem = this.items[id] = {
                 item: item,
                 qty: 0,
                 precio: 0
             };
         }
+        console.log(storedItem, 'stored item');
         storedItem.qty++;
         storedItem.precio = storedItem.item.precio * storedItem.qty;
         this.quantity++;
@@ -28,6 +28,7 @@ module.exports = function Cart(oldCart) {
         if (this.items[id].qty <= 0) {
             delete this.items[id];
         }
+
     };
 
     this.delete = function (id) {

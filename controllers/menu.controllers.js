@@ -2,6 +2,7 @@ const menuCtrl = {};
 const Platillo = require("../models/platillo");
 const Cart = require("../models/cart");;
 const Pago = require("../models/pagos");
+const User = require("../models/users");
 const nodemailer= require("nodemailer");
 const passport= require("passport")
 menuCtrl.renderMenu = async (req, res) => {
@@ -63,21 +64,36 @@ const request = async (total) => {
   * Renderizado de carrito
   */  
 menuCtrl.renderCarrito = (req, res) => {
-	if (!req.session.cart) {
-		return res.render("carrito", {
-			title: 'Carrito',
-			platillos: [],
-			checkoutId: null
-		});
-	}
-	var cart = new Cart(req.session.cart);
-res.render('carrito', {
-  title: 'Carrito',
-  platillos: cart.generateArray(),
-  total: cart.total, 
-  checkoutId: request()
-});
+	var user = req.user || null;
+  console.log(user.carrito[0], 'CARRITO TO RENDER');
+  res.render('carrito', {
+    title: 'Carrito',
+    platillos: generateArray(user.carrito[0].items),
+    total: user.carrito[0].total
+  });
+
+
+  // if (!req.session.cart) {
+  //   return res.render("carrito", {
+  //     title: 'Carrito',
+  //     platillos: []
+  //   });
+  // }
+  // var cart = new Cart(req.session.cart);
+  // res.render('carrito', {
+  //   title: 'Carrito',
+  //   platillos: cart.generateArray(),
+  //   total: cart.total
+  // });
 };
+
+generateArray = function (cart) {
+  var arr = [];
+  for (const p in cart) {
+    arr.push(cart[p]);
+  }
+  return arr;
+}
 
 /**
   * renderizado de tarjeta + request ACI PAYMENT
@@ -114,7 +130,7 @@ menuCtrl.renderpagar = (req, res) => {
 					user: 'oda.rutherford19@ethereal.email',
 					pass: 'gGmdvEYF8GbBKFPBMj'
 				}
-			});
+			}); 
 			  const mailOptions = {
 				from: "Factura",
 				to: req.user.email,  
@@ -123,6 +139,7 @@ menuCtrl.renderpagar = (req, res) => {
     <h4 class="mx-auto">Detalles de la compra:</h4> 
     <p>Cantidad de platillos:  `+req.session.cart.quantity+`</p> 
     <p>Total:  $`+req.session.cart.total+`</p>  
+    <p>Detalles: `+req.session.cart.items+`</p>  
     <a class="btn btn-success" href="https://unlrestaurant.herokuapp.com/">Volver a la página web</a>`
     
 			  };

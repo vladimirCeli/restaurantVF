@@ -29,6 +29,8 @@ router.post("/editarc", passport.authenticate("local-change-pass", {
   failureRedirect: "/",
   failureFlash: true,
 }));
+
+router.post("/editarpass", renderEditarPasswordPost);
 router.get("/profile", renderProfile);
 router.get("/roles", renderRoles);
 router.get("/guardarol/:id", editRoles);
