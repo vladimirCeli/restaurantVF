@@ -4,7 +4,7 @@ const Cart = require("../models/cart");;
 const Pago = require("../models/pagos");
 const User = require("../models/users");
 const nodemailer= require("nodemailer");
-const passport= require("passport")
+const passport= require("passport");
 menuCtrl.renderMenu = async (req, res) => {
 	try {
 		const platillosDB = await Platillo.find();
@@ -114,7 +114,7 @@ menuCtrl.renderpago = (req, res) => {
   */  
 menuCtrl.renderpagar = (req, res) => {
 	request(req.session.cart.total).then(function (data) {
-		console.log(data.id)
+		console.log(data.id) 
 		new Pago({ 
 			id: data.id,
 			total:  req.session.cart.total,
@@ -122,7 +122,7 @@ menuCtrl.renderpagar = (req, res) => {
 		}).save(function (err) { 
 		  if (!err) {
 			console.log("Pago guardado con éxito");
-			console.log(Pago); 
+			console.log(Pago);  
 			const transporter = nodemailer.createTransport({
 				host: 'smtp.ethereal.email',
 				port: 587,
@@ -138,8 +138,7 @@ menuCtrl.renderpagar = (req, res) => {
 				html: `<h3 class="bg-success mx-auto">Gracias por confiar en nosotros</h3><br>
     <h4 class="mx-auto">Detalles de la compra:</h4> 
     <p>Cantidad de platillos:  `+req.session.cart.quantity+`</p> 
-    <p>Total:  $`+req.session.cart.total+`</p>  
-    <p>Detalles: `+req.session.cart.items+`</p>   
+    <p>Total:  $`+req.session.cart.total+`</p>   
     <a class="btn btn-success" href="https://unlrestaurant.herokuapp.com/">Volver a la página web</a>`
     
 			  };

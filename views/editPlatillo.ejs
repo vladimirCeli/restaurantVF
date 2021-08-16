@@ -61,7 +61,22 @@
                   <div class="form-group">
                     <textarea id="iddescripcion" name="descripcion" placeholder="Descripción" class="form-control"
                       required><%=platillo.descripcion%></textarea>
-                  </div> 
+                  </div>
+
+
+                  <div class="togglebutton"  >
+                    <label>
+                      <% if(platillo.estado==true ){%>
+                      <input type="checkbox" name="e" id="e" checked  >
+                      <% } else {%> 
+                      <input type="checkbox" name="e"  id="e" >
+                      <% }%> 
+                      <span class="toggle">
+
+                      </span>
+                      Estado del platillo
+                    </label>
+                  </div>
 
 
                   <div class="col-12 mt-2">
