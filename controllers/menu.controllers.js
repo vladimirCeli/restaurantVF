@@ -63,28 +63,22 @@ const request = async (total) => {
 /**
   * Renderizado de carrito
   */  
-menuCtrl.renderCarrito = (req, res) => {
+ menuCtrl.renderCarrito = (req, res) => {
 	var user = req.user || null;
-  console.log(user.carrito[0], 'CARRITO TO RENDER');
-  res.render('carrito', {
-    title: 'Carrito',
-    platillos: generateArray(user.carrito[0].items),
-    total: user.carrito[0].total
-  });
-
-
-  // if (!req.session.cart) {
-  //   return res.render("carrito", {
-  //     title: 'Carrito',
-  //     platillos: []
-  //   });
-  // }
-  // var cart = new Cart(req.session.cart);
-  // res.render('carrito', {
-  //   title: 'Carrito',
-  //   platillos: cart.generateArray(),
-  //   total: cart.total
-  // });
+	console.log(user.carrito, 'CARRITO TO RENDER');
+	if (user.carrito.length > 0) {
+		res.render('carrito', {
+			title: 'Carrito',
+			platillos: generateArray(user.carrito[0].items),
+			total: user.carrito[0].total
+		});
+	} else {
+		res.render('carrito', {
+			title: 'Carrito',
+			platillos: [],
+			total: 0
+		});
+	}
 };
 
 generateArray = function (cart) {
