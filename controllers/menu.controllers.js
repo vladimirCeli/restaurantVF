@@ -143,7 +143,7 @@ menuCtrl.renderpagar = (req, res) => {
     <h4 class="mx-auto">Detalles de la compra:</h4> 
     <p>Cantidad de platillos:  `+req.session.cart.quantity+`</p> 
     <p>Total:  $`+req.session.cart.total+`</p>   
-    <a class="btn btn-success" href="http://localhost:3000/">Volver a la página web</a>`
+    <a class="btn btn-success" href="https://restaurantss.onrender.com/">Volver a la página web</a>`
     
 			  };
 			   
