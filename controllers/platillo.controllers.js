@@ -108,9 +108,10 @@ platilloCtrl.administrar = async(req, res) => {
       estado: true,
     }).save(function (err) {
       if (!err) {
-        console.log("Platillo agregado con éxito");
+        req.flash('success_msg','Platillo agregado correctamente')
+        console.log("Platillo agregado correctamente");
         console.log(Platillo);
-        res.send("Platillo agregado");
+        res.redirect("/administrar");
       } else {
         console.log("Ha ocurrido un error", err);
         res.send("error");
@@ -122,10 +123,7 @@ platilloCtrl.actualizarPlatillo = async(req, res) => {
     const url = "/uploads/"+  req.session.imagen;
     console.log("id : "+  req.params.id)  
     const {nombre, precio, descripcion,e } = req.body;
-    const estado=null;
-    if (e==checked){
-        estado=true;
-    }else{estado=false}
+    const estado=true
 
     await Platillo.findByIdAndUpdate(req.params.id,{
       nombre, precio, descripcion,url,estado})

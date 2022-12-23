@@ -16,7 +16,9 @@ app.user
 require('./passport/local-auth')(passport);
 const https = require('https');
 // database//
-const URI='mongodb+srv://Restorant:accessdb@cluster0.qjqtf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const URI='mongodb+srv://admin:admin@cluster0.w9u3e2g.mongodb.net/?retryWrites=true&w=majority'
+//const URI='mongodb://localhost:27017/mybd'
+mongoose.set("strictQuery", false);
 mongoose.connect(URI, {
     useUnifiedTopology: true,
     useNewUrlParser: true

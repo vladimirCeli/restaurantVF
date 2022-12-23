@@ -67,8 +67,13 @@ usersCtrl.ingresar = () => passport.authenticate("local-signin", {
   */ 
 usersCtrl.logout = (req, res, next) => {
   req.session.cart = {};
-  req.logout();
-  res.redirect("/login");
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/login");
+  });
+  //res.redirect("/login");
 };
 
 
