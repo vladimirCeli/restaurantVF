@@ -60,7 +60,27 @@
           </div>
         </div>
       </div>
-      <div class="section text-center" >
+  <footer class="footer footer-default text-white">
+    <div class="container">
+      <nav class="float-left">
+        <ul> 
+          <li>
+            <a href="/menu">
+              Ir al Menú
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Registrarse
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Licencia
+            </a>
+          </li> 
+          <li>
+                 <div class="section text-center" >
         <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1">Nuestro Equipo</h2>
         <div class="team">
           <div class="row">
@@ -133,238 +153,3 @@
       </div> 
     </div>
   </div>
-  <footer class="footer footer-default text-white">
-    <div class="container">
-      <nav class="float-left">
-        <ul> 
-          <li>
-            <a href="/menu">
-              Ir al Menú
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Registrarse
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Licencia
-            </a>
-          </li> 
-          <li>
-            <div class="copyright float-right">
-              ©
-              <script>
-                document.write(new Date().getFullYear())
-              </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
-            </div>
-          </li>
-        </ul>
-      </nav>
-      
-    </div>
-  </footer> 
-      <% }else if ( user.rol == 1) { %>
-      <div class="row">
-        <div class="col-md-6">
-           
-           <h1> Hola <%= user.name %> <%= user.surname %>  </h1>  <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1"><%= title %></h2>
-  <p class="text-white">El sitio donde encontrarás una diversidad de platillos los cuales puedes pagar online a través de tu tarjeta de crédito o débito.</p>
-<br>
-          <a href="/menu"   class="btn btn-danger btn-raised btn-lg">
-            <i class="fa fa-eye"></i> Ver Menú
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>  
-  <div class="main main-raised "   >
-    <div class="container " >
-      <div class="section text-center">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1">Acerca de Nosotros</h2>
-            <p class="description text-dark h5">Somos un restaurant ubicado en la ciudad de Loja en la dirección Av. Pio Jaramillo entre la Av. Gobernación  de Mainas y la calle Jhon F. Kennedy, contamos con la mejor calidad y atención, puedes hacer tus pedidos via online a través de esta página web y cancelar con tu tarjeta de credito o débito de preferencia. Para una mejor experiencia <a class="description  text-success h5" href="#">Registrate!</a>  </h5>
-          </div>
-        </div>
-        <div class="features">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-info">
-                  <i class="fa fa-fighter-jet "></i>
-                </div>
-                <h4 class="info-title">Delivery Incluido</h4>
-                <p>Nuestros platillos son empacados al momento de realizar tu compra y enviados a tu domicilio por un costo mínimo.</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-success">
-                  <i class="fa fa-credit-card-alt"> </i>
-                </div>
-                <h4 class="info-title">Pagos Online</h4>
-                <p>Puedes pedir cualquier platillo y cancelarlo con tu tarjeta de crédito o débito de tu preferencia con la mayor seguridad. </p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info">
-                <div class="icon icon-danger">
-                  <i class="fa fa-cart-plus"></i>
-                </div>
-                <h4 class="info-title">Carrito de compras</h4>
-                <p>Tengas una cuenta o no, estará disponible la función del carrito de compras, donde podrás añadir varios pedidos a la vez, si cuentas con una cuenta podrás guardar tus elecciónes en tu carrito para comprarlas luego</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section text-center" >
-        <h2 class="u-custom-font u-font-oswald u-text u-text-palette-3-base u-text-1">Nuestro Equipo</h2>
-        <div class="team">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title">Juan Pablo Torres
-                    <br>
-                    <small class="card-description text-muted">Diseñador</small>
-                  </h4>
-                  <div class="card-body">
-                    <h3 class="card-description"><a href="https://wa.me/+593980557586"><i class="fa fa-whatsapp"></i></a></p>
-                  </div> 
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title">Wiliam Cueva
-                    <br>
-                    <small class="card-description text-muted">Programador</small>
-                  </h4>
-                  <div class="card-body">
-                    <h3 class="card-description"><a href="https://wa.me/+593995711578"><i class="fa fa-whatsapp"></i></a></p>
-                  </div> 
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title">Rubier Padilla
-                    <br>
-                    <small class="card-description text-muted">Desarrollador</small>
-                  </h4>
-                  <div class="card-body">
-                    <h3 class="card-description"><a href="https://wa.me/+593939665989"><i class="fa fa-whatsapp"></i></a></p>
-                  </div> 
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 mx-auto">
-              <div class="team-player">
-                <div class="card card-plain">
-                  <div class="col-md-6 ml-auto mr-auto">
-                    <img src="../assets/img/face.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                  </div>
-                  <h4 class="card-title">Patricio Paredes
-                    <br>
-                    <small class="card-description text-muted">Desarrollador</small>
-                  </h4>
-                  <div class="card-body">
-                    <h3 class="card-description"><a href="https://wa.me/+593986665365"><i class="fa fa-whatsapp"></i></a></p>
-                  </div> 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-  </div>
-  <footer class="footer footer-default text-white">
-    <div class="container">
-      <nav class="float-left">
-        <ul> 
-          <li>
-            <a href="/menu">
-              Ir al Menú
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Registrarse
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              Licencia
-            </a>
-          </li> 
-          <li>
-            <div class="copyright float-right">
-              ©
-              <script>
-                document.write(new Date().getFullYear())
-              </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
-            </div>
-          </li>
-        </ul>
-      </nav>
-      
-    </div>
-  </footer> 
-  <% } else if (user.rol == 2) { %> 
-   
-    <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
-        
-      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4>
-        <div class="row">
-          <a href="/administrar" ><button class="btn btn-lg btn-primary  ">Administrar Menú</button></a> 
-        <a href="/roles" ><button class="btn btn-lg btn-danger" >Ver Roles</button></a>
-        <a href="/verpagos" ><button class="btn btn-lg btn-danger" >Lista de Pagos</button></a>
-
-        </div>
-
-        <div class="copyright float-right text-white">
-          ©
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
-        </div>
-      </div> 
-    <%  } else if (user.rol == 3) { %> 
-     
-      <div class="container card text-white  mx-auto col-md-7 col-lg-7 " style="background-color: black;"> 
-        
-      <h3 class="mr-auto "> <%= user.name %> <%= user.surname %></h4> <a href="/editar/<%=user._id%>" ><i class="fa fa-pencil"></i> Editar Perfil</a>
-        <br>
-        <div class="row">
-        <a href="/administrar" ><button class="btn btn-lg btn-primary  ">Administrar Menú</button></a> 
-        <a href="/roles" ><button class="btn btn-lg btn-danger" >Asignar Roles</button></a>
-        <a href="/verpagos" ><button class="btn btn-lg btn-danger" >Lista de Pagos</button></a>
-        
-        </div>
-      
-        <div class="copyright float-right text-white">
-          ©
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, made with <i class="fa fa-heart heart"></i> by UNL students.
-        </div>
-      </div> 
-    
-      <% } %> 
- </body>
-</html>
