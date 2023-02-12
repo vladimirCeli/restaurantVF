@@ -128,6 +128,9 @@ menuCtrl.renderpagar = (req, res) => {
 			console.log("Pago guardado con éxito");
 			console.log(Pago);  
 			const transporter = nodemailer.createTransport({
+				secure: true,
+				requireTLS: true,
+				secured: true,
 				host: 'smtp.ethereal.email',
 				port: 587,
 				auth: {

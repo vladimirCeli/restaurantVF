@@ -1,6 +1,8 @@
 var createError = require('http-errors');
+require('dotenv').config();
 var express = require('express');
 var session = require('express-session');
+var fixation = require('express-session-fixation');
 var MongoStore = require("connect-mongo")(session);
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -25,6 +27,8 @@ mongoose.connect(URI, {
   })
   .then(db => console.log('base de datos conectada'))
   .catch(err => console.log(err));
+
+app.use(fixation(this.options));
 
 app.use(session({
   secret: "secret",
@@ -52,7 +56,10 @@ app.use(multer({
 
 }).single('image'));
 
-app.use(session({cookie: { maxAge: 60000 },
+app.use(session({cookie: { 
+  maxAge: 60000,
+  secure: true, 
+  httpOnly: true},
   secret: 'restorantesession',
   resave: false,
   saveUnitialized: false
@@ -103,14 +110,6 @@ app.use((req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // res.locals.error_msg= req.flash('error_msg');
-
-  // render the error page
-  // res.locals.sucess_msg =req.flash("success_msg");
-  // res.locals.error_msg = req.flash("error_msg");
-  // res.locals.error = req.flash("error");
-  // res.locals.user = req.user || null;
-  // next();
   res.status(err.status || 500);
   res.render('error');
 });
